@@ -7,9 +7,9 @@ RSpec.describe Player do
   end
 
 	describe "#new" do
-    it "initializes with a #token as an empty string" do
+    it "initializes with a #marker as an empty string" do
       player = Player.new
-      expect(player.token).to eq("")
+      expect(player.marker).to eq("")
     end
   end
 
