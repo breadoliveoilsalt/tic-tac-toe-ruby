@@ -6,7 +6,11 @@ RSpec.describe Player do
     expect(described_class).to equal(Player)
   end
 
-	xdescribe "#get_score" do
+	describe "#new" do
+    it "initializes with a #token as an empty string" do
+      player = Player.new
+      expect(player.token).to eq("")
+    end
   end
 
 end
