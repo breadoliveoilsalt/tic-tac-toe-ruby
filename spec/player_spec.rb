@@ -24,7 +24,8 @@ describe Player do
   
   describe "#marker" do
     it "sets the marker instance variable" do
-      
+      @player.marker = "X"
+      expect(@player.marker).to eq("X")
     end
   end
 end
