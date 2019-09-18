@@ -22,5 +22,8 @@ end
 
 describe HumanPlayer do
 
+  it "is a subclass of the Player class" do
+    expect(HumanPlayer.superclass).to eq(Player)
+  end
 end
 
