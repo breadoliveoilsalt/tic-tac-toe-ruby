@@ -7,17 +7,26 @@ describe Player do
   end
 
 	describe "#new" do
+    
+    before(:each) do 
+      @player = Player.new
+    end 
+    
     it "initializes with a #marker as an empty string" do
-      player = Player.new
-      expect(player.marker).to eq("")
+      expect(@player.marker).to eq("")
     end
 
     it "initializes with a #player equal to 'Player'" do
-      player = Player.new
-      expect(player.name).to eq("Player")
+      expect(@player.name).to eq("Player")
     end
+  
   end
   
+  describe "#marker" do
+    it "sets the marker instance variable" do
+      
+    end
+  end
 end
 
 describe HumanPlayer do
