@@ -63,6 +63,15 @@ describe HumanPlayer do
       @player.select_marker
       expect(@player.marker).to eq("X")
     end
+
+    it "is called again if the user enters something other than 'x', 'X', 'o', or 'O'" do 
+      @player = HumanPlayer.new
+      allow(@player).to receive(:gets).and_return("w").once
+      @player.select_marker
+      expect(@player).to receive(:select_marker).twice
+
+    end
+
   end
 end
 
