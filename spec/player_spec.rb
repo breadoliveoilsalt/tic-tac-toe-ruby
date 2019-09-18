@@ -1,6 +1,6 @@
 require_relative '../lib/player.rb'
 
-RSpec.describe Player do
+describe Player do
 
   it "exists" do 
     expect(described_class).to equal(Player)
@@ -11,6 +11,12 @@ RSpec.describe Player do
       player = Player.new
       expect(player.marker).to eq("")
     end
-  end
 
+    it "initializes with a #player equal to 'Player'" do
+      player = Player.new
+      expect(player.name).to eq("Player")
+    end
+  end
+  
+  
 end
