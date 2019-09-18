@@ -18,6 +18,11 @@ class HumanPlayer < Player
     #name
     # to Clean up - not sure why Human player instance does
     # not inherit the attr macro of the super class
+    # same with #select_marker below
   end
-  
+ 
+  def select_marker
+    @marker = gets.chomp
+  end
+
 end
