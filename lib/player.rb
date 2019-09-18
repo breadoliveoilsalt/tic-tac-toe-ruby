@@ -8,3 +8,7 @@ class Player
   end
   
 end
+
+class HumanPlayer
+
+end
