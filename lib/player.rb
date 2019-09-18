@@ -9,6 +9,6 @@ class Player
   
 end
 
-class HumanPlayer
+class HumanPlayer < Player
 
 end
