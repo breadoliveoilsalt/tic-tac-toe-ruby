@@ -18,5 +18,9 @@ describe Player do
     end
   end
   
-  
 end
+
+describe HumanPlayer do
+
+end
+
