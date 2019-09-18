@@ -48,9 +48,9 @@ describe HumanPlayer do
   describe "#provide_name" do
     it "gets the input of the user for its name and sets the @name instance variable" do
       @player = HumanPlayer.new
-      allow(@player).to receive(:gets) {"Betty"}
+      allow(@player).to receive(:gets).and_return("Betty")
       @player.provide_name
-      expect(@player.name).to eq("Tommy")
+      expect(@player.name).to eq("Betty")
     end
   end
 end
