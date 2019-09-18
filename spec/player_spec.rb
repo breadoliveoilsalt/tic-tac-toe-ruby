@@ -2,15 +2,15 @@ require_relative '../lib/player.rb'
 
 describe Player do
 
+  before(:each) do 
+    @player = Player.new
+  end 
+
   it "exists" do 
     expect(described_class).to equal(Player)
   end
 
 	describe "#new" do
-    
-    before(:each) do 
-      @player = Player.new
-    end 
     
     it "initializes with a #marker as an empty string" do
       expect(@player.marker).to eq("")
