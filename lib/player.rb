@@ -4,6 +4,7 @@ class Player
 
   def initialize
     @marker = ""
+    @name = "Player"
   end
   
 end
