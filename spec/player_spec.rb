@@ -44,5 +44,14 @@ describe HumanPlayer do
   it "is a subclass of the Player class" do
     expect(HumanPlayer.superclass).to eq(Player)
   end
+
+  describe "#provide_name" do
+    it "gets the input of the user for its name and sets the @name instance variable" do
+      @player = HumanPlayer.new
+      allow(@player).to receive(:gets) {"Betty"}
+      @player.provide_name
+      expect(@player.name).to eq("Tommy")
+    end
+  end
 end
 
