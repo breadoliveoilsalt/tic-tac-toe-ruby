@@ -53,10 +53,17 @@ describe Board do
       expect(@board.game_won?).to eq(false)
     end
 
-    it "returns true when the first row consists of the same markers" do 
+    it "returns true when the first row consists of the same markers and not blank spaces" do 
       @board.data[0] = "X"
       @board.data[1] = "X"
       @board.data[2] = "X"
+      expect(@board.game_won?).to eq(true)
+    end
+
+    it "returns true when the same markers on left-to-right diagonal" do 
+      @board.data[0] = "O"
+      @board.data[4] = "O"
+      @board.data[8] = "O"
       expect(@board.game_won?).to eq(true)
     end
   end
