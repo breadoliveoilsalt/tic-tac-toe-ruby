@@ -9,7 +9,7 @@ class Board
   end
 
 
-  def place_marker_in_board_box(marker, box_number)
+  def place_marker_on_board_box(marker, box_number)
     data[box_number-1] = marker
   end
 

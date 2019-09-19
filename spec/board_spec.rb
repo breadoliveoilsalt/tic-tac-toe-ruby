@@ -40,12 +40,17 @@ describe Board do
     end
   end
 
-  describe "#place_marker_in_board_box" do
+  describe "#place_marker_on_board_box" do
     it "places a marker in the data accoring to the box selected" do 
-      @board.place_marker_in_board_box("X", 9)
+      @board.place_marker_on_board_box("X", 9)
       expected_data = [" "," ", " ", " ", " ", " ", " ", " ", "X"]
       expect(@board.data).to eq(expected_data)
     end
   end
 
+  describe "#game_won?" do
+    it "returns false when all boxes are blank" do
+      expect(@board.game_won?).to eq(false)
+    end
+  end
 end
