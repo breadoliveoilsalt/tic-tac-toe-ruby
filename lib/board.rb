@@ -15,12 +15,13 @@ class Board
   end
 
   def game_won?
+    there_is_a_winner = false
     WINNING_POSITIONS.each do |positions|
       if data[positions[0]] != " " && data[positions[0]] == data[positions[1]] && data[positions[0]] == data[positions[2]]
-        true
-      else
-        false
+        there_is_a_winner = true
       end
+    end
+    there_is_a_winner
   end
 
   #private - tests won't pass with private label - TBD
