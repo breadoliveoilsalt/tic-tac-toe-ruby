@@ -49,7 +49,7 @@ describe Board do
   end
 
   describe "#game_won?" do
-    it "returns false when all boxes are blank" do
+    it "returns false when all boxes are empty" do
       expect(@board.game_won?).to eq(false)
     end
   end
