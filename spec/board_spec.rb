@@ -52,5 +52,12 @@ describe Board do
     it "returns false when all boxes are empty" do
       expect(@board.game_won?).to eq(false)
     end
+
+    it "returns true when the first row consists of the same markers" do 
+      @board.data[0] = "X"
+      @board.data[1] = "X"
+      @board.data[2] = "X"
+      expect(@board.game_won?).to eq(true)
+    end
   end
 end
