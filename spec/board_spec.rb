@@ -8,8 +8,8 @@ describe Board do
 
   describe "#new" do
     it "initializes a Board instance with an instance variable @data equal to an array of 9 empty strings" do 
-      expected_output = [" "," ", " ", " ", " ", " ", " ", " ", " "]
-      expect(@board.data).to eq(expected_output)
+      expected_data = [" "," ", " ", " ", " ", " ", " ", " ", " "]
+      expect(@board.data).to eq(expected_data)
     end
   end
 
@@ -38,6 +38,12 @@ describe Board do
       MESSAGE
       expect{ @board.display_board_for_user}.to output(expected_message_to_terminal).to_stdout
     end
+  end
+
+  describe "#place_marker_in_board_box" do
+    @board.place_marker_in_board_box("X", 9)
+    expected_data = [" "," ", " ", " ", " ", " ", " ", " ", "X"]
+    expect(@board.data).to eq(expected_data)
   end
 
 end
