@@ -15,6 +15,8 @@ class Board
   def game_won?
     if data[0] != " " && data[0] == data[1] && data[0] == data[2]
       true
+    elsif data[0] != " " && data[0] == data[4] && data[0] == data[8]
+      true
     else
       false
     end
