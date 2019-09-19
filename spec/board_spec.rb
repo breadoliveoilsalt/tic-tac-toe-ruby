@@ -8,23 +8,22 @@ describe Board do
 
   describe "#new" do
     it "initializes a Board instance with an instance variable @data equal to an array of 9 empty strings" do 
-      expected_output = ["","","","","","","","",""]
+      expected_output = [" "," ", " ", " ", " ", " ", " ", " ", " "]
       expect(@board.data).to eq(expected_output)
     end
   end
 
-  describe "#display_for_user" do
-    it "prints a user friendly version of the current board to the terminal" do
-      expected_message_to_terminal = "   |   |   /n-----------/n   |   |   /n-----------/n   |   |   "
-#
-#
-#      "<<~MESSAGE
-#         |   |  
-#      -----------
-#         |   |   
-#      -----------
-#         |   |    
-#      MESSAGE
+  describe "#display_board_for_user" do
+    it "prints to terminal a user friendly version of the board that is empty after initialization" do
+      expected_message_to_terminal = <<~MESSAGE
+           |   |  
+        -----------
+           |   |   
+        -----------
+           |   |    
+      MESSAGE
+
+      expect(@board.display_board_for_user).to eq(expected_message_to_terminal)
     end
   end
 
