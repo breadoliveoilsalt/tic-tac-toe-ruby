@@ -1,5 +1,7 @@
 class Board
 
+  WINNING_POSITIONS = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
+
   def initialize
     @data = initial_data
   end
@@ -13,13 +15,12 @@ class Board
   end
 
   def game_won?
-    if data[0] != " " && data[0] == data[1] && data[0] == data[2]
-      true
-    elsif data[0] != " " && data[0] == data[4] && data[0] == data[8]
-      true
-    else
-      false
-    end
+    WINNING_POSITIONS.each do |positions|
+      if data[positions[0]] != " " && data[positions[0]] == data[positions[1]] && data[positions[0]] == data[positions[2]]
+        true
+      else
+        false
+      end
   end
 
   #private - tests won't pass with private label - TBD
