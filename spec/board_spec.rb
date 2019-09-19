@@ -25,6 +25,19 @@ describe Board do
 
       expect{ @board.display_board_for_user}.to output(expected_message_to_terminal).to_stdout
     end
+
+    it "prints to the terminal a user friendly version of the board that reflects past moves" do
+      @board.data[0] = "X"
+      @board.data[8] = "O"
+      expected_message_to_terminal = <<~MESSAGE
+         X |   |   
+        -----------
+           |   |  
+        -----------
+           |   | O
+      MESSAGE
+      expect{ @board.display_board_for_user}.to output(expected_message_to_terminal).to_stdout
+    end
   end
 
 end
