@@ -14,8 +14,17 @@ describe Board do
   end
 
   describe "#display_for_user" do
-    xit "prints a user friendly version of the current board to the terminal" do
-      
+    it "prints a user friendly version of the current board to the terminal" do
+      expected_message_to_terminal = "   |   |   /n-----------/n   |   |   /n-----------/n   |   |   "
+#
+#
+#      "<<~MESSAGE
+#         |   |  
+#      -----------
+#         |   |   
+#      -----------
+#         |   |    
+#      MESSAGE
     end
   end
 
