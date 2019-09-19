@@ -16,7 +16,7 @@ describe Board do
   describe "#display_board_for_user" do
     it "prints to terminal a user friendly version of the board that is empty after initialization" do
       expected_message_to_terminal = <<~MESSAGE
-           |   |  
+           |   |   
         -----------
            |   |  
         -----------
@@ -24,12 +24,6 @@ describe Board do
       MESSAGE
 
       expect{ @board.display_board_for_user}.to output(expected_message_to_terminal).to_stdout
-    end
-  end
-
-  describe "mock puts test" do 
-    it "hopefully passes" do
-      expect{ @board.test_message }.to output("Success!").to_stdout
     end
   end
 
