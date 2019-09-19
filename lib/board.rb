@@ -12,4 +12,8 @@ class Board
     ["","","","","","","","",""]
   end
 
+  def test_message
+    print "Success!"
+  end
+
 end

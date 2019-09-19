@@ -21,7 +21,7 @@ describe Board do
 
   describe "mock puts test" do 
     it "hopefully passes" do
-      expect(@board.test_message).to output("Success!").to_stdout
+      expect{ @board.test_message }.to output("Success!").to_stdout
     end
   end
 end
