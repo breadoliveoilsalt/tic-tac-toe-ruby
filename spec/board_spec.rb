@@ -41,9 +41,11 @@ describe Board do
   end
 
   describe "#place_marker_in_board_box" do
-    @board.place_marker_in_board_box("X", 9)
-    expected_data = [" "," ", " ", " ", " ", " ", " ", " ", "X"]
-    expect(@board.data).to eq(expected_data)
+    it "places a marker in the data accoring to the box selected" do 
+      @board.place_marker_in_board_box("X", 9)
+      expected_data = [" "," ", " ", " ", " ", " ", " ", " ", "X"]
+      expect(@board.data).to eq(expected_data)
+    end
   end
 
 end

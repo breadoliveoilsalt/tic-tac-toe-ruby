@@ -26,4 +26,8 @@ class Board
     MESSAGE
   end
 
+  def place_marker_in_board_box(marker, box_number)
+    data[box_number-1] = marker
+  end
+
 end
