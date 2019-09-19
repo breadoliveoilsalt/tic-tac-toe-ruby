@@ -22,7 +22,23 @@ class HumanPlayer < Player
   end
  
   def select_marker
-    @marker = gets.chomp
+    puts "Please select a marker: X or O."
+    user_marker_selection = gets.chomp
+    check_user_marker_selection(user_marker_selection)
+  end
+
+  def check_user_marker_selection(user_marker_selection)
+    if invalid_marker(user_marker_selection)
+      puts "Please select only X or O"
+      select_marker
+    end
+  end
+  
+  def invalid_marker(user_marker_selection)
+    user_marker_selection == "X" ||
+    user_marker_selection == "x" ||
+    user_marker_selection == "O" ||
+    user_marker_selection == "o" 
   end
 
 end
