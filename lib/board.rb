@@ -13,7 +13,11 @@ class Board
   end
 
   def game_won?
-    false
+    if data[0] != " " && data[0] == data[1] && data[0] == data[2]
+      true
+    else
+      false
+    end
   end
 
   #private - tests won't pass with private label - TBD
