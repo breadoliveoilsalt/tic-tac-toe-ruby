@@ -18,12 +18,12 @@ describe Board do
       expected_message_to_terminal = <<~MESSAGE
            |   |  
         -----------
-           |   |   
+           |   |  
         -----------
-           |   |    
+           |   |  
       MESSAGE
 
-      expect(@board.display_board_for_user).to eq(expected_message_to_terminal)
+      expect{ @board.display_board_for_user}.to output(expected_message_to_terminal).to_stdout
     end
   end
 
@@ -32,4 +32,5 @@ describe Board do
       expect{ @board.test_message }.to output("Success!").to_stdout
     end
   end
+
 end

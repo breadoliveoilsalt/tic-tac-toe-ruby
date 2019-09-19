@@ -16,7 +16,12 @@ class Board
     print "Success!"
   end
 
-  def test_message2
+
+  def display_board_for_user
+    puts board_as_string
+  end
+
+  def board_as_string
     <<~MESSAGE
       #{data[0]} | #{data[1]} | #{data[2]}
      -----------
@@ -44,5 +49,5 @@ class Board
 
 end
 
-b = Board.new
-b.printy
+#b = Board.new
+#b.printy
