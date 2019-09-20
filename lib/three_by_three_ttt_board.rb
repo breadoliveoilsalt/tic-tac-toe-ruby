@@ -20,12 +20,12 @@ class ThreeByThreeTTTBoard
     (rows + columns + diagonals).each do |row|
       return true if has_win?(row)
     end
-    return false
+    false
   end
 
   def has_win?(row) 
     first, middle, last = row
-    first != " " && middle = last && first == last
+    first != " " && first = middle && first == last
   end
 
   def rows
@@ -53,6 +53,12 @@ class ThreeByThreeTTTBoard
     game_won? || game_tied?
   end
 
+  def valid_marker?(marker)
+    if marker == "X"
+      return true
+    end
+    false
+  end
   private
 
   def board_as_string

@@ -167,4 +167,10 @@ describe ThreeByThreeTTTBoard do
       )
     end
   end
+
+  describe "#valid_marker?" do
+    it "returns true if pass a capital X" do
+      expect(board.valid_marker?("X")).to eq(true)
+    end
+  end
 end
