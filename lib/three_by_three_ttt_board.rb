@@ -53,12 +53,13 @@ class ThreeByThreeTTTBoard
     game_won? || game_tied?
   end
 
-  def valid_marker?(marker)
-    if marker == "X"
-      return true
+  def valid_marker?(player_marker_selection)
+    ["X", "x", "O", "o"].each do |acceptable_marker|
+      return true if player_marker_selection == acceptable_marker
     end
     false
   end
+   
   private
 
   def board_as_string

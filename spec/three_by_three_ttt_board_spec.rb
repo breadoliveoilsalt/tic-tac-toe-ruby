@@ -169,8 +169,26 @@ describe ThreeByThreeTTTBoard do
   end
 
   describe "#valid_marker?" do
-    it "returns true if pass a capital X" do
+    it "returns true if passed a capital X" do
       expect(board.valid_marker?("X")).to eq(true)
+    end
+    
+    it "returns true if passed a lower case x" do
+      expect(board.valid_marker?("x")).to eq(true)
+    end
+    
+    it "returns true if passed a capital O" do
+      expect(board.valid_marker?("O")).to eq(true)
+    end
+    
+    it "returns true if passed a lower case o" do
+      expect(board.valid_marker?("o")).to eq(true)
+    end
+    
+    it "returns false if passed any other character" do 
+      expect(board.valid_marker?("4")).to eq(false)
+      expect(board.valid_marker?("Y")).to eq(false)
+      expect(board.valid_marker?("p")).to eq(false)
     end
   end
 end
