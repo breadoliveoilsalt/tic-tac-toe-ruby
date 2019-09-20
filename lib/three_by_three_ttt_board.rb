@@ -28,6 +28,10 @@ class ThreeByThreeTTTBoard
     there_is_a_winner
   end
 
+  def game_tied?
+    false
+  end
+
   private
 
   def initial_data
