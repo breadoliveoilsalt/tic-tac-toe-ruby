@@ -90,6 +90,14 @@ describe ThreeByThreeTTTBoard do
       board.place_marker_on_board_box("X", 3)
       expect(board.game_tied?).to eq(false)
     end
+  end
 
+  describe "game_over?" do 
+    it "returns true when the game is won" do
+      board.place_marker_on_board_box("X", 1)
+      board.place_marker_on_board_box("X", 2)
+      board.place_marker_on_board_box("X", 3)
+      expect(board.game_over?).to eq(false)
+    end
   end
 end
