@@ -1,8 +1,6 @@
 class ThreeByThreeTTTBoard
 
-  WINNING_POSITIONS = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
-
-  def initialize
+  def initialize(initial_data=[" ", " ", " ", " ", " ", " ", " ", " ", " "])
     @data = initial_data
   end
 
@@ -19,36 +17,43 @@ class ThreeByThreeTTTBoard
   end
 
   def game_won?
-    there_is_a_winner = false
-    WINNING_POSITIONS.each do |positions|
-      if data[positions[0]] != " " && data[positions[0]] == data[positions[1]] && data[positions[0]] == data[positions[2]]
-        there_is_a_winner = true
-      end
+    (rows + columns + diagonals).each do |row|
+      return true if has_win?(row)
     end
-    there_is_a_winner
+    return false
+  end
+
+  def has_win?(row) 
+    first, middle, last = row
+    first != " " && middle = last && first == last
+  end
+
+  def rows
+    [[data[0], data[1], data[2]],
+     [data[3], data[4], data[5]],
+     [data[6], data[7], data[8]]]
+  end
+  
+  def columns
+    [[data[0], data[3], data[6]],
+     [data[1], data[4], data[7]],
+     [data[2], data[5], data[8]]]
+  end
+
+  def diagonals
+    [[data[0], data[4], data[8]],
+     [data[6], data[4], data[3]]]
   end
 
   def game_tied?
-    if there_are_empty_boxes || game_won?
-      false
-    else
-      true
-    end
+    !(there_are_empty_boxes || game_won?)
   end
 
   def game_over?
-    if game_won? || game_tied?
-      true
-    else
-      false
-    end
+    game_won? || game_tied?
   end
 
   private
-
-  def initial_data
-    [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-  end
 
   def board_as_string
     <<~MESSAGE

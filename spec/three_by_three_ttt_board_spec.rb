@@ -2,18 +2,18 @@ require_relative '../lib/three_by_three_ttt_board.rb'
 
 describe ThreeByThreeTTTBoard do
 
-  before(:each) do 
-    @board = ThreeByThreeTTTBoard.new
-  end
+  let(:board) { ThreeByThreeTTTBoard.new }
 
-  def board
-    @board
-  end
-  
   describe "#new" do
     it "initializes a Board instance with an instance variable @data equal to an array of 9 empty strings" do 
       expected_data = [" "," ", " ", " ", " ", " ", " ", " ", " "]
       expect(board.data).to eq(expected_data)
+    end
+
+    it "initializes a Board instance with provided state" do
+      prefilled_board = ThreeByThreeTTTBoard.new(["X", "O", "X", " ", " ", " ", " ", " ", " "]) 
+      expected_data = ["X", "O", "X", " ", " ", " ", " ", " ", " "]
+      expect(prefilled_board.data).to eq(expected_data)
     end
   end
 
@@ -58,16 +58,20 @@ describe ThreeByThreeTTTBoard do
     end
 
     it "returns true when the first row consists of the same markers and not blank spaces" do 
-      board.place_marker_on_board_box("X", 1)
-      board.place_marker_on_board_box("X", 2)
-      board.place_marker_on_board_box("X", 3)
+      board = ThreeByThreeTTTBoard.new(
+        ["X", "X", "X", 
+         " ", " ", " ", 
+         " ", " ", " "]
+      )
       expect(board.game_won?).to eq(true)
     end
 
     it "returns true when the same markers on left-to-right diagonal" do 
-      board.place_marker_on_board_box("O", 1)
-      board.place_marker_on_board_box("O", 5)
-      board.place_marker_on_board_box("O", 9)
+      board = ThreeByThreeTTTBoard.new(
+        ["O", " ", " ", 
+         " ", "O", " ", 
+         " ", " ", "O"]
+      )
       expect(board.game_won?).to eq(true)
     end
   end
@@ -78,16 +82,20 @@ describe ThreeByThreeTTTBoard do
     end
 
     it "returns false when the game is won" do 
-      board.place_marker_on_board_box("X", 1)
-      board.place_marker_on_board_box("X", 2)
-      board.place_marker_on_board_box("X", 3)
+      board = ThreeByThreeTTTBoard.new(
+        ["X", "X", "X", 
+         " ", " ", " ", 
+         " ", " ", " "]
+      )
       expect(board.game_tied?).to eq(false)
     end
 
     it "returns false when the game is not won but there are empty boxes" do
-      board.place_marker_on_board_box("X", 1)
-      board.place_marker_on_board_box("O", 2)
-      board.place_marker_on_board_box("X", 3)
+      board = ThreeByThreeTTTBoard.new(
+        ["X", " ", "X", 
+         " ", " ", " ", 
+         " ", " ", " "]
+      )
       expect(board.game_tied?).to eq(false)
     end
   end
@@ -98,23 +106,65 @@ describe ThreeByThreeTTTBoard do
     end
 
     it "returns true when the game is won" do
-      board.place_marker_on_board_box("X", 1)
-      board.place_marker_on_board_box("X", 2)
-      board.place_marker_on_board_box("X", 3)
+      board = ThreeByThreeTTTBoard.new(
+        ["X", "X", "X", 
+         " ", " ", " ", 
+         " ", " ", " "]
+      )
       expect(board.game_over?).to eq(true)
     end
     
     it "returns true when the game is tied" do
-      board.place_marker_on_board_box("X", 1)
-      board.place_marker_on_board_box("O", 2)
-      board.place_marker_on_board_box("X", 3)
-      board.place_marker_on_board_box("O", 4)
-      board.place_marker_on_board_box("X", 5)
-      board.place_marker_on_board_box("X", 6)
-      board.place_marker_on_board_box("O", 7)
-      board.place_marker_on_board_box("X", 8)
-      board.place_marker_on_board_box("O", 9)
+      board = ThreeByThreeTTTBoard.new(
+        ["X", "X", "O", 
+         "O", "O", "X", 
+         "X", "X", "O"]
+      )
       expect(board.game_over?).to eq(true)
+    end
+  end
+
+  describe "#rows" do
+    it "returns all the board's rows" do
+      board = ThreeByThreeTTTBoard.new(
+        ["X", "X", "O", 
+         "O", "O", "X", 
+         "X", "X", "O"]
+      )
+      expect(board.rows).to eq(
+        [["X", "X", "O"], 
+         ["O", "O", "X"], 
+         ["X", "X", "O"]]
+      )
+    end
+  end
+  
+  describe "#columns" do
+    it "returns all the board's columns" do
+      board = ThreeByThreeTTTBoard.new(
+        ["X", "X", "O", 
+         "O", "O", "X", 
+         "X", "X", "O"]
+      )
+      expect(board.columns).to eq(
+        [["X", "O", "X"], 
+         ["X", "O", "X"], 
+         ["O", "X", "O"]]
+      )
+    end
+  end
+  
+  describe "#columns" do
+    it "returns all the board's diagonals" do
+      board = ThreeByThreeTTTBoard.new(
+        ["X", "X", "O", 
+         "O", "O", "X", 
+         "X", "X", "O"]
+      )
+      expect(board.diagonals).to eq(
+        [["X", "O", "O"], 
+         ["X", "O", "O"]]
+      )
     end
   end
 end
