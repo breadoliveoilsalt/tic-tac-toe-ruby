@@ -37,7 +37,11 @@ class ThreeByThreeTTTBoard
   end
 
   def game_over?
-    true if game_won?
+    if game_won?
+      true
+    else
+      false
+    end
   end
 
   private
