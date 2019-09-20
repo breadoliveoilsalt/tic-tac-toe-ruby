@@ -1,4 +1,4 @@
-require_relative '../lib/board.rb'
+require_relative '../lib/three_by_three_ttt_board.rb'
 
 describe ThreeByThreeTTTBoard do
 
@@ -65,6 +65,12 @@ describe ThreeByThreeTTTBoard do
       @board.data[4] = "O"
       @board.data[8] = "O"
       expect(@board.game_won?).to eq(true)
+    end
+  end
+
+  describe "game_tied?" do
+    it "returns false when all boxes are empty" do
+      expect(@board.game_tied?). to eq(false)
     end
   end
 end
