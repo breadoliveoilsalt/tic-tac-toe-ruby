@@ -1,9 +1,9 @@
 require_relative '../lib/board.rb'
 
-describe Board do
+describe ThreeByThreeTTTBoard do
 
   before(:each) do 
-    @board = Board.new
+    @board = ThreeByThreeTTTBoard.new
   end
 
   describe "#new" do

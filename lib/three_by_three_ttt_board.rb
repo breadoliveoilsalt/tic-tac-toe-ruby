@@ -1,9 +1,13 @@
-class Board
+class ThreeByThreeTTTBoard
 
   WINNING_POSITIONS = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
 
   def initialize
     @data = initial_data
+  end
+
+  def data
+    @data
   end
 
   def display_board_for_user
@@ -24,11 +28,7 @@ class Board
     there_is_a_winner
   end
 
-  #private - tests won't pass with private label - TBD
-  
-  def data
-    @data
-  end
+  private
 
   def initial_data
     [" ", " ", " ", " ", " ", " ", " ", " ", " "]
