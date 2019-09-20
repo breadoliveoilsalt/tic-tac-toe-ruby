@@ -93,11 +93,15 @@ describe ThreeByThreeTTTBoard do
   end
 
   describe "game_over?" do 
+    it "returns false upon initialization when board is empty" do
+      expect(board.game_over?).to eq(false)
+    end
+
     it "returns true when the game is won" do
       board.place_marker_on_board_box("X", 1)
       board.place_marker_on_board_box("X", 2)
       board.place_marker_on_board_box("X", 3)
-      expect(board.game_over?).to eq(false)
+      expect(board.game_over?).to eq(true)
     end
   end
 end

@@ -36,6 +36,10 @@ class ThreeByThreeTTTBoard
     end
   end
 
+  def game_over?
+    true if game_won?
+  end
+
   private
 
   def initial_data
