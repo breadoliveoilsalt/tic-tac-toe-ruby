@@ -81,7 +81,7 @@ describe ThreeByThreeTTTBoard do
       board.data[0] = "X"
       board.data[1] = "X"
       board.data[2] = "X"
-      expect(board.game_won?).to eq(false)
+      expect(board.game_tied?).to eq(false)
     end
   end
 end

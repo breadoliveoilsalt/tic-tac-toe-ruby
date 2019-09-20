@@ -29,7 +29,11 @@ class ThreeByThreeTTTBoard
   end
 
   def game_tied?
-    false
+    if there_are_empty_boxes || game_won?
+      false
+    else
+      true
+    end
   end
 
   private
@@ -48,4 +52,7 @@ class ThreeByThreeTTTBoard
     MESSAGE
   end
 
+  def there_are_empty_boxes
+    data.include?(" ")
+  end
 end
