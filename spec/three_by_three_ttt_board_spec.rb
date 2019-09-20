@@ -58,16 +58,16 @@ describe ThreeByThreeTTTBoard do
     end
 
     it "returns true when the first row consists of the same markers and not blank spaces" do 
-      board.data[0] = "X"
-      board.data[1] = "X"
-      board.data[2] = "X"
+      board.place_marker_on_board_box("X", 1)
+      board.place_marker_on_board_box("X", 2)
+      board.place_marker_on_board_box("X", 3)
       expect(board.game_won?).to eq(true)
     end
 
     it "returns true when the same markers on left-to-right diagonal" do 
-      board.data[0] = "O"
-      board.data[4] = "O"
-      board.data[8] = "O"
+      board.place_marker_on_board_box("O", 1)
+      board.place_marker_on_board_box("O", 5)
+      board.place_marker_on_board_box("O", 9)
       expect(board.game_won?).to eq(true)
     end
   end
@@ -78,16 +78,16 @@ describe ThreeByThreeTTTBoard do
     end
 
     it "returns false when the game is won" do 
-      board.data[0] = "X"
-      board.data[1] = "X"
-      board.data[2] = "X"
+      board.place_marker_on_board_box("X", 1)
+      board.place_marker_on_board_box("X", 2)
+      board.place_marker_on_board_box("X", 3)
       expect(board.game_tied?).to eq(false)
     end
 
     it "returns false when the game is not won but there are empty boxes" do
-      board.data[0] = "X"
-      board.data[1] = "O"
-      board.data[2] = "X"
+      board.place_marker_on_board_box("X", 1)
+      board.place_marker_on_board_box("O", 2)
+      board.place_marker_on_board_box("X", 3)
       expect(board.game_tied?).to eq(false)
     end
 
