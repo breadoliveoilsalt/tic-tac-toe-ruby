@@ -106,14 +106,14 @@ describe ThreeByThreeTTTBoard do
     
     it "returns true when the game is tied" do
       board.place_marker_on_board_box("X", 1)
-      board.place_marker_on_board_box("O", 1)
-      board.place_marker_on_board_box("X", 1)
       board.place_marker_on_board_box("O", 2)
       board.place_marker_on_board_box("X", 3)
-      board.place_marker_on_board_box("X", 2)
-      board.place_marker_on_board_box("O", 3)
-      board.place_marker_on_board_box("X", 2)
-      board.place_marker_on_board_box("O", 3)
+      board.place_marker_on_board_box("O", 4)
+      board.place_marker_on_board_box("X", 5)
+      board.place_marker_on_board_box("X", 6)
+      board.place_marker_on_board_box("O", 7)
+      board.place_marker_on_board_box("X", 8)
+      board.place_marker_on_board_box("O", 9)
       expect(board.game_over?).to eq(true)
     end
   end
