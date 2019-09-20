@@ -83,5 +83,13 @@ describe ThreeByThreeTTTBoard do
       board.data[2] = "X"
       expect(board.game_tied?).to eq(false)
     end
+
+    it "returns false when the game is not won but there are empty boxes" do
+      board.data[0] = "X"
+      board.data[1] = "O"
+      board.data[2] = "X"
+      expect(board.game_tied?).to eq(false)
+    end
+
   end
 end
