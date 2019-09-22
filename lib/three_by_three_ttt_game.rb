@@ -1,11 +1,14 @@
-class ThreeByThreeTicTacToeGame
+require 'pry'
+
+class ThreeByThreeTTTGame
 
   attr_accessor :players
   attr_reader :board, :human_player_model
 
   def initialize(setup)
-    @board = setup.board
-    @human_player_model = setup.human_player_model
+    binding.pry
+    @board = setup[:board]
+    @human_player_model = setup[:human_player_model]
     # @computer_player_model = setup.computer_player_model
     @players = []
   end
@@ -14,21 +17,17 @@ class ThreeByThreeTicTacToeGame
     puts "Welcome to Tic Tac Toe!"
     set_up_players
     display_instructions
-
-
-
-
   end
 
   def set_up_players
     player1 = human_player_model.new
     player1.name = "Player 1"
-    player1.maker = "X"
+    player1.marker = "X"
     players.push(player1)
 
     player2 = human_player_model.new
     player2.name = "Player 2"
-    player1.maker = "O"
+    player1.marker = "O"
     players.push(player2)
   end
 

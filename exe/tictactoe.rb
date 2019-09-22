@@ -3,7 +3,9 @@
 require 'require_all'
 require_all 'lib'
 
-puts "Please enter your name: "
-h = HumanPlayer.new
-h.select_marker
-puts "Thanks!"
+game = ThreeByThreeTTTGame.new({
+  board: ThreeByThreeTTTBoard.new,
+  human_player_model: HumanPlayer
+})
+
+game.start_game
