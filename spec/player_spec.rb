@@ -57,19 +57,12 @@ describe HumanPlayer do
   end
 
   describe "#select_marker" do 
-    xit "gets the input of the user for its marker and sets the @marker instance variable" do
+
+    it "gets the input of the user for its marker and sets the @marker instance variable" do
       @player = HumanPlayer.new
       allow(@player).to receive(:gets).and_return("X")
       @player.select_marker
-      expect(@player.marker).to eq("X")
-    end
-
-    xit "is called again if the user enters something other than 'x', 'X', 'o', or 'O'" do 
-      @player = HumanPlayer.new
-      allow(@player).to receive(:gets).and_return("w").once
-      @player.select_marker
-      expect(@player).to receive(:select_marker).twice
-
+      expect(@player.select_marker).to eq("X")
     end
 
   end
