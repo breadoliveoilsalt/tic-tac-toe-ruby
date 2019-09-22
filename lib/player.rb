@@ -11,6 +11,7 @@ end
 
 class HumanPlayer < Player
 
+  attr_accessor :marker, :name
   def provide_name
     @name = gets.chomp
     # to Clean up - not sure why Human player instance does

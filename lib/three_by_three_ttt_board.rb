@@ -8,10 +8,14 @@ class ThreeByThreeTTTBoard
     @data
   end
 
-  def display_board_for_user
-    puts board_as_string
+  def display_current_board
+    puts current_board_as_string
   end
 
+  def display_board_with_numbers
+    puts board_as_string_with_numbers
+  end
+  
   def place_marker_on_board_box(marker, box_number)
     data[box_number-1] = marker
   end
@@ -62,13 +66,23 @@ class ThreeByThreeTTTBoard
    
   private
 
-  def board_as_string
+  def current_board_as_string
     <<~MESSAGE
       #{data[0]} | #{data[1]} | #{data[2]} 
      -----------
       #{data[3]} | #{data[4]} | #{data[5]}
      -----------
       #{data[6]} | #{data[7]} | #{data[8]}
+    MESSAGE
+  end
+
+  def board_as_string_with_numbers
+    <<~MESSAGE
+      1 | 2 | 3 
+     -----------
+      4 | 5 | 6
+     -----------
+      7 | 8 | 9
     MESSAGE
   end
 

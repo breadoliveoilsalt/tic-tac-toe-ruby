@@ -25,7 +25,7 @@ describe ThreeByThreeTTTBoard do
     end
   end
 
-  describe "#display_board_for_user" do
+describe "#display_current_board" do
     it "prints to terminal a user friendly version of the board that is empty after initialization" do
       expected_message_to_terminal = <<~MESSAGE
            |   |   
@@ -35,7 +35,7 @@ describe ThreeByThreeTTTBoard do
            |   |  
       MESSAGE
 
-      expect{ board.display_board_for_user}.to output(expected_message_to_terminal).to_stdout
+      expect{ board.display_current_board}.to output(expected_message_to_terminal).to_stdout
     end
 
     it "prints to the terminal a user friendly version of the board that reflects past moves" do
@@ -48,7 +48,20 @@ describe ThreeByThreeTTTBoard do
         -----------
            |   | O
       MESSAGE
-      expect{ board.display_board_for_user}.to output(expected_message_to_terminal).to_stdout
+      expect{ board.display_current_board }.to output(expected_message_to_terminal).to_stdout
+    end
+  end
+
+  describe "#display_board_with_numbers" do 
+    it "displays the board with numbers in the boxes" do
+      expected_message_to_terminal = <<~MESSAGE
+         1 | 2 | 3 
+        -----------
+         4 | 5 | 6
+        -----------
+         7 | 8 | 9
+      MESSAGE
+      expect{ board.display_board_with_numbers}.to output(expected_message_to_terminal).to_stdout
     end
   end
 
