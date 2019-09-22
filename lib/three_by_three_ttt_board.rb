@@ -73,6 +73,7 @@ class ThreeByThreeTTTBoard
       #{data[3]} | #{data[4]} | #{data[5]}
      -----------
       #{data[6]} | #{data[7]} | #{data[8]}
+
     MESSAGE
   end
 
@@ -83,6 +84,7 @@ class ThreeByThreeTTTBoard
       4 | 5 | 6
      -----------
       7 | 8 | 9
+    
     MESSAGE
   end
 

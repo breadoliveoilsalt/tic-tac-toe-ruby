@@ -6,7 +6,6 @@ class ThreeByThreeTTTGame
   attr_reader :board, :human_player_model
 
   def initialize(setup)
-    binding.pry
     @board = setup[:board]
     @human_player_model = setup[:human_player_model]
     # @computer_player_model = setup.computer_player_model
@@ -14,7 +13,11 @@ class ThreeByThreeTTTGame
   end
   
   def start_game
-    puts "Welcome to Tic Tac Toe!"
+    puts <<~MESSAGE
+      
+      Welcome to Tic Tac Toe!
+
+      MESSAGE
     set_up_players
     display_instructions
   end
@@ -32,8 +35,12 @@ class ThreeByThreeTTTGame
   end
 
   def display_instructions
-    puts "Player 1 is X. Player 2 is O."
-    puts "Players must select a box from 1 - 9."
+    puts <<~MESSAGE
+      Player 1 is X. Player 2 is O.
+      
+      Players must select a box from 1 - 9.
+      
+      MESSAGE
     board.display_board_with_numbers
 
   end

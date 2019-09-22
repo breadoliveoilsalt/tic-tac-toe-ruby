@@ -33,6 +33,7 @@ describe "#display_current_board" do
            |   |  
         -----------
            |   |  
+
       MESSAGE
 
       expect{ board.display_current_board}.to output(expected_message_to_terminal).to_stdout
@@ -47,6 +48,7 @@ describe "#display_current_board" do
            |   |  
         -----------
            |   | O
+
       MESSAGE
       expect{ board.display_current_board }.to output(expected_message_to_terminal).to_stdout
     end
@@ -60,6 +62,7 @@ describe "#display_current_board" do
          4 | 5 | 6
         -----------
          7 | 8 | 9
+
       MESSAGE
       expect{ board.display_board_with_numbers}.to output(expected_message_to_terminal).to_stdout
     end
