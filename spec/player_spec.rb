@@ -56,13 +56,13 @@ describe HumanPlayer do
   
   end
 
-  describe "#select_marker" do 
+  describe "#make_selection" do 
 
-    it "gets the input of the user for its marker and sets the @marker instance variable" do
+    it "gets the input of the user and returns it" do 
       @player = HumanPlayer.new
       allow(@player).to receive(:gets).and_return("X")
-      @player.select_marker
-      expect(@player.select_marker).to eq("X")
+      @player.make_selection
+      expect(@player.make_selection).to eq("X")
     end
 
   end

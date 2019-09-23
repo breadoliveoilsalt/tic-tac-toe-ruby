@@ -17,9 +17,9 @@ class HumanPlayer < Player
     @name = gets.chomp
   end
  
-  def select_marker
+  def make_selection 
     user_selection = gets.chomp
     user_selection
   end
-
+  
 end
