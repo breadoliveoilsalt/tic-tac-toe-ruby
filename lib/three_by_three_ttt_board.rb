@@ -69,7 +69,7 @@ class ThreeByThreeTTTBoard
   end
    
   def valid_move?(box_number)
-    box_is_empty?(box_number)
+    valid_box_number?(box_number) && box_is_empty?(box_number)
   end
 
   private
@@ -99,4 +99,9 @@ class ThreeByThreeTTTBoard
   def there_are_empty_boxes
     data.include?(" ")
   end
+
+  def valid_box_number?(box_number)
+    box_number.is_a?(Integer) && box_number >= 1 && box_number <= 9
+  end
+
 end

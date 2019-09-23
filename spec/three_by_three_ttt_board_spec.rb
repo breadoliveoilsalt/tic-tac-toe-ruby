@@ -237,6 +237,11 @@ describe "#display_current_board" do
       )
       expect(board.valid_move?(1)).to eq(false)
     end
+    
+    it "returns false when it is passed an argument that is not an integer between 1 and 9" do
+      expect(board.valid_move?(100)).to eq(false)
+      expect(board.valid_move?(3.5)).to eq(false)
+    end
   end
 
 end
