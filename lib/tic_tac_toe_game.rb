@@ -66,10 +66,10 @@ class TicTacToeGame
       board.place_marker_on_board_box(current_player.marker, box_number)
       puts "#{current_player.name} has selected box #{box_number}.\n "
       board.display_current_board
-      advance_to_next_player
     else
       handle_invalid_box_selection
     end
+    advance_to_next_player if game_is_not_over
   end
 
   def handle_invalid_box_selection
@@ -79,6 +79,8 @@ class TicTacToeGame
   
   def advance_to_next_player
     # No idea why I can't access current_player_pointer
+    require 'pry'
+    binding.pry
     if @current_player_pointer == players.length - 1
       @current_player_pointer = 0
     else
@@ -92,7 +94,7 @@ class TicTacToeGame
 
   def handle_game_over
     if board.game_won?
-      puts "We have a winner! \nThanks for playing!"
+      puts "#{current_player.name} wins! \nThanks for playing!"
     elsif board.game_tied?
       puts "Tie game! \nThanks for playing!"
     end
