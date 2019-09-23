@@ -34,7 +34,7 @@ class TicTacToeGame
 
     player2 = human_player_model.new
     player2.name = "Player 2"
-    player1.marker = "O"
+    player2.marker = "O"
     players.push(player2)
   end
 
