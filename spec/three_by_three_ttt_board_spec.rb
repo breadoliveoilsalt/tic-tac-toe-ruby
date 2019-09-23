@@ -223,4 +223,11 @@ describe "#display_current_board" do
       expect(board.valid_marker?("p")).to eq(false)
     end
   end
+
+  describe "#valid_move?" do
+    it "returns true when it is passed the box number for an empty box" do
+      expect(board.valid_move?(1)).to eq(true)
+    end
+  end
+
 end

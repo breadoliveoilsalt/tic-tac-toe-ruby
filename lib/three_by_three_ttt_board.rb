@@ -68,6 +68,10 @@ class ThreeByThreeTTTBoard
     false
   end
    
+  def valid_move?(box_number)
+    box_is_empty?(box_number)
+  end
+
   private
 
   def current_board_as_string
