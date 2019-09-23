@@ -68,6 +68,12 @@ describe "#display_current_board" do
     end
   end
 
+  describe "#box_is_empty?" do 
+    it "returns true when the box number passed in is equal to a string with a space" do
+      expect(board.box_is_empty?(3)). to eq(true)
+    end
+  end
+  
   describe "#game_won?" do
     it "returns false when all boxes are empty" do
       expect(board.game_won?).to eq(false)

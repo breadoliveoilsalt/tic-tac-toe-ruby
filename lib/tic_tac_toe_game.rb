@@ -57,7 +57,16 @@ class TicTacToeGame
     handle_game_over
   end
 
+  def current_player_takes_turn
+    puts "#{current_player.name}, please select a box to make your move."
+    move = current_player.make_selection
+  end
+
   def current_player
     players[current_player_pointer]
+  end
+
+  def handle_game_over
+
   end
 end
