@@ -78,12 +78,19 @@ class TicTacToeGame
   end
   
   def advance_to_next_player
-    # No idea why I can't access current_player_pointer
-    if @current_player_pointer == players.length - 1
-      @current_player_pointer = 0
+    if current_player_pointer == players.length - 1
+      reset_current_player_pointer
     else
-      @current_player_pointer += 1
+      advance_current_player_pointer
     end
+  end
+
+  def reset_current_player_pointer
+    @current_player_pointer = 0
+  end
+
+  def advance_current_player_pointer
+    @current_player_pointer += 1 
   end
 
   def current_player
