@@ -11,12 +11,10 @@ end
 
 class HumanPlayer < Player
 
-  attr_accessor :marker, :name
+  attr_accessor :marker, :name # why does subclass not inherit attr from superclass?
+
   def provide_name
     @name = gets.chomp
-    # to Clean up - not sure why Human player instance does
-    # not inherit the attr macro of the super class
-    # same with #select_marker below
   end
  
   def select_marker

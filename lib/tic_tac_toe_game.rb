@@ -1,25 +1,31 @@
 require 'pry'
 
-class ThreeByThreeTTTGame
+class TicTacToeGame
 
   attr_accessor :players
-  attr_reader :board, :human_player_model
+  attr_reader :board, :human_player_model, :current_player_pointer
 
   def initialize(setup)
     @board = setup[:board]
     @human_player_model = setup[:human_player_model]
     # @computer_player_model = setup.computer_player_model
     @players = []
+    @current_player_pointer = 0
   end
   
   def start_game
+    display_welcome
+    set_up_players
+    display_instructions
+    players_take_turns_until_game_over
+  end
+
+  def display_welcome
     puts <<~MESSAGE
       
       Welcome to Tic Tac Toe!
 
       MESSAGE
-    set_up_players
-    display_instructions
   end
 
   def set_up_players
@@ -42,6 +48,16 @@ class ThreeByThreeTTTGame
       
       MESSAGE
     board.display_board_with_numbers
+  end
 
+  def players_take_turns_until_game_over
+    while game_is_not_over
+      current_player_takes_turn
+    end
+    handle_game_over
+  end
+
+  def current_player
+    players[current_player_pointer]
   end
 end
