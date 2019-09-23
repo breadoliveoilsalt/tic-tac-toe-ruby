@@ -17,11 +17,11 @@ class ThreeByThreeTTTBoard
   end
   
   def place_marker_on_board_box(marker, box_number)
-    data[box_number-1] = marker
+    data[box_number - 1] = marker
   end
 
   def box_is_empty?(box_number)
-    data[box_number] == " "
+    data[box_number - 1] == " "
   end
   
   def game_won?

@@ -79,7 +79,7 @@ describe "#display_current_board" do
          " ", " ", " ", 
          " ", " ", " "]
       )
-      expect(board.box_is_empty?(3)). to eq(true)
+      expect(board.box_is_empty?(3)). to eq(false)
     end
 
   end
