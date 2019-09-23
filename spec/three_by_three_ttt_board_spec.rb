@@ -72,6 +72,16 @@ describe "#display_current_board" do
     it "returns true when the box number passed in is equal to a string with a space" do
       expect(board.box_is_empty?(3)). to eq(true)
     end
+
+    it "returns false when the box number passed in is not equal to a string with a space" do
+      board = ThreeByThreeTTTBoard.new(
+        [" ", " ", "X", 
+         " ", " ", " ", 
+         " ", " ", " "]
+      )
+      expect(board.box_is_empty?(3)). to eq(true)
+    end
+
   end
   
   describe "#game_won?" do
