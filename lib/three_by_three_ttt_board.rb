@@ -33,7 +33,7 @@ class ThreeByThreeTTTBoard
 
   def has_win?(row) 
     first, middle, last = row
-    first != " " && first = middle && first == last
+    first != " " && first == middle && first == last
   end
 
   def rows
@@ -50,7 +50,7 @@ class ThreeByThreeTTTBoard
 
   def diagonals
     [[data[0], data[4], data[8]],
-     [data[6], data[4], data[3]]]
+     [data[6], data[4], data[2]]]
   end
 
   def game_tied?

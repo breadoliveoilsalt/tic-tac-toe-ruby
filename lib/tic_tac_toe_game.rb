@@ -86,10 +86,6 @@ class TicTacToeGame
     end
   end
 
-#  def display_current_board
-#    board.display_current_board
-#  end
-
   def current_player
     players[current_player_pointer]
   end
@@ -98,7 +94,7 @@ class TicTacToeGame
     if board.game_won?
       puts "We have a winner! \nThanks for playing!"
     elsif board.game_tied?
-      puts "Tie game? \nThanks for playing!"
+      puts "Tie game! \nThanks for playing!"
     end
   end
 end
