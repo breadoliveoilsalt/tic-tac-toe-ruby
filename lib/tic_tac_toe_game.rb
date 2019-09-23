@@ -13,8 +13,8 @@ class TicTacToeGame
   
   def start_game
     display_welcome
-    set_up_players
     display_instructions
+    set_up_players
     players_select_boxes_until_game_over 
   end
 
@@ -79,8 +79,6 @@ class TicTacToeGame
   
   def advance_to_next_player
     # No idea why I can't access current_player_pointer
-    require 'pry'
-    binding.pry
     if @current_player_pointer == players.length - 1
       @current_player_pointer = 0
     else

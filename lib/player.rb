@@ -23,3 +23,4 @@ class HumanPlayer < Player
   end
   
 end
+
