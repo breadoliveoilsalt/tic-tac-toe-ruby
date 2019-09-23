@@ -57,9 +57,18 @@ class TicTacToeGame
     handle_game_over
   end
 
+  def game_is_not_over
+    !board.game_over?
+  end
+
   def current_player_takes_turn
     puts "#{current_player.name}, please select a box to make your move."
-    move = current_player.make_selection
+    box_number = current_player.make_selection.to_i
+    if board.box_is_empty?(box_number)
+      board.place_marker_on_board_box(current_player.marker, box_number)
+      board.display_current_board
+      puts "#{current_player.name} has selected box #{box_number}."
+    end
   end
 
   def current_player

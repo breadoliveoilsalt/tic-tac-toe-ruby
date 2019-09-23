@@ -108,7 +108,7 @@ describe "#display_current_board" do
     end
   end
 
-  describe "game_tied?" do
+  describe "#game_tied?" do
     it "returns false when all boxes are empty" do
       expect(board.game_tied?). to eq(false)
     end
@@ -132,7 +132,7 @@ describe "#display_current_board" do
     end
   end
 
-  describe "game_over?" do 
+  describe "#game_over?" do 
     it "returns false upon initialization when board is empty" do
       expect(board.game_over?).to eq(false)
     end
