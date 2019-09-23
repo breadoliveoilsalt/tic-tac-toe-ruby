@@ -20,6 +20,10 @@ class ThreeByThreeTTTBoard
     data[box_number-1] = marker
   end
 
+  def box_is_empty?(box_number)
+    data[box_number] == " "
+  end
+  
   def game_won?
     (rows + columns + diagonals).each do |row|
       return true if has_win?(row)
