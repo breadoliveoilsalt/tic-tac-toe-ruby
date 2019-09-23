@@ -228,6 +228,15 @@ describe "#display_current_board" do
     it "returns true when it is passed the box number for an empty box" do
       expect(board.valid_move?(1)).to eq(true)
     end
+    
+    it "returns false when it is passed the box number for a taken box" do
+      board = ThreeByThreeTTTBoard.new(
+        ["X", " ", " ", 
+         " ", " ", " ", 
+         " ", " ", " "]
+      )
+      expect(board.valid_move?(1)).to eq(false)
+    end
   end
 
 end
