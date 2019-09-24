@@ -26,4 +26,8 @@ end
 
 class ThreeByThreeTTTComputerPlayer < Player
 
+  def make_move(board)
+    1
+  end
+
 end
