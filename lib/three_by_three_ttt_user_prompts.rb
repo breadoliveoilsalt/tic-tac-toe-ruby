@@ -45,7 +45,7 @@ module ThreeByThreeTTTUserPrompts
       MESSAGE
   end
 
-  def display_generic_user_selection
+  def display_generic_user_selection_error
     puts <<~MESSAGE 
 
       Sorry, invalid selection.

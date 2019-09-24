@@ -76,7 +76,7 @@ describe "ThreeByThreeTTTUserPrompts" do
         Sorry, invalid selection.
 
       MESSAGE
-      expect{test_object.display_generic_user_selection}.to output(expected_message).to_stdout
+      expect{test_object.display_generic_user_selection_error}.to output(expected_message).to_stdout
     end
   end
 end
