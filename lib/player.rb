@@ -24,3 +24,6 @@ class HumanPlayer < Player
   
 end
 
+class ThreeByThreeTTTComputerPlayer < Player
+
+end

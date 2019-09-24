@@ -68,3 +68,9 @@ describe HumanPlayer do
   end
 end
 
+describe ThreeByThreeTTTComputerPlayer do
+
+  it "is a subclass of the Player class" do
+    expect(ThreeByThreeTTTComputerPlayer.superclass).to eq(Player)
+  end
+end
