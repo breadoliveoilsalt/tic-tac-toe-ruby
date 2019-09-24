@@ -26,7 +26,7 @@ end
 
 class ThreeByThreeTTTComputerPlayer < Player
 
-  def make_move(board)
+  def select_box(board)
     index_selected = board.find_index { |box| box == " " }
     index_selected + 1
   end
