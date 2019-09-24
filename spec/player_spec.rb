@@ -81,5 +81,10 @@ describe ThreeByThreeTTTComputerPlayer do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
       expect(computer_player.make_move(board)).to eq(1)
     end
+
+    it "selects the first empty box of the board when passed a board array with some moves made already" do 
+      board = ["X", "O", " ", " ", " ", " ", " ", " ", " "]
+      expect(computer_player.make_move(board)).to eq(3)
+    end
   end
 end
