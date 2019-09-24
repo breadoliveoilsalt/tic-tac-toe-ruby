@@ -35,12 +35,21 @@ module ThreeByThreeTTTUserPrompts
 
   def display_board_with_numbers
     puts <<~MESSAGE
+
        1 | 2 | 3 
       -----------
        4 | 5 | 6
       -----------
        7 | 8 | 9
    
+      MESSAGE
+  end
+
+  def display_generic_user_selection
+    puts <<~MESSAGE 
+
+      Sorry, invalid selection.
+
       MESSAGE
   end
 end

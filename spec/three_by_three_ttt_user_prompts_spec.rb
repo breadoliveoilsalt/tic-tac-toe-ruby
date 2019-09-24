@@ -55,8 +55,9 @@ describe "ThreeByThreeTTTUserPrompts" do
   end
 
   describe "#display_board_with_numbers" do
-    it "displays a the board with numbers each box" do
+    it "displays the board with numbers each box" do
       expected_message = <<~MESSAGE
+
         1 | 2 | 3 
        -----------
         4 | 5 | 6
@@ -66,6 +67,16 @@ describe "ThreeByThreeTTTUserPrompts" do
       MESSAGE
       expect{test_object.display_board_with_numbers}.to output(expected_message).to_stdout
     end
+  end
 
+  describe "#display_generic_user_selection_errror" do
+    it "displays an generic error message to the console" do
+      expected_message = <<~MESSAGE 
+
+        Sorry, invalid selection.
+
+      MESSAGE
+      expect{test_object.display_generic_user_selection}.to output(expected_message).to_stdout
+    end
   end
 end
