@@ -53,4 +53,19 @@ describe "ThreeByThreeTTTUserPrompts" do
       expect{test_object.provide_instructions}.to output(expected_message).to_stdout
     end
   end
+
+  describe "#display_board_with_numbers" do
+    it "displays a the board with numbers each box" do
+      expected_message = <<~MESSAGE
+        1 | 2 | 3 
+       -----------
+        4 | 5 | 6
+       -----------
+        7 | 8 | 9
+    
+      MESSAGE
+      expect{test_object.display_board_with_numbers}.to output(expected_message).to_stdout
+    end
+
+  end
 end
