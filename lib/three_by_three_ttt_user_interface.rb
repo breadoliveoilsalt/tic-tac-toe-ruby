@@ -70,12 +70,22 @@ class ThreeByThreeTTTUserInterface
   end
 
   def display_game_won_by(name)
-      puts <<~MESSAGE 
+    puts <<~MESSAGE 
 
         #{name} wins!
 
         Thanks for playing!
 
-      MESSAGE
-   end
+    MESSAGE
+  end
+
+  def display_game_tied
+    puts <<~MESSAGE 
+
+        Tie game!
+
+        Thanks for playing!
+
+    MESSAGE
+  end
 end

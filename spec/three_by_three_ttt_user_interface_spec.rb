@@ -106,6 +106,16 @@ describe "ThreeByThreeTTTUserInterface" do
     end
   end
 
-      #puts "#{current_player.name} wins! \nThanks for playing!"
-      #puts "Tie game! \nThanks for playing!"
+  describe "#display_game_tied" do
+    it "displays a message that the game ended in a tie" do
+      expected_message = <<~MESSAGE 
+
+        Tie game!
+
+        Thanks for playing!
+
+      MESSAGE
+      expect{user_interface.display_game_tied}.to output(expected_message).to_stdout
+    end
+  end
 end
