@@ -73,48 +73,4 @@ describe ThreeByThreeTTTBoard do
     end
   end
 
-  describe "#rows" do
-    xit "returns all the board's rows" do
-      board = ThreeByThreeTTTBoard.new(
-        ["X", "X", "O", 
-         "O", "O", "X", 
-         "X", "X", "O"]
-      )
-      expect(board.rows).to eq(
-        [["X", "X", "O"], 
-         ["O", "O", "X"], 
-         ["X", "X", "O"]]
-      )
-    end
-  end
-  
-  describe "#columns" do
-    it "returns all the board's columns" do
-      board = ThreeByThreeTTTBoard.new(
-        ["X", "X", "O", 
-         "O", "O", "X", 
-         "X", "X", "O"]
-      )
-      expect(board.columns).to eq(
-        [["X", "O", "X"], 
-         ["X", "O", "X"], 
-         ["O", "X", "O"]]
-      )
-    end
-  end
-  
-  describe "#columns" do
-    it "returns all the board's diagonals" do
-      board = ThreeByThreeTTTBoard.new(
-        ["X", "X", "O", 
-         "O", "O", "X", 
-         "X", "X", "O"]
-      )
-      expect(board.diagonals).to eq(
-        [["X", "O", "O"], 
-         ["X", "O", "O"]]
-      )
-    end
-  end
-
 end
