@@ -1,3 +1,3 @@
-module ThreeByThreeTTTRules
+class ThreeByThreeTTTRules
 
 end
