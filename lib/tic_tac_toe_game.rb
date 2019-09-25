@@ -11,10 +11,10 @@ class TicTacToeGame
     @current_player_pointer = 0
   end
   
-  def start_game
-    display_welcome
-    display_instructions
-    set_up_players
+  def start_game #play_game
+    user_inteface.display_welcome
+    user_interface.display_instructions
+    factory.set_up_players
     players_select_boxes_until_game_over 
   end
 

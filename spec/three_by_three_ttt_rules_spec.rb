@@ -1,14 +1,6 @@
 require_relative '../lib/three_by_three_ttt_rules.rb'
 require_relative '../lib/three_by_three_ttt_board.rb'
 
-#class TestObject
-#  include ThreeByThreeTTTRules
-#  
-#  def initialize
-#    @board = ThreeByThreeTTTBoard.new
-#  end
-#end
-
 describe "ThreeByThreeTTTRules" do
 
   let(:rules) { ThreeByThreeTTTRules.new }
@@ -76,27 +68,28 @@ describe "ThreeByThreeTTTRules" do
       expect(rules.valid_move?(board, "apple")).to eq(false)
     end
   end
-#  describe "#game_won?" do
-#    it "returns false when all boxes are empty" do
-#      expect(rules.game_won?(board)).to eq(false)
-#    end
-#
-#    it "returns true when the first row consists of the same markers and not blank spaces" do 
-#      board = ThreeByThreeTTTBoard.new(
-#        ["X", "X", "X", 
-#         " ", " ", " ", 
-#         " ", " ", " "]
-#      )
-#      expect(board.game_won?).to eq(true)
-#    end
-#
-#    it "returns true when the same markers are on left-to-right diagonal" do 
-#      board = ThreeByThreeTTTBoard.new(
-#        ["O", " ", " ", 
-#         " ", "O", " ", 
-#         " ", " ", "O"]
-#      )
-#      expect(board.game_won?).to eq(true)
-#    end
-#  end
+  
+  describe "#game_won?" do
+    it "returns false when all boxes are empty" do
+      expect(rules.game_won?(board)).to eq(false)
+    end
+
+    it "returns true when the first row consists of the same markers and not blank spaces" do 
+      board = ThreeByThreeTTTBoard.new(
+        ["X", "X", "X", 
+         " ", " ", " ", 
+         " ", " ", " "]
+      )
+      expect(rules.game_won?(board)).to eq(true)
+    end
+
+    it "returns true when the same markers are on left-to-right diagonal" do 
+      board = ThreeByThreeTTTBoard.new(
+        ["O", " ", " ", 
+         " ", "O", " ", 
+         " ", " ", "O"]
+      )
+      expect(rules.game_won?(board)).to eq(true)
+    end
+  end
 end

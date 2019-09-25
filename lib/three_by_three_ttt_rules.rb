@@ -14,6 +14,40 @@ class ThreeByThreeTTTRules
     false
   end
 
+  def game_won?(board)
+    potentially_winning_paths = get_potentially_winning_paths(board)
+    potentially_winning_paths.each do |path|
+      return true if has_win?(path)
+    end
+    false
+  end
+
+  def get_potentially_winning_paths(board)
+    rows(board) + columns(board) + diagonals(board)
+  end
+
+  def has_win?(path) 
+    first, middle, last = path
+    first != " " && first == middle && first == last
+  end
+
+  
+  def rows(board)
+    [[board.data[0], board.data[1], board.data[2]],
+     [board.data[3], board.data[4], board.data[5]],
+     [board.data[6], board.data[7], board.data[8]]]
+  end
+  
+  def columns(board)
+    [[board.data[0], board.data[3], board.data[6]],
+     [board.data[1], board.data[4], board.data[7]],
+     [board.data[2], board.data[5], board.data[8]]]
+  end
+
+  def diagonals(board)
+    [[board.data[0], board.data[4], board.data[8]],
+     [board.data[6], board.data[4], board.data[2]]]
+  end
   #private
 
   def valid_move_input?(user_selection)
@@ -38,7 +72,7 @@ class ThreeByThreeTTTRules
   end
 
   def box_is_empty?(board, box_number)
-    data_location = box_number.to_i - 1
+    data_location = get_data_location_corresponding_to(box_number)
     board.data[data_location] == " "
   end
 
