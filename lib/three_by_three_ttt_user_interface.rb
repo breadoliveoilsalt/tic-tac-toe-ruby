@@ -59,6 +59,13 @@ class ThreeByThreeTTTUserInterface
       #{name}, please select a box and hit return.
 
     MESSAGE
+  end
 
+  def confirm_player_move(name, box_number)
+    puts <<~MESSAGE 
+
+      #{name} has selected box #{box_number.to_s}.
+
+    MESSAGE
   end
 end

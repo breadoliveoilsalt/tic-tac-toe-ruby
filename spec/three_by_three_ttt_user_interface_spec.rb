@@ -81,4 +81,17 @@ describe "ThreeByThreeTTTUserInterface" do
       expect{user_interface.request_user_select_box("Bob")}.to output(expected_message).to_stdout
     end
   end
+
+  describe "#confirm_player_move" do
+    it "displays a message describing the player's move" do
+      expected_message = <<~MESSAGE 
+
+        Ralph has selected box 5.
+
+      MESSAGE
+      expect{user_interface.confirm_player_move("Ralph", 5)}.to output(expected_message).to_stdout
+    end
+  end
+      #puts "#{current_player.name} wins! \nThanks for playing!"
+      #puts "Tie game! \nThanks for playing!"
 end
