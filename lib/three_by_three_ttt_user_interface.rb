@@ -45,6 +45,18 @@ class ThreeByThreeTTTUserInterface
     MESSAGE
   end
 
+  def display_current_board(board_data)
+    puts <<~MESSAGE
+    
+      #{board_data[0]} | #{board_data[1]} | #{board_data[2]} 
+     -----------
+      #{board_data[3]} | #{board_data[4]} | #{board_data[5]}
+     -----------
+      #{board_data[6]} | #{board_data[7]} | #{board_data[8]}
+
+    MESSAGE
+  end
+
   def display_generic_user_selection_error
     puts <<~MESSAGE 
 

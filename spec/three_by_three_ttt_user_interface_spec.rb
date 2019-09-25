@@ -60,6 +60,22 @@ describe "ThreeByThreeTTTUserInterface" do
     end
   end
 
+  describe "#display_current_board" do
+    it "displays the current state of the board" do
+      board = ["X", " ", " ", " ", "X", " ", " ", " ", " "]
+      expected_message = <<~MESSAGE
+
+        X |   |   
+       -----------
+          | X |  
+       -----------
+          |   |  
+    
+      MESSAGE
+      expect{user_interface.display_current_board(board)}.to output(expected_message).to_stdout
+    end
+  end
+
   describe "#display_generic_user_selection_errror" do
     it "displays an generic error message to the console" do
       expected_message = <<~MESSAGE 
