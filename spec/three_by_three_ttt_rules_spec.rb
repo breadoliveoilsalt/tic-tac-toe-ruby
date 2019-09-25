@@ -55,6 +55,26 @@ describe "ThreeByThreeTTTRules" do
     end
   end
 
+  describe "#valid_move?" do
+    it "returns true when it is passed the box number for an empty box" do
+      expect(rules.valid_move?(board, "1")).to eq(true)
+    end
+    
+    it "returns false when it is passed the box number for a taken box" do
+      board = ThreeByThreeTTTBoard.new(
+        ["X", " ", " ", 
+         " ", " ", " ", 
+         " ", " ", " "]
+      )
+      expect(rules.valid_move?(board, "1")).to eq(false)
+    end
+    
+    it "returns false when it is passed an argument that is not an integer between 1 and 9" do
+      expect(rules.valid_move?(board, "100")).to eq(false)
+      expect(rules.valid_move?(board, "3.5")).to eq(false)
+      expect(rules.valid_move?(board, "apple")).to eq(false)
+    end
+  end
 #  describe "#game_won?" do
 #    it "returns false when all boxes are empty" do
 #      expect(rules.game_won?(board)).to eq(false)
