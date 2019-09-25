@@ -68,4 +68,14 @@ class ThreeByThreeTTTUserInterface
 
     MESSAGE
   end
+
+  def display_game_won_by(name)
+      puts <<~MESSAGE 
+
+        #{name} wins!
+
+        Thanks for playing!
+
+      MESSAGE
+   end
 end
