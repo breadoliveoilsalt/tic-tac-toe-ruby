@@ -1,17 +1,8 @@
-require_relative '../lib/three_by_three_ttt_user_prompts.rb'
+require_relative '../lib/three_by_three_ttt_user_interface.rb'
 
-class TestObject
-  include ThreeByThreeTTTUserPrompts
-end
+describe "ThreeByThreeTTTUserInterface" do 
 
-describe "ThreeByThreeTTTUserPrompts" do 
-
-  let(:test_object) { TestObject.new }
-
-#  before(:each) do
-#    test_object = Object.new
-#    test_object.extend(ThreeByThreeTTTUserPrompts)
-#  end
+  let(:user_interface) { ThreeByThreeTTTUserInterface.new }
 
   describe "#welcome_user" do
     it "displays a welcome message to the console" do
@@ -21,7 +12,7 @@ describe "ThreeByThreeTTTUserPrompts" do
 
         MESSAGE
 
-      expect{test_object.welcome_user}.to output(expected_message).to_stdout
+      expect{user_interface.welcome_user}.to output(expected_message).to_stdout
     end
   end
 
@@ -50,7 +41,7 @@ describe "ThreeByThreeTTTUserPrompts" do
     
       MESSAGE
       
-      expect{test_object.provide_instructions}.to output(expected_message).to_stdout
+      expect{user_interface.provide_instructions}.to output(expected_message).to_stdout
     end
   end
 
@@ -65,7 +56,7 @@ describe "ThreeByThreeTTTUserPrompts" do
         7 | 8 | 9
     
       MESSAGE
-      expect{test_object.display_board_with_numbers}.to output(expected_message).to_stdout
+      expect{user_interface.display_board_with_numbers}.to output(expected_message).to_stdout
     end
   end
 
@@ -76,7 +67,17 @@ describe "ThreeByThreeTTTUserPrompts" do
         Sorry, invalid selection.
 
       MESSAGE
-      expect{test_object.display_generic_user_selection_error}.to output(expected_message).to_stdout
+      expect{user_interface.display_generic_user_selection_error}.to output(expected_message).to_stdout
+    end
+  end
+
+  describe "#request_user_select_box" do
+    it "displays a message for the current player to select a box" do
+      expected_message = <<~MESSAGE 
+
+        Bob, please select a box and hit return.
+
+      MESSAGE
     end
   end
 end

@@ -1,4 +1,4 @@
-module ThreeByThreeTTTUserPrompts
+class ThreeByThreeTTTUserInterface
 
   def welcome_user  
     puts <<~MESSAGE
