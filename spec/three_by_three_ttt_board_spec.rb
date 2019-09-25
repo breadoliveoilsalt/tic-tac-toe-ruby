@@ -19,8 +19,9 @@ describe ThreeByThreeTTTBoard do
 
   describe "#place_marker_on_board_box" do
     it "places a marker in the data accoring to the box selected" do 
-      board.place_marker_on_board_box("X", 9)
-      expected_data = [" "," ", " ", " ", " ", " ", " ", " ", "X"]
+      board.place_marker_on_board_box("X", "9")
+      board.place_marker_on_board_box("O", "5")
+      expected_data = [" "," ", " ", " ", "O", " ", " ", " ", "X"]
       expect(board.data).to eq(expected_data)
     end
   end
