@@ -11,4 +11,12 @@ class ThreeByThreeTTTRules
     false
   end
    
+  def valid_move?(board, user_selection)
+    data_location = user_selection.to_i - 1
+    if board.data[data_location] == " "
+      return true
+    end
+    false
+  end
+
 end
