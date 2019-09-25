@@ -5,7 +5,7 @@ class ThreeByThreeTTTUserInterface
         
       Welcome to Tic Tac Toe!
 
-      MESSAGE
+    MESSAGE
   end
 
   def provide_instructions
@@ -30,7 +30,7 @@ class ThreeByThreeTTTUserInterface
          -----------
           7 | 8 | 9
     
-        MESSAGE
+    MESSAGE
   end
 
   def display_board_with_numbers
@@ -42,7 +42,7 @@ class ThreeByThreeTTTUserInterface
       -----------
        7 | 8 | 9
    
-      MESSAGE
+    MESSAGE
   end
 
   def display_generic_user_selection_error
@@ -50,6 +50,15 @@ class ThreeByThreeTTTUserInterface
 
       Sorry, invalid selection.
 
-      MESSAGE
+    MESSAGE
+  end
+
+  def request_user_select_box(name)
+    puts <<~MESSAGE 
+
+      #{name}, please select a box and hit return.
+
+    MESSAGE
+
   end
 end

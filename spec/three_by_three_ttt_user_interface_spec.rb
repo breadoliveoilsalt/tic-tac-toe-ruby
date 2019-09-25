@@ -78,6 +78,7 @@ describe "ThreeByThreeTTTUserInterface" do
         Bob, please select a box and hit return.
 
       MESSAGE
+      expect{user_interface.request_user_select_box("Bob")}.to output(expected_message).to_stdout
     end
   end
 end
