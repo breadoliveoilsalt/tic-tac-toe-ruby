@@ -12,8 +12,4 @@ class ThreeByThreeTTTBoard
     data[box_number - 1] = marker
   end
 
-  def game_over?
-    game_won? || game_tied?
-  end
-
 end

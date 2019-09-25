@@ -26,6 +26,10 @@ class ThreeByThreeTTTRules
     !(there_are_empty_boxes(board) || game_won?(board))
   end
 
+  def game_over?(board)
+    game_won?(board) || game_tied?(board)
+  end
+
   private 
 
   def valid_move_input?(user_selection)

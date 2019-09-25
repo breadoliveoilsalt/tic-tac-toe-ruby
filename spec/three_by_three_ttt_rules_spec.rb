@@ -119,25 +119,25 @@ describe "ThreeByThreeTTTRules" do
 
   describe "#game_over?" do 
     it "returns false upon initialization when board is empty" do
-      expect(board.game_over?(board)).to eq(false)
+      expect(rules.game_over?(board)).to eq(false)
     end
 
-    xit "returns true when the game is won" do
+    it "returns true when the game is won" do
       board = ThreeByThreeTTTBoard.new(
         ["X", "X", "X", 
          " ", " ", " ", 
          " ", " ", " "]
       )
-      expect(board.game_over?).to eq(true)
+      expect(rules.game_over?(board)).to eq(true)
     end
     
-    xit "returns true when the game is tied" do
+    it "returns true when the game is tied" do
       board = ThreeByThreeTTTBoard.new(
         ["X", "X", "O", 
          "O", "O", "X", 
          "X", "X", "O"]
       )
-      expect(board.game_over?).to eq(true)
+      expect(rules.game_over?(board)).to eq(true)
     end
   end
 end
