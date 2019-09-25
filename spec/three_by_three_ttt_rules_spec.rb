@@ -104,7 +104,7 @@ describe "ThreeByThreeTTTRules" do
          " ", " ", " ", 
          " ", " ", " "]
       )
-      expect(board.game_tied?).to eq(false)
+      expect(rules.game_tied?(board)).to eq(false)
     end
 
     it "returns false when the game is not won but there are empty boxes" do
@@ -113,8 +113,31 @@ describe "ThreeByThreeTTTRules" do
          " ", " ", " ", 
          " ", " ", " "]
       )
-      expect(board.game_tied?).to eq(false)
+      expect(rules.game_tied?(board)).to eq(false)
     end
   end
 
+  describe "#game_over?" do 
+    it "returns false upon initialization when board is empty" do
+      expect(board.game_over?(board)).to eq(false)
+    end
+
+    xit "returns true when the game is won" do
+      board = ThreeByThreeTTTBoard.new(
+        ["X", "X", "X", 
+         " ", " ", " ", 
+         " ", " ", " "]
+      )
+      expect(board.game_over?).to eq(true)
+    end
+    
+    xit "returns true when the game is tied" do
+      board = ThreeByThreeTTTBoard.new(
+        ["X", "X", "O", 
+         "O", "O", "X", 
+         "X", "X", "O"]
+      )
+      expect(board.game_over?).to eq(true)
+    end
+  end
 end
