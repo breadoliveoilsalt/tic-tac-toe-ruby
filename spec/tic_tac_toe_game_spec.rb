@@ -1,6 +1,6 @@
 require_relative '../lib/tic_tac_toe_game.rb'
 
-describe TicTacToeGame do 
+describe TicTacToeGame do  
 
   let(:game) { TicTacToeGame.new }
 
