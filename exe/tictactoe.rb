@@ -11,4 +11,4 @@ game = TicTacToeGame.new({
   computer_player_model: ThreeByThreeTTTComputerPlayer
 })
 
-game.start_game
+game.play_game
