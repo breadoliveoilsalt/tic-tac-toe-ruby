@@ -12,9 +12,10 @@ describe ThreeByThreeTTTPlayerFactory do
       expect(player_factory.number_of_players).to eq(2)
     end
  
-#    it "should update the default value for number of players when instantiated with a keyword argument for number of players" do
-#      player_factory = ThreeByThreeTTTP
-#    end
+    it "should update the default value for number of players when instantiated with a keyword argument for number of players" do
+      player_factory = ThreeByThreeTTTPlayerFactory.new(number_of_players: 10)
+      expect(player_factory.number_of_players).to eq(10)
+    end
   end
 
 end
