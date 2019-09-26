@@ -10,13 +10,13 @@ describe TicTacToeGame do
     human_player = instance_double("HumanPlayer")
     computer_player = instance_double("ThreeByThreeTTTComputerPlayer")
     
-    game = TicTacToeGame.new(
+    game = TicTacToeGame.new({
       board: board,
       rules: rules,
       user_interface: user_interface,
       human_player: human_player,
       computer_player: computer_player
-      )
+      })
   end
 
   it "exists" do 
