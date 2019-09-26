@@ -6,24 +6,6 @@ describe "ThreeByThreeTTTRules" do
   let(:rules) { ThreeByThreeTTTRules.new }
   let(:board) { ThreeByThreeTTTBoard.new }
 
-# Is this a private method?
-#  describe "#box_is_empty?" do 
-#
-#    it "returns true when the box number passed in is equal to a string with a space" do
-#      expect(rules.box_is_empty?(board, 3)). to eq(true)
-#    end
-#
-#    it "returns false when the box number passed in is not equal to a string with a space" do
-#      board = ThreeByThreeTTTBoard.new(
-#        [" ", " ", "X", 
-#         " ", " ", " ", 
-#         " ", " ", " "]
-#      )
-#      expect(rules.box_is_empty?(board, 3)). to eq(false)
-#    end
-#  
-#  end
-  
   describe "#valid_marker?" do
     it "returns true if passed a capital X" do
       expect(rules.valid_marker?("X")).to eq(true)
