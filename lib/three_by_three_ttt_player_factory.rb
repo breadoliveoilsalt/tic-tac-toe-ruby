@@ -1,3 +1,6 @@
+require_relative '../lib/human_player.rb'
+require_relative '../lib/three_by_three_ttt_computer_player.rb'
+
 class ThreeByThreeTTTPlayerFactory
 
   attr_accessor :number_of_players
@@ -6,4 +9,9 @@ class ThreeByThreeTTTPlayerFactory
     @number_of_players = number_of_players
   end
 
+  def configure_players
+    human_player = HumanPlayer.new
+    computer_player = ThreeByThreeTTTComputerPlayer.new
+    [human_player, computer_player]
+  end
 end
