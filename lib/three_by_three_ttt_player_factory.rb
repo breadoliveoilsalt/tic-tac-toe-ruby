@@ -11,7 +11,13 @@ class ThreeByThreeTTTPlayerFactory
 
   def configure_players
     human_player = HumanPlayer.new
+    human_player.marker = "X"
+    human_player.name = "User"
+
     computer_player = ThreeByThreeTTTComputerPlayer.new
+    computer_player.marker = "O"
+    computer_player.name = "Computer Player"
+
     [human_player, computer_player]
   end
 end
