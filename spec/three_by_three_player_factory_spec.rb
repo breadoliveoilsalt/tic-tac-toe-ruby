@@ -30,6 +30,11 @@ describe ThreeByThreeTTTPlayerFactory do
       expect(human_player.name).to eq("User")
       expect(human_player.marker).to eq("X")
     end
+  
+    it "should preconfigure the computer player with a name of 'Computer Player' and a marker of 'O'" do
+      computer_player = player_factory.configure_players[1]
+      expect(computer_player.name).to eq("Computer Player")
+      expect(computer_player.marker).to eq("O")
+    end
   end
-
 end
