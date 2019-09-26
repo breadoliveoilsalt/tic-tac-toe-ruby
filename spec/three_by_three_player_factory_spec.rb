@@ -18,10 +18,12 @@ describe ThreeByThreeTTTPlayerFactory do
     end
   end
 
-end
-  
-  #describe "#set_up_players" do
-  #  it "should return an instance of a human player and a computer player"
+  describe "#configure_players" do
+    it "should return an array with an instance of a human player and a computer player" do
+      returned_array = player_factory.configure_players
+      expect(returned_array[0]).to be_a HumanPlayer
+      expect(returned_array[1]).to be_a ThreeByThreeTTTComputerPlayer
+    end
+  end
 
-  #  end
-  #end
+end
