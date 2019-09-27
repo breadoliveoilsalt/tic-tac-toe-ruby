@@ -141,4 +141,15 @@ describe "ThreeByThreeTTTUserInterface" do
       expect{user_interface.render_message_game_tied}.to output(expected_message).to_stdout
     end
   end
+
+  describe "#render_message_play_again?" do
+    it "displays a message asking the user to play again" do
+      expected_message = <<~MESSAGE
+
+        Would you like to play again? Type 'y' or 'Y and hit return if so.
+
+      MESSAGE
+      expect{user_interface.render_message_play_again?}.to output(expected_message).to_stdout
+    end
+  end
 end

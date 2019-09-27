@@ -29,17 +29,12 @@ class TicTacToeGame
     play_game
   end
 
-  def play_game
-    nil
-  end
-
   def render_introduction
     user_interface.render_user_welcome
     user_interface.render_instructions
   end
   
   def configure_players
-    #uncertain why attr not helping here
     @players = player_factory.configure_players
   end
 
@@ -93,10 +88,25 @@ class TicTacToeGame
   end
 
   def handle_game_over
+    display_game_over_message
+    ask_user_to_play_again
+  end
+
+  def display_game_over_message
     if rules.game_won?(board)
       user_interface.render_message_game_won_by(current_player)
     elsif rules.game_tied?(board)
       user_interface.render_message_game_tied
+    end
+  end
+
+  def ask_user_to_play_again
+    user_interface.render_message_play_again?
+    player_selection = gets.chomp
+    if player_selection == "y" || player_selection == "Y"
+      reset_game
+    else
+       user_interface.render_good_bye
     end
   end
 end
