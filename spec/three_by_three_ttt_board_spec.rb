@@ -26,4 +26,9 @@ describe ThreeByThreeTTTBoard do
     end
   end
 
+  describe "#contents_at_box" do
+    it "returns the contents of the box passed in as an argument after the board is initialized" do
+      expect(board.contents_at_box(1)).to eq(" ")
+    end
+  end
 end
