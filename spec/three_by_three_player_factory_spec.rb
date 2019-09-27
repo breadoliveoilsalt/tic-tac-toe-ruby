@@ -26,6 +26,10 @@ describe ThreeByThreeTTTPlayerFactory do
       expect(player_factory.number_of_human_players).to eq(4)
     end
 
+    it "should take as an optional argument a human player model that defaults to HumanPlayer class" do
+      expect(player_factory.human_player_model).to eq(HumanPlayer)
+    end
+ 
   end
 
   describe "#configure_players" do

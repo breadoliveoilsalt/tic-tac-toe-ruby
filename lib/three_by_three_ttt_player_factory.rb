@@ -3,12 +3,19 @@ require_relative '../lib/three_by_three_ttt_computer_player.rb'
 
 class ThreeByThreeTTTPlayerFactory
 
-  attr_accessor :number_of_players, :number_of_human_players, :players
+  attr_accessor :number_of_players, :number_of_human_players, :players, :human_player_model, :computer_player_model
 
-  def initialize(number_of_players: 2, number_of_human_players: 1)
+  def initialize(
+    number_of_players: 2, 
+    number_of_human_players: 1, 
+    human_player_model: HumanPlayer,
+    computer_player_model: ThreeByThreeTTTComputerPlayer
+    )
     @number_of_players = number_of_players
     @number_of_human_players = number_of_human_players
     @players = []
+    @human_player_model = human_player_model
+    @computer_player_model = computer_player_model
   end
 
   def configure_players
@@ -17,15 +24,15 @@ class ThreeByThreeTTTPlayerFactory
     players
   end
 
-  def configure_human_player
-    human_player = HumanPlayer.new
+  def configure_human_players
+    human_player = human_player_model.new
     human_player.marker = "X"
     human_player.name = "User"
     players.push(human_player)
   end
 
   def configure_computer_players
-    computer_player = ThreeByThreeTTTComputerPlayer.new
+    computer_player = computer_player_model.new
     computer_player.marker = "O"
     computer_player.name = "Computer Player"
     players.push(computer_player)
