@@ -12,6 +12,10 @@ class ThreeByThreeTTTBoard
     data[box_number.to_i - 1]
   end
 
+  def clear_board
+    @data = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+  end
+
   def data
     @data
   end

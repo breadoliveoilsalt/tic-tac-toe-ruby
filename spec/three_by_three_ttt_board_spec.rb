@@ -36,4 +36,12 @@ describe ThreeByThreeTTTBoard do
       expect(board.contents_at_box(3)).to eq("X")
     end
   end
+
+  describe "#clear_board" do
+    it "resets the board's data to its default state of 9 strings with empty spaces" do 
+      board = ThreeByThreeTTTBoard.new(["X", "O", "X", " ", " ", " ", " ", " ", " "])
+      board.clear_board
+      expect(board.data).to eq([" "," ", " ", " ", " ", " ", " ", " ", " "])
+    end
+  end
 end

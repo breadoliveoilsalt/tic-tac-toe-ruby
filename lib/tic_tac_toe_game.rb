@@ -106,7 +106,13 @@ class TicTacToeGame
     if player_selection == "y" || player_selection == "Y"
       reset_game
     else
-       user_interface.render_good_bye
+      user_interface.render_good_bye
     end
+  end
+
+  def reset_game
+    board.clear_board
+    current_player_pointer = 0
+    play_game
   end
 end
