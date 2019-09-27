@@ -93,9 +93,9 @@ class TicTacToeGame
   end
 
   def handle_game_over
-    if board.game_won?
+    if rules.game_won?(board)
       puts "#{current_player.name} wins! \nThanks for playing!"
-    elsif board.game_tied?
+    elsif rules.game_tied?(board)
       puts "Tie game! \nThanks for playing!"
     end
   end
