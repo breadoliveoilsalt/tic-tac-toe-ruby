@@ -39,10 +39,11 @@ describe TicTacToeGame do
 
     describe "#start_game" do
       
-      it "calls user_interface.render_user_welcome" do
+      it "calls #user_interface.render_user_welcome" do
         expect(user_interface).to receive(:render_user_welcome)
         game.start_game
       end
+
     end
 
   end

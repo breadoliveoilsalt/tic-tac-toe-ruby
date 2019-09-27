@@ -20,4 +20,9 @@ class TicTacToeGame
     @number_of_players = number_of_players
     @number_of_human_players = number_of_human_players
   end
+
+  def start_game
+    user_interface.render_user_welcome
+  end
+
 end
