@@ -23,6 +23,11 @@ class TicTacToeGame
 
   def start_game
     user_interface.render_user_welcome
+    user_interface.render_instructions
+    play_game
   end
 
+  def play_game
+    nil
+  end
 end
