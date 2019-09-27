@@ -108,4 +108,12 @@ class ThreeByThreeTTTUserInterface
 
    MESSAGE
   end
+
+  def render_good_bye
+    puts <<~MESSAGE
+
+      Thanks for playing! Good bye!
+
+   MESSAGE
+  end
 end

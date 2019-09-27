@@ -152,4 +152,15 @@ describe "ThreeByThreeTTTUserInterface" do
       expect{user_interface.render_message_play_again?}.to output(expected_message).to_stdout
     end
   end
+
+  describe "#render_good_bye" do 
+    it "displays a message bidding the user farewell" do
+      expected_message = <<~MESSAGE
+
+        Thanks for playing! Good bye!
+
+      MESSAGE
+      expect{user_interface.render_good_bye}.to output(expected_message).to_stdout
+    end
+  end
 end
