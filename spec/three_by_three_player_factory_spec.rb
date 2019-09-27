@@ -16,13 +16,19 @@ describe ThreeByThreeTTTPlayerFactory do
       player_factory = ThreeByThreeTTTPlayerFactory.new(number_of_players: 10)
       expect(player_factory.number_of_players).to eq(10)
     end
-  end
 
     it "should take as an optional argument a number of human players that defaults to 1" do
       expect(player_factory.number_of_human_players).to eq(1)
     end
+ 
+    it "should update the default value for number of human players when instantiated with a keyword argument for number of human players" do
+      player_factory = ThreeByThreeTTTPlayerFactory.new(number_of_human_players: 4)
+      expect(player_factory.number_of_human_players).to eq(4)
+    end
 
-describe "#configure_players" do
+  end
+
+  describe "#configure_players" do
     it "should return an array with an instance of a human player and a computer player" do
       returned_array = player_factory.configure_players
       expect(returned_array[0]).to be_a HumanPlayer
