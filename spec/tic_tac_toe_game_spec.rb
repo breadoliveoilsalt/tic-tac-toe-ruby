@@ -3,21 +3,19 @@ require_all 'lib'
 
 describe TicTacToeGame do  
 
-  attr_accessor :board, :rules, :user_interface, :game
+  attr_accessor :board, :rules, :user_interface, :player_factory, :game
 
   before(:each) do
     @board = instance_double("ThreeByThreeTTTBoard")
     @rules = instance_double("ThreeByThreeTTTRules")
     @user_interface = instance_double("ThreeByThreeTTTUserInterface")
-    @human_player = instance_double("HumanPlayer")
-    @computer_player = instance_double("ThreeByThreeTTTComputerPlayer")
-    
+    @player_factory = instance_double("ThreeByThreeTTTPlayerFactory")
+
     @game = TicTacToeGame.new(
       board: @board,
       rules: @rules,
       user_interface: @user_interface,
-      human_player: @human_player,
-      computer_player: @computer_player
+      player_factory: @player_factory
       )
   end
 
