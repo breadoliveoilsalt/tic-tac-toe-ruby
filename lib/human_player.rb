@@ -8,7 +8,7 @@ class HumanPlayer < Player
     @name = gets.chomp
   end
  
-  def make_selection 
+  def make_selection(*)
     user_selection = gets.chomp
     user_selection
   end

@@ -24,8 +24,6 @@ class TicTacToeGame
   end
 
   def start_game
-    require 'pry'
-    binding.pry
     render_introduction
     configure_players
     play_game
@@ -57,12 +55,12 @@ class TicTacToeGame
   end
 
   def current_player_selects_box
-    puts "#{current_player.name}, please select a box to make your move." 
-    box_number = current_player.make_selection.to_i
-    if board.box_is_empty?(box_number)
-      board.place_marker_on_board_box(current_player.marker, box_number)
-      puts "#{current_player.name} has selected box #{box_number}.\n "
-      board.display_current_board
+    user_interface.render_request_to_select_box(current_player.name)
+    player_selection = current_player.make_selection(board)
+    if rules.valid_move?(board, player_selection)
+      board.place_marker_on_board_box(current_player.marker, player_selection)
+      user_interface.render_confirmation_of_move(current_player.name, player_selection)
+      user_interface.render_current_board(board)
     else
       handle_invalid_box_selection
     end
