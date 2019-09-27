@@ -45,14 +45,14 @@ class ThreeByThreeTTTUserInterface
     MESSAGE
   end
 
-  def render_current_board(board_data)
+  def render_current_board(board)
     puts <<~MESSAGE
     
-      #{board_data[0]} | #{board_data[1]} | #{board_data[2]} 
-     -----------
-      #{board_data[3]} | #{board_data[4]} | #{board_data[5]}
-     -----------
-      #{board_data[6]} | #{board_data[7]} | #{board_data[8]}
+       #{board.contents_at_box("1")} | #{board.contents_at_box("2")} |  #{board.contents_at_box("3")}
+      -----------
+       #{board.contents_at_box("4")} | #{board.contents_at_box("5")} |  #{board.contents_at_box("6")}
+      -----------
+       #{board.contents_at_box("7")} | #{board.contents_at_box("8")} |  #{board.contents_at_box("9")}
 
     MESSAGE
   end

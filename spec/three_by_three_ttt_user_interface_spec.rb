@@ -1,4 +1,5 @@
 require_relative '../lib/three_by_three_ttt_user_interface.rb'
+require_relative '../lib/three_by_three_ttt_board.rb'
 
 describe "ThreeByThreeTTTUserInterface" do 
 
@@ -62,14 +63,14 @@ describe "ThreeByThreeTTTUserInterface" do
 
   describe "#render_current_board" do
     it "displays the current state of the board" do
-      board = ["X", " ", " ", " ", "X", " ", " ", " ", " "]
+      board = ThreeByThreeTTTBoard.new(["X", " ", " ", " ", "X", " ", " ", " ", " "])
       expected_message = <<~MESSAGE
 
         X |   |   
        -----------
-          | X |  
+          | X |   
        -----------
-          |   |  
+          |   |   
     
       MESSAGE
       expect{user_interface.render_current_board(board)}.to output(expected_message).to_stdout
