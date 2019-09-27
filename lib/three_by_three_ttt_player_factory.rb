@@ -20,7 +20,7 @@ class ThreeByThreeTTTPlayerFactory
 
   def configure_players
     configure_human_players
-    configure_computer
+    configure_computer_players
     players
   end
 

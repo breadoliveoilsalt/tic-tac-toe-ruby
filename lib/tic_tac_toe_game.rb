@@ -24,6 +24,8 @@ class TicTacToeGame
   end
 
   def start_game
+    require 'pry'
+    binding.pry
     render_introduction
     configure_players
     play_game
@@ -43,4 +45,60 @@ class TicTacToeGame
     @players = player_factory.configure_players
   end
 
+  def play_game
+    while game_is_not_over
+      current_player_selects_box
+    end
+    handle_game_over
+  end
+
+  def game_is_not_over
+    !rules.game_over?(board)
+  end
+
+  def current_player_selects_box
+    puts "#{current_player.name}, please select a box to make your move." 
+    box_number = current_player.make_selection.to_i
+    if board.box_is_empty?(box_number)
+      board.place_marker_on_board_box(current_player.marker, box_number)
+      puts "#{current_player.name} has selected box #{box_number}.\n "
+      board.display_current_board
+    else
+      handle_invalid_box_selection
+    end
+    advance_to_next_player if game_is_not_over
+  end
+
+  def handle_invalid_box_selection
+    puts "Sorry, invalid selection."
+    current_player_selects_box
+  end
+  
+  def advance_to_next_player
+    if current_player_pointer == players.length - 1
+      reset_current_player_pointer
+    else
+      advance_current_player_pointer
+    end
+  end
+
+  def reset_current_player_pointer
+    @current_player_pointer = 0
+  end
+
+  def advance_current_player_pointer
+    @current_player_pointer += 1 
+  end
+
+  def current_player
+    players[current_player_pointer]
+  end
+
+  def handle_game_over
+    if board.game_won?
+      puts "#{current_player.name} wins! \nThanks for playing!"
+    elsif board.game_tied?
+      puts "Tie game! \nThanks for playing!"
+    end
+  end
 end
