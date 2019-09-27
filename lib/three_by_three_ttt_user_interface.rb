@@ -1,6 +1,6 @@
 class ThreeByThreeTTTUserInterface
 
-  def welcome_user  
+  def render_user_welcome
     puts <<~MESSAGE
         
       Welcome to Tic Tac Toe!
@@ -8,7 +8,7 @@ class ThreeByThreeTTTUserInterface
     MESSAGE
   end
 
-  def provide_instructions
+  def render_instructions
     puts <<~MESSAGE
         
         Instructions: 
@@ -33,7 +33,7 @@ class ThreeByThreeTTTUserInterface
     MESSAGE
   end
 
-  def display_board_with_numbers
+  def render_board_with_numbers
     puts <<~MESSAGE
 
        1 | 2 | 3 
@@ -45,7 +45,7 @@ class ThreeByThreeTTTUserInterface
     MESSAGE
   end
 
-  def display_current_board(board_data)
+  def render_current_board(board_data)
     puts <<~MESSAGE
     
       #{board_data[0]} | #{board_data[1]} | #{board_data[2]} 
@@ -57,7 +57,7 @@ class ThreeByThreeTTTUserInterface
     MESSAGE
   end
 
-  def display_generic_user_selection_error
+  def render_generic_user_selection_error
     puts <<~MESSAGE 
 
       Sorry, invalid selection.
@@ -65,7 +65,7 @@ class ThreeByThreeTTTUserInterface
     MESSAGE
   end
 
-  def request_user_select_box(name)
+  def render_request_to_select_box(name)
     puts <<~MESSAGE 
 
       #{name}, please select a box and hit return.
@@ -73,7 +73,7 @@ class ThreeByThreeTTTUserInterface
     MESSAGE
   end
 
-  def confirm_player_move(name, box_number)
+  def render_confirmation_of_move(name, box_number)
     puts <<~MESSAGE 
 
       #{name} has selected box #{box_number.to_s}.
@@ -81,7 +81,7 @@ class ThreeByThreeTTTUserInterface
     MESSAGE
   end
 
-  def display_game_won_by(name)
+  def render_message_game_won_by(name)
     puts <<~MESSAGE 
 
         #{name} wins!
@@ -91,7 +91,7 @@ class ThreeByThreeTTTUserInterface
     MESSAGE
   end
 
-  def display_game_tied
+  def render_message_game_tied
     puts <<~MESSAGE 
 
         Tie game!

@@ -4,7 +4,7 @@ describe "ThreeByThreeTTTUserInterface" do
 
   let(:user_interface) { ThreeByThreeTTTUserInterface.new }
 
-  describe "#welcome_user" do
+  describe "#render_user_welcome" do
     it "displays a welcome message to the console" do
       expected_message = <<~MESSAGE
         
@@ -12,11 +12,11 @@ describe "ThreeByThreeTTTUserInterface" do
 
         MESSAGE
 
-      expect{user_interface.welcome_user}.to output(expected_message).to_stdout
+      expect{user_interface.render_user_welcome}.to output(expected_message).to_stdout
     end
   end
 
-  describe "#provide_instructions" do
+  describe "#render_instructions" do
     it "displays the instructions in the console" do
       expected_message = <<~MESSAGE
         
@@ -41,11 +41,11 @@ describe "ThreeByThreeTTTUserInterface" do
     
       MESSAGE
       
-      expect{user_interface.provide_instructions}.to output(expected_message).to_stdout
+      expect{user_interface.render_instructions}.to output(expected_message).to_stdout
     end
   end
 
-  describe "#display_board_with_numbers" do
+  describe "#render_board_with_numbers" do
     it "displays the board with numbers each box" do
       expected_message = <<~MESSAGE
 
@@ -56,11 +56,11 @@ describe "ThreeByThreeTTTUserInterface" do
         7 | 8 | 9
     
       MESSAGE
-      expect{user_interface.display_board_with_numbers}.to output(expected_message).to_stdout
+      expect{user_interface.render_board_with_numbers}.to output(expected_message).to_stdout
     end
   end
 
-  describe "#display_current_board" do
+  describe "#render_current_board" do
     it "displays the current state of the board" do
       board = ["X", " ", " ", " ", "X", " ", " ", " ", " "]
       expected_message = <<~MESSAGE
@@ -72,44 +72,44 @@ describe "ThreeByThreeTTTUserInterface" do
           |   |  
     
       MESSAGE
-      expect{user_interface.display_current_board(board)}.to output(expected_message).to_stdout
+      expect{user_interface.render_current_board(board)}.to output(expected_message).to_stdout
     end
   end
 
-  describe "#display_generic_user_selection_errror" do
+  describe "#render_generic_user_selection_error" do
     it "displays an generic error message to the console" do
       expected_message = <<~MESSAGE 
 
         Sorry, invalid selection.
 
       MESSAGE
-      expect{user_interface.display_generic_user_selection_error}.to output(expected_message).to_stdout
+      expect{user_interface.render_generic_user_selection_error}.to output(expected_message).to_stdout
     end
   end
 
-  describe "#request_user_select_box" do
+  describe "#render_request_to_select_box" do
     it "displays a message for the current player to select a box" do
       expected_message = <<~MESSAGE 
 
         Bob, please select a box and hit return.
 
       MESSAGE
-      expect{user_interface.request_user_select_box("Bob")}.to output(expected_message).to_stdout
+      expect{user_interface.render_request_to_select_box("Bob")}.to output(expected_message).to_stdout
     end
   end
 
-  describe "#confirm_player_move" do
+  describe "#render_confirmation_of_move" do
     it "displays a message describing the player's move" do
       expected_message = <<~MESSAGE 
 
         Ralph has selected box 5.
 
       MESSAGE
-      expect{user_interface.confirm_player_move("Ralph", 5)}.to output(expected_message).to_stdout
+      expect{user_interface.render_confirmation_of_move("Ralph", 5)}.to output(expected_message).to_stdout
     end
   end
 
-  describe "#display_game_won_by" do
+  describe "#render_message_game_won_by" do
     it "displays a message that the winning player won the game" do
       expected_message = <<~MESSAGE 
 
@@ -118,11 +118,11 @@ describe "ThreeByThreeTTTUserInterface" do
         Thanks for playing!
 
       MESSAGE
-      expect{user_interface.display_game_won_by("Ralph")}.to output(expected_message).to_stdout
+      expect{user_interface.render_message_game_won_by("Ralph")}.to output(expected_message).to_stdout
     end
   end
 
-  describe "#display_game_tied" do
+  describe "#render_message_game_tied" do
     it "displays a message that the game ended in a tie" do
       expected_message = <<~MESSAGE 
 
@@ -131,7 +131,7 @@ describe "ThreeByThreeTTTUserInterface" do
         Thanks for playing!
 
       MESSAGE
-      expect{user_interface.display_game_tied}.to output(expected_message).to_stdout
+      expect{user_interface.render_message_game_tied}.to output(expected_message).to_stdout
     end
   end
 end
