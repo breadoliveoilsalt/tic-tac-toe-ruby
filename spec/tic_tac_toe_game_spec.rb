@@ -37,15 +37,32 @@ describe TicTacToeGame do
         )
     end
 
-    describe "#start_game" do
+    describe "#render_introduction" do
       
-      it "calls #user_interface.render_user _welcome, #user_interface.render_instructions, and #game.play_game" do
+      it "calls #user_interface.render_user _welcome and #user_interface.render_instructions" do
         expect(user_interface).to receive(:render_user_welcome)
         expect(user_interface).to receive(:render_instructions)
-        expect(game).to receive(:play_game)
-        game.start_game
+        game.render_introduction
       end
 
+    end
+
+    describe "#configure_players" do 
+
+      it "calls #player_factory.configure_players" do
+        expect(player_factory).to receive(:configure_players)
+        game.configure_players
+      end
+
+      it "sets the players attribute according to the return value of #player_factory.configure_players" do
+        allow(player_factory).to receive(:configure_players).and_return([Object.new, Object.new])
+        game.configure_players
+        expect(game.players.length).to eq(2)
+        expect(game.players[0]).to be_a Object
+        expect(game.players[1]).to be_a Object
+      end
+
+    
     end
   end
 end
