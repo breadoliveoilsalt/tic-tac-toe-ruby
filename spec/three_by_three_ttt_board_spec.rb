@@ -30,5 +30,10 @@ describe ThreeByThreeTTTBoard do
     it "returns the contents of the box passed in as an argument after the board is initialized" do
       expect(board.contents_at_box(1)).to eq(" ")
     end
+
+    it "returns the contents of the box passed in as an argument after the board has been filled with a few markers" do
+      board = ThreeByThreeTTTBoard.new(["X", "O", "X", " ", " ", " ", " ", " ", " "])
+      expect(board.contents_at_box(3)).to eq("X")
+    end
   end
 end
