@@ -66,11 +66,11 @@ describe "ThreeByThreeTTTUserInterface" do
       board = ThreeByThreeTTTBoard.new(["X", " ", " ", " ", "X", " ", " ", " ", " "])
       expected_message = <<~MESSAGE
 
-        X |   |   
+        X |   |  
        -----------
-          | X |   
+          | X |  
        -----------
-          |   |   
+          |   |  
     
       MESSAGE
       expect{user_interface.render_current_board(board)}.to output(expected_message).to_stdout
