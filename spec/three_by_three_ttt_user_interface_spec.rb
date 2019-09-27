@@ -90,28 +90,34 @@ describe "ThreeByThreeTTTUserInterface" do
 
   describe "#render_request_to_select_box" do
     it "displays a message for the current player to select a box" do
+      player = double
+      allow(player).to receive(:name).and_return("Bob")
       expected_message = <<~MESSAGE 
 
         Bob, please select a box and hit return.
 
       MESSAGE
-      expect{user_interface.render_request_to_select_box("Bob")}.to output(expected_message).to_stdout
+      expect{user_interface.render_request_to_select_box(player)}.to output(expected_message).to_stdout
     end
   end
 
   describe "#render_confirmation_of_move" do
     it "displays a message describing the player's move" do
+      player = double
+      allow(player).to receive(:name).and_return("Ralph")
       expected_message = <<~MESSAGE 
 
         Ralph has selected box 5.
 
       MESSAGE
-      expect{user_interface.render_confirmation_of_move("Ralph", 5)}.to output(expected_message).to_stdout
+      expect{user_interface.render_confirmation_of_move(player, "5")}.to output(expected_message).to_stdout
     end
   end
 
   describe "#render_message_game_won_by" do
     it "displays a message that the winning player won the game" do
+      player = double
+      allow(player).to receive(:name).and_return("Ralph")
       expected_message = <<~MESSAGE 
 
         Ralph wins!
@@ -119,7 +125,7 @@ describe "ThreeByThreeTTTUserInterface" do
         Thanks for playing!
 
       MESSAGE
-      expect{user_interface.render_message_game_won_by("Ralph")}.to output(expected_message).to_stdout
+      expect{user_interface.render_message_game_won_by(player)}.to output(expected_message).to_stdout
     end
   end
 

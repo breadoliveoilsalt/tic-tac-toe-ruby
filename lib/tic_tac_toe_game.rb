@@ -55,11 +55,11 @@ class TicTacToeGame
   end
 
   def current_player_selects_box
-    user_interface.render_request_to_select_box(current_player.name)
+    user_interface.render_request_to_select_box(current_player)
     player_selection = current_player.make_selection(board)
     if rules.valid_move?(board, player_selection)
       board.place_marker_on_board_box(current_player.marker, player_selection)
-      user_interface.render_confirmation_of_move(current_player.name, player_selection)
+      user_interface.render_confirmation_of_move(current_player, player_selection)
       user_interface.render_current_board(board)
     else
       handle_invalid_box_selection
@@ -94,9 +94,9 @@ class TicTacToeGame
 
   def handle_game_over
     if rules.game_won?(board)
-      puts "#{current_player.name} wins! \nThanks for playing!"
+      user_interface.render_message_game_won_by(current_player)
     elsif rules.game_tied?(board)
-      puts "Tie game! \nThanks for playing!"
+      user_interface.render_message_game_tied
     end
   end
 end

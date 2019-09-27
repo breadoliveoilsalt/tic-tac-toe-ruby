@@ -65,26 +65,26 @@ class ThreeByThreeTTTUserInterface
     MESSAGE
   end
 
-  def render_request_to_select_box(name)
+  def render_request_to_select_box(player)
     puts <<~MESSAGE 
 
-      #{name}, please select a box and hit return.
+      #{player.name}, please select a box and hit return.
 
     MESSAGE
   end
 
-  def render_confirmation_of_move(name, box_number)
+  def render_confirmation_of_move(player, box_number)
     puts <<~MESSAGE 
 
-      #{name} has selected box #{box_number.to_s}.
+      #{player.name} has selected box #{box_number.to_s}.
 
     MESSAGE
   end
 
-  def render_message_game_won_by(name)
+  def render_message_game_won_by(player)
     puts <<~MESSAGE 
 
-        #{name} wins!
+        #{player.name} wins!
 
         Thanks for playing!
 
