@@ -104,7 +104,7 @@ class ThreeByThreeTTTUserInterface
   def render_message_play_again?
     puts <<~MESSAGE
 
-      Would you like to play again? Type 'y' or 'Y and hit return if so.
+      Would you like to play again? Type 'y' or 'Y' and hit return if so.
 
    MESSAGE
   end

@@ -112,7 +112,8 @@ class TicTacToeGame
 
   def reset_game
     board.clear_board
-    current_player_pointer = 0
+    reset_current_player_pointer
+    user_interface.render_board_with_numbers
     play_game
   end
 end
