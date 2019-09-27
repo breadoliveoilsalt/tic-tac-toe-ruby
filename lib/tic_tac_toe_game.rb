@@ -68,7 +68,7 @@ class TicTacToeGame
   end
 
   def handle_invalid_box_selection
-    puts "Sorry, invalid selection."
+    user_interface.render_generic_user_selection_error
     current_player_selects_box
   end
   

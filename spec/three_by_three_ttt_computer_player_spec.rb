@@ -1,5 +1,6 @@
 require_relative '../lib/three_by_three_ttt_computer_player.rb'
 require_relative '../lib/player.rb'
+require_relative '../lib/three_by_three_ttt_board.rb'
 
 describe ThreeByThreeTTTComputerPlayer do
 
@@ -11,12 +12,12 @@ describe ThreeByThreeTTTComputerPlayer do
 
   describe "#make_selection(board)" do
     it "selects the first box of the board when passed a board array with all empty boxes" do
-      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+      board = ThreeByThreeTTTBoard.new
       expect(computer_player.make_selection(board)).to eq(1)
     end
 
     it "selects the first empty box of the board when passed a board array with some moves made already" do 
-      board = ["X", "O", " ", " ", " ", " ", " ", " ", " "]
+      board = ThreeByThreeTTTBoard.new(["X", "O", " ", " ", " ", " ", " ", " ", " "])
       expect(computer_player.make_selection(board)).to eq(3)
     end
   end
