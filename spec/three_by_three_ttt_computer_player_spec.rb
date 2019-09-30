@@ -11,14 +11,20 @@ describe ThreeByThreeTTTComputerPlayer do
   end
 
   describe "#make_selection(board)" do
-    it "selects the first box of the board when passed a board array with all empty boxes" do
+
+    it "should select the middle box if it is open" do 
       board = ThreeByThreeTTTBoard.new
-      expect(computer_player.make_selection(board)).to eq(1)
+      expect(computer_player.make_selection(board)).to eq("5")
     end
 
-    it "selects the first empty box of the board when passed a board array with some moves made already" do 
-      board = ThreeByThreeTTTBoard.new(["X", "O", " ", " ", " ", " ", " ", " ", " "])
-      expect(computer_player.make_selection(board)).to eq(3)
+    it "selects the first empty box if the middle box is taken" do       
+      board = ThreeByThreeTTTBoard.new([" ", " ", " ", " ", "X", " ", " ", " ", " "])
+      expect(computer_player.make_selection(board)).to eq("1")
+    end
+
+    it "selects the first empty box if the middle box and other boxes are taken" do
+      board = ThreeByThreeTTTBoard.new(["X", "O", " ", " ", "X", " ", " ", " ", " "])
+      expect(computer_player.make_selection(board)).to eq("3")
     end
   end
  end

@@ -41,6 +41,7 @@ class TicTacToeGame
   def play_game
     while game_is_not_over
       current_player_selects_box
+      advance_to_next_player if game_is_not_over
     end
     handle_game_over
   end
@@ -59,7 +60,6 @@ class TicTacToeGame
     else
       handle_invalid_box_selection
     end
-    advance_to_next_player if game_is_not_over
   end
 
   def handle_invalid_box_selection
@@ -116,4 +116,5 @@ class TicTacToeGame
     user_interface.render_board_with_numbers
     play_game
   end
+
 end
