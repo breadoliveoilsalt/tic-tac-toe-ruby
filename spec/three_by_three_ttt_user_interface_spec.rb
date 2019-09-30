@@ -146,7 +146,7 @@ describe "ThreeByThreeTTTUserInterface" do
     it "displays a message asking the user to play again" do
       expected_message = <<~MESSAGE
 
-        Would you like to play again? Type 'y' or 'Y and hit return if so.
+        Would you like to play again? Type 'y' or 'Y' and hit return if so.
 
       MESSAGE
       expect{user_interface.render_message_play_again?}.to output(expected_message).to_stdout
