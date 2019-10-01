@@ -89,8 +89,3 @@ class ThreeByThreeTTTRules
   end
 
 end
-#rules = ThreeByThreeTTTRules.new
-
-#puts rules.check_user_selection_is_an_integer("1")
-#puts rules.check_user_selection_is_an_integer("1.25")
-#puts rules.check_user_selection_is_an_integer("apples")
