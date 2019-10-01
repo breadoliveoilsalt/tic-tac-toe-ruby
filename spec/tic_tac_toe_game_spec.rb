@@ -1,4 +1,4 @@
-require 'require_all'
+require 'require_all' 
 require_all 'lib'
 
 describe TicTacToeGame do  
