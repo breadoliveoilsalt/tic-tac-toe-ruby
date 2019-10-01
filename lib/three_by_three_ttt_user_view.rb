@@ -1,4 +1,4 @@
-class ThreeByThreeTTTUserView
+module ThreeByThreeTTTUserView
 
   def welcome
     <<~MESSAGE
@@ -116,4 +116,5 @@ class ThreeByThreeTTTUserView
 
    MESSAGE
   end
+
 end
