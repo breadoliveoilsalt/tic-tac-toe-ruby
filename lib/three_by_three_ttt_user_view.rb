@@ -1,15 +1,15 @@
-class ThreeByThreeTTTUserInterface
+class ThreeByThreeTTTUserView
 
-  def render_user_welcome
-    puts <<~MESSAGE
+  def welcome
+    <<~MESSAGE
         
       Welcome to Tic Tac Toe!
 
     MESSAGE
   end
 
-  def render_instructions
-    puts <<~MESSAGE
+  def instructions
+    <<~MESSAGE
         
         Instructions: 
 
@@ -33,8 +33,8 @@ class ThreeByThreeTTTUserInterface
     MESSAGE
   end
 
-  def render_board_with_numbers
-    puts <<~MESSAGE
+  def board_with_numbers
+    <<~MESSAGE
 
        1 | 2 | 3 
       -----------
@@ -45,8 +45,8 @@ class ThreeByThreeTTTUserInterface
     MESSAGE
   end
 
-  def render_current_board(board)
-    puts <<~MESSAGE
+  def current_board(board)
+    <<~MESSAGE
     
        #{board.contents_at_box("1")} | #{board.contents_at_box("2")} | #{board.contents_at_box("3")}
       -----------
@@ -57,32 +57,32 @@ class ThreeByThreeTTTUserInterface
     MESSAGE
   end
 
-  def render_generic_user_selection_error
-    puts <<~MESSAGE 
+  def user_selection_error
+    <<~MESSAGE 
 
       Sorry, invalid selection.
 
     MESSAGE
   end
 
-  def render_request_to_select_box(player)
-    puts <<~MESSAGE 
+  def request_user_select_box(player)
+    <<~MESSAGE 
 
       #{player.name}, please select a box and hit return.
 
     MESSAGE
   end
 
-  def render_confirmation_of_move(player, box_number)
-    puts <<~MESSAGE 
+  def move_confirmation(player, box_number)
+    <<~MESSAGE 
 
       #{player.name} has selected box #{box_number.to_s}.
 
     MESSAGE
   end
 
-  def render_message_game_won_by(player)
-    puts <<~MESSAGE 
+  def game_won_by(player)
+    <<~MESSAGE 
 
         #{player.name} wins!
 
@@ -91,8 +91,8 @@ class ThreeByThreeTTTUserInterface
     MESSAGE
   end
 
-  def render_message_game_tied
-    puts <<~MESSAGE 
+  def game_tied
+    <<~MESSAGE 
 
         Tie game!
 
@@ -101,16 +101,16 @@ class ThreeByThreeTTTUserInterface
     MESSAGE
   end
   
-  def render_message_play_again?
-    puts <<~MESSAGE
+  def request_user_play_again 
+    <<~MESSAGE
 
       Would you like to play again? Type 'y' or 'Y' and hit return if so.
 
    MESSAGE
   end
 
-  def render_good_bye
-    puts <<~MESSAGE
+  def good_bye
+    <<~MESSAGE
 
       Thanks for playing! Good bye!
 
