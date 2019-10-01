@@ -5,12 +5,11 @@ class HumanPlayer < Player
   attr_accessor :marker, :name 
 
   def provide_name
-    @name = gets.chomp
+    @name = read_line
   end
  
   def make_selection(*)
-    user_selection = gets.chomp
-    user_selection
+    read_line
   end
   
 end

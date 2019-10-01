@@ -11,9 +11,10 @@ describe HumanPlayer do
 
   describe "#provide_name" do
     
-    it "gets the input of the user for its name and sets the @name instance variable" do
-      allow(human_player).to receive(:gets).and_return("Betty")
+    it "calls read_line (inherited from Player < UserInput) and sets name to the user input" do
+      allow(human_player).to receive(:read_line).and_return("Betty")
       human_player.provide_name
+
       expect(human_player.name).to eq("Betty")
     end
   
@@ -21,8 +22,8 @@ describe HumanPlayer do
 
   describe "#make_selection" do 
 
-    it "gets the input of the user and returns it" do 
-      allow(human_player).to receive(:gets).and_return("X")
+    it "calls read_line" do 
+      allow(human_player).to receive(:read_line).and_return("X")
       human_player.make_selection
       expect(human_player.make_selection).to eq("X")
     end
