@@ -3,11 +3,7 @@ require_relative '../lib/three_by_three_ttt_board.rb'
 
 describe "ThreeByThreeTTTUserView" do 
 
-  class MockClass
-    include ThreeByThreeTTTUserView
-  end
-
-  let(:user_view) { MockClass.new }
+  let(:user_view) { ThreeByThreeTTTUserView.new }
 
   describe "#welcome" do
     it "is a string with a welcome message" do
