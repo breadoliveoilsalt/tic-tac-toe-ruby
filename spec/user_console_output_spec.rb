@@ -1,8 +1,8 @@
-require_relative '../lib/user_output.rb'
+require_relative '../lib/user_console_output.rb'
 
-describe UserOutput do
+describe UserConsoleOutput do
 
-  let(:user_output) { UserOutput.new }
+  let(:user_output_stream) { UserConsoleOutput.new }
 
   describe "#render" do 
     
@@ -11,7 +11,7 @@ describe UserOutput do
 
       expect($stdout).to receive(:puts).with(mock_output)
 
-      user_output.render(mock_output)
+      user_output_stream.render(mock_output)
     end
 
   end

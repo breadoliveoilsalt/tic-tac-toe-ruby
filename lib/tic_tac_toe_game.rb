@@ -3,21 +3,21 @@ require_all 'lib'
 
 class TicTacToeGame
 
-  include ThreeByThreeTTTUserView
-
-  attr_accessor :board, :rules, :user_output, :player_factory, :number_of_players, :number_of_human_players, :players, :current_player_pointer
+  attr_accessor :board, :rules, :user_output_stream, :user_view, :player_factory, :number_of_players, :number_of_human_players, :players, :current_player_pointer
 
   def initialize(
     board: ThreeByThreeTTTBoard.new,
     rules: ThreeByThreeTTTRules.new,
-    user_output: UserOutput.new,
+    user_output_stream: UserConsoleOutput.new,
+    user_view: ThreeByThreeTTTUserView.new,
     player_factory: ThreeByThreeTTTPlayerFactory.new,
     number_of_players: 2,
     number_of_human_players: 1
     )
     @board = board
     @rules = rules
-    @user_output = user_output
+    @user_output_stream = user_output_stream
+    @user_view = user_view
     @player_factory = player_factory
     @number_of_players = number_of_players
     @number_of_human_players = number_of_human_players
@@ -26,14 +26,14 @@ class TicTacToeGame
   end
 
   def start_game
-    render(welcome)
-    render(instructions)
+    render(user_view.welcome)
+    render(user_view.instructions)
     configure_players
     play_game
   end
 
   def render(message)
-    user_output.render(message)
+    user_output_stream.render(message)
   end
   
   def configure_players
@@ -53,19 +53,19 @@ class TicTacToeGame
   end
 
   def current_player_selects_box
-    render(request_user_select_box(current_player))
+    render(user_view.request_user_select_box(current_player))
     player_selection = current_player.make_selection(board)
     if rules.valid_move?(board, player_selection)
       board.place_marker_on_board_box(current_player.marker, player_selection)
-      render(move_confirmation(current_player, player_selection))
-      render(current_board(board))
+      render(user_view.move_confirmation(current_player, player_selection))
+      render(user_view.current_board(board))
     else
       handle_invalid_box_selection
     end
   end
 
   def handle_invalid_box_selection
-    render(user_selection_error)
+    render(user_view.user_selection_error)
     current_player_selects_box
   end
   
@@ -96,26 +96,26 @@ class TicTacToeGame
 
   def display_game_over_message
     if rules.game_won?(board)
-      render(game_won_by(current_player))
+      render(user_view.game_won_by(current_player))
     elsif rules.game_tied?(board)
-      render(game_tied)
+      render(user_view.game_tied)
     end
   end
 
   def ask_user_to_play_again
-    render(request_user_play_again)
+    render(user_view.request_user_play_again)
     player_selection = gets.chomp
     if player_selection == "y" || player_selection == "Y"
       reset_game
     else
-      render(good_bye)
+      render(user_view.good_bye)
     end
   end
 
   def reset_game
     board.clear_board
     reset_current_player_pointer
-    render(board_with_numbers)
+    render(user_view.board_with_numbers)
     play_game
   end
 
