@@ -65,7 +65,7 @@ class TicTacToeGame
   end
 
   def handle_invalid_box_selection
-    user_output.render(user_selection_error)
+    render(user_selection_error)
     current_player_selects_box
   end
   
@@ -96,26 +96,26 @@ class TicTacToeGame
 
   def display_game_over_message
     if rules.game_won?(board)
-      user_output.render_message_game_won_by(current_player)
+      render(game_won_by(current_player))
     elsif rules.game_tied?(board)
-      user_output.render_message_game_tied
+      render(game_tied)
     end
   end
 
   def ask_user_to_play_again
-    user_output.render_message_play_again?
+    render(request_user_play_again)
     player_selection = gets.chomp
     if player_selection == "y" || player_selection == "Y"
       reset_game
     else
-      user_output.render_good_bye
+      render(good_bye)
     end
   end
 
   def reset_game
     board.clear_board
     reset_current_player_pointer
-    user_output.render_board_with_numbers
+    render(board_with_numbers)
     play_game
   end
 

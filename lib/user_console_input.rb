@@ -11,17 +11,3 @@ class UserConsoleInput
   end
   
 end
-
-#module UserInput
-#
-#  def read_line
-#    input_stream.gets.chomp
-#  end
-#
-#  private
-#
-#  def input_stream
-#    $stdin
-#  end
-#
-#end

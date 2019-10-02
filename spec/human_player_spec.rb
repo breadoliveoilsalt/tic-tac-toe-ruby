@@ -1,5 +1,5 @@
-require_relative '../lib/human_player.rb'
-require_relative '../lib/player.rb'
+require_relative '../lib/human_player.rb' 
+require_relative '../lib/player.rb' 
 
 describe HumanPlayer do
 
@@ -32,6 +32,12 @@ describe HumanPlayer do
     it "sends a #read_line message to the object injected as @input_stream" do 
       expect(input_stream).to receive(:read_line)
       human_player.provide_name
+    end
+
+    it "sets the name attribute for the Human Player instance" do
+      allow(input_stream).to receive(:read_line).and_return("Bob")
+      human_player.provide_name
+      expect(human_player.name).to eq("Bob")
     end
 
   end
