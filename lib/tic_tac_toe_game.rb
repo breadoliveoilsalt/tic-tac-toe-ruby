@@ -54,8 +54,6 @@ class TicTacToeGame
 
   def current_player_selects_box
     render(request_user_select_box(current_player))
-    require 'pry'
-    binding.pry
     player_selection = current_player.make_selection(board)
     if rules.valid_move?(board, player_selection)
       board.place_marker_on_board_box(current_player.marker, player_selection)
