@@ -1,8 +1,8 @@
-require_relative '../lib/user_input.rb'
+require_relative '../lib/user_console_input.rb'
 
-describe UserInput do
+describe UserConsoleInput do
 
-  let(:user_input) { UserInput.new }
+  let(:user_input) { UserConsoleInput.new }
 
   describe "#read_line" do
 

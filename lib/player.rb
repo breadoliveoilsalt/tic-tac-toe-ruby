@@ -1,10 +1,8 @@
-require_relative './user_input.rb'
-
-class Player < UserInput
+class Player
 
   attr_accessor :marker, :name
 
-  def initialize
+  def initialize(**)
     @marker = ""
     @name = "Player"
   end
