@@ -8,7 +8,7 @@ class TicTacToeGame
   def initialize(
     board: ThreeByThreeTTTBoard.new,
     rules: ThreeByThreeTTTRules.new,
-    user_output_stream: UserConsoleOutput.new,
+    user_output_stream: UserConsoleOutputStream.new,
     user_view: ThreeByThreeTTTUserView.new,
     player_factory: ThreeByThreeTTTPlayerFactory.new,
     number_of_players: 2,
@@ -30,10 +30,6 @@ class TicTacToeGame
     render(user_view.instructions)
     configure_players
     play_game
-  end
-
-  def render(message)
-    user_output_stream.render(message)
   end
   
   def configure_players
@@ -77,18 +73,6 @@ class TicTacToeGame
     end
   end
 
-  def reset_current_player_pointer
-    @current_player_pointer = 0
-  end
-
-  def advance_current_player_pointer
-    @current_player_pointer += 1 
-  end
-
-  def current_player
-    players[current_player_pointer]
-  end
-
   def handle_game_over
     display_game_over_message
     ask_user_to_play_again
@@ -117,6 +101,22 @@ class TicTacToeGame
     reset_current_player_pointer
     render(user_view.board_with_numbers)
     play_game
+  end
+
+  def render(message)
+    user_output_stream.render(message)
+  end
+
+  def current_player
+    players[current_player_pointer]
+  end
+  
+  def reset_current_player_pointer
+    @current_player_pointer = 0
+  end
+
+  def advance_current_player_pointer
+    @current_player_pointer += 1 
   end
 
 end

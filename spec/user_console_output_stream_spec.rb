@@ -1,8 +1,8 @@
-require_relative '../lib/user_console_output.rb'
+require_relative '../lib/user_console_output_stream.rb'
 
-describe UserConsoleOutput do
+describe UserConsoleOutputStream do
 
-  let(:user_output_stream) { UserConsoleOutput.new }
+  let(:user_output_stream) { UserConsoleOutputStream.new }
 
   describe "#render" do 
     

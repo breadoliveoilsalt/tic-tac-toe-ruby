@@ -1,7 +1,5 @@
 require_relative './player.rb'
 
-require_relative './user_console_input.rb'
-
 class HumanPlayer < Player
 
   attr_accessor :name, :marker, :input_stream
@@ -20,8 +18,3 @@ class HumanPlayer < Player
   end
   
 end
-
-#i = UserConsoleInput.new
-#h = HumanPlayer.new(input_stream: i)
-#h.provide_name
-#puts h.name

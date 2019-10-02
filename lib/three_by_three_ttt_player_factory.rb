@@ -1,6 +1,6 @@
 require_relative '../lib/human_player.rb'
 require_relative '../lib/three_by_three_ttt_computer_player.rb'
-require_relative '../lib/user_console_input.rb'
+require_relative '../lib/user_console_input_stream.rb'
 
 class ThreeByThreeTTTPlayerFactory
 
@@ -10,7 +10,7 @@ class ThreeByThreeTTTPlayerFactory
     number_of_players: 2, 
     number_of_human_players: 1, 
     human_player_model: HumanPlayer,
-    user_input_stream_framework: UserConsoleInput,
+    user_input_stream_framework: UserConsoleInputStream,
     computer_player_model: ThreeByThreeTTTComputerPlayer
     )
     @number_of_players = number_of_players
