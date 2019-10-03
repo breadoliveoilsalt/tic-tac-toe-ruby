@@ -1,4 +1,4 @@
-class UserConsoleInputStream
+class ConsoleInputStream
 
   attr_accessor :input_stream
 

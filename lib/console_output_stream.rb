@@ -1,4 +1,4 @@
-class UserConsoleOutputStream
+class ConsoleOutputStream
 
   attr_accessor :output_stream
 

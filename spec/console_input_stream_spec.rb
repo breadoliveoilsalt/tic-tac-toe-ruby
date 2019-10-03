@@ -1,8 +1,8 @@
-require_relative '../lib/user_console_input_stream.rb'
+require_relative '../lib/console_input_stream.rb'
 
-describe UserConsoleInputStream do
+describe ConsoleInputStream do
 
-  let(:user_input) { UserConsoleInputStream.new }
+  let(:user_input) { ConsoleInputStream.new }
 
   describe "#read_line" do
 

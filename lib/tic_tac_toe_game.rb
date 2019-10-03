@@ -3,12 +3,12 @@ require_all 'lib'
 
 class TicTacToeGame
 
-  attr_accessor :board, :rules, :user_output_stream, :user_view, :player_factory, :number_of_players, :number_of_human_players, :players, :current_player_pointer
+  attr_accessor :board, :rules, :output_stream, :user_view, :player_factory, :number_of_players, :number_of_human_players, :players, :current_player_pointer
 
   def initialize(
     board: ThreeByThreeTTTBoard.new,
     rules: ThreeByThreeTTTRules.new,
-    user_output_stream: UserConsoleOutputStream.new,
+    output_stream: ConsoleOutputStream.new,
     user_view: ThreeByThreeTTTUserView.new,
     player_factory: ThreeByThreeTTTPlayerFactory.new,
     number_of_players: 2,
@@ -16,7 +16,7 @@ class TicTacToeGame
     )
     @board = board
     @rules = rules
-    @user_output_stream = user_output_stream
+    @output_stream = output_stream
     @user_view = user_view
     @player_factory = player_factory
     @number_of_players = number_of_players
@@ -101,7 +101,7 @@ class TicTacToeGame
   end
 
   def render(message)
-    user_output_stream.render(message)
+    output_stream.render(message)
   end
 
   def current_player

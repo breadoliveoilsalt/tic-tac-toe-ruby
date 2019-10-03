@@ -1,7 +1,7 @@
 require_relative '../lib/three_by_three_ttt_player_factory.rb'
 require_relative '../lib/human_player.rb'
 require_relative '../lib/three_by_three_ttt_computer_player.rb'
-require_relative '../lib/user_console_input_stream.rb'
+require_relative '../lib/console_input_stream.rb'
 
 describe ThreeByThreeTTTPlayerFactory do
 
@@ -31,8 +31,8 @@ describe ThreeByThreeTTTPlayerFactory do
       expect(player_factory.human_player_model).to eq(HumanPlayer)
     end
 
-    it "should take as an optional argument a user input stream framework that defaults to UserConsoleInput" do
-      expect(player_factory.user_input_stream_framework).to eq(UserConsoleInputStream)
+    it "should take as an optional argument a user input stream framework that defaults to ConsoleInput" do
+      expect(player_factory.input_stream).to eq(ConsoleInputStream)
     end
 
   end
@@ -50,9 +50,9 @@ describe ThreeByThreeTTTPlayerFactory do
       expect(human_player.marker).to eq("X")
     end
 
-    it "should preconfigure the human player with an input stream of an instance of the UserConsoleInput" do
+    it "should preconfigure the human player with an input stream of an instance of the ConsoleInput" do
       human_player = player_factory.configure_players[0]
-      expect(human_player.input_stream).to be_a(UserConsoleInputStream)
+      expect(human_player.input_stream).to be_a(ConsoleInputStream)
     end
   
     it "should preconfigure the computer player with a name of 'Computer Player' and a marker of 'O'" do
