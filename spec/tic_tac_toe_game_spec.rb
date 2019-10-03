@@ -1,3 +1,5 @@
+# In general: several tests here to modify and delete.  Keeping for now as models/brainstorming for future.
+
 require 'require_all' 
 require_all 'lib'
 
@@ -47,7 +49,7 @@ describe TicTacToeGame do
 
     end
 
-    xdescribe "#configure_players" do 
+    describe "#configure_players" do 
 
       it "calls #player_factory.configure_players" do
         expect(player_factory).to receive(:configure_players)
@@ -86,7 +88,6 @@ describe TicTacToeGame do
 
         expect(game.current_player).to be player3
       end
-
 
     end
   end

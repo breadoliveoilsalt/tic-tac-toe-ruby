@@ -105,7 +105,7 @@ class TicTacToeGame
   end
 
   def current_player
-    players.last
+    players.first
   end
   
 end
