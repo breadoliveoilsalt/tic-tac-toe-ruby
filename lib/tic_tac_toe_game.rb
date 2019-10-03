@@ -66,11 +66,8 @@ class TicTacToeGame
   end
   
   def advance_to_next_player
-    if current_player_pointer == players.length - 1
-      reset_current_player_pointer
-    else
-      advance_current_player_pointer
-    end
+    current_player, *other_players = players
+    @players = other_players.push(current_player)
   end
 
   def handle_game_over
@@ -108,15 +105,7 @@ class TicTacToeGame
   end
 
   def current_player
-    players[current_player_pointer]
+    players.last
   end
   
-  def reset_current_player_pointer
-    @current_player_pointer = 0
-  end
-
-  def advance_current_player_pointer
-    @current_player_pointer += 1 
-  end
-
 end
