@@ -1,5 +1,5 @@
 # In general: several tests here to modify and delete.  Keeping for now as models/brainstorming for future.
-
+# 
 require 'require_all' 
 require_all 'lib'
 
