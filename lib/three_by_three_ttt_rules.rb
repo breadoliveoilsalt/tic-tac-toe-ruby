@@ -22,7 +22,15 @@ class ThreeByThreeTTTRules
     false
   end
 
-  def game_tied?(board)
+  def player_won_game?(board, player)
+    potentially_winning_paths = get_potentially_winning_paths(board)
+    potentially_winning_paths.each do |path|
+      return true if has_win?(path) && path[0] == player.marker
+    end
+    false
+  end
+ 
+ def game_tied?(board)
     !(there_are_empty_boxes(board) || game_won?(board))
   end
 
