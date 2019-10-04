@@ -13,10 +13,9 @@ class Minimax
 
     ("1".."9").each do | box_number |
       if rules.box_is_empty?(board, box_number)
-        #best_move = box_number
         test_board = board.dup
         test_board.place_marker_on_board_box(player.marker, box_number)
-        test_score = get_score_for_this_move(board: test_board, depth: starting_depth, current_players_turn: true) 
+        test_score = get_score_for_this_move(board: test_board, depth: starting_depth, current_player: player) 
         if test_score > best_score
           best_move = box_number
           best_score = test_score
@@ -26,8 +25,16 @@ class Minimax
     best_move
   end
 
-  def get_score_for_this_move(board: , depth: , current_players_turn: )
-    10
+  def get_score_for_this_move(board: , depth: , current_player: )
+    if rules.game_won_by?(board, current_player)
+      return board.length + 1 - depth
+    elsif rules.game_won?(board)
+      return -1 * (board.length + 1 + depth) # Figure out if I'm thinking about depth correctly...that it's a penalty
+    elsif rules.game_tied?(board)
+      return 0
+    end
+
+    # add the rest of the stuff to get score - make sure you take min/max when appropriate
   end
 
 end
