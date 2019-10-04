@@ -1,5 +1,22 @@
 class Minimax 
 
+  attr_reader :rules
+
+  def initialize(rules:)
+    @rules = rules
+  end
+
+  def find_best_move(board)
+    best_move = nil
+
+    ("1".."9").each do | box_number |
+      if rules.box_is_empty?(board, box_number)
+        best_move = box_number
+      end
+    end
+    best_move
+  end
+
 end
 
 

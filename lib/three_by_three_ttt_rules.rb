@@ -30,6 +30,11 @@ class ThreeByThreeTTTRules
     game_won?(board) || game_tied?(board)
   end
 
+  def box_is_empty?(board, box_number)
+    data_location = get_data_location_corresponding_to(box_number)
+    board.data[data_location] == " "
+  end
+
   private 
 
   def valid_move_input?(user_selection)
@@ -51,11 +56,6 @@ class ThreeByThreeTTTRules
   def within_range?(str)
     int = str.to_i
     int >= 1 && int <= 9
-  end
-
-  def box_is_empty?(board, box_number)
-    data_location = get_data_location_corresponding_to(box_number)
-    board.data[data_location] == " "
   end
 
   def get_potentially_winning_paths(board)
