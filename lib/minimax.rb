@@ -6,15 +6,28 @@ class Minimax
     @rules = rules
   end
 
-  def find_best_move(board)
+  def find_best_move(player, board)
     best_move = nil
+    best_score = -Float::INFINITY
+    starting_depth = 0
 
     ("1".."9").each do | box_number |
       if rules.box_is_empty?(board, box_number)
-        best_move = box_number
+        #best_move = box_number
+        test_board = board.dup
+        test_board.place_marker_on_board_box(player.marker, box_number)
+        test_score = get_score_for_this_move(board: test_board, depth: starting_depth, current_players_turn: true) 
+        if test_score > best_score
+          best_move = box_number
+          best_score = test_score
+        end
       end
     end
     best_move
+  end
+
+  def get_score_for_this_move(board: , depth: , current_players_turn: )
+    10
   end
 
 end
