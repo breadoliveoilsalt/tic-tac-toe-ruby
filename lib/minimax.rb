@@ -1,3 +1,5 @@
+require 'pry' 
+
 class Minimax 
 
   attr_reader :rules, :deciding_player, :opponent
@@ -15,13 +17,16 @@ class Minimax
 
     (1..board.data.length).each do | box_number |
       if rules.box_is_empty?(board, box_number)
-        test_board = board.dup
+        # .dup and .clone aren't working - any changes to the dup or clone affect the old board!
+        test_board = board.clone
+        # not work test_board = board.class.new(board.data)
         test_board.place_marker_on_board_box(deciding_player.marker, box_number)
         test_score = get_score_for_this_move(board: test_board, depth: starting_depth, current_player: opponent)
         if test_score > best_score
           best_move = box_number
           best_score = test_score
         end
+        test_board.place_marker_on_board_box(" ", box_number)
       end
     end
     best_move.to_s
@@ -31,52 +36,54 @@ class Minimax
     if rules.player_won_game?(board, deciding_player)
       return board.data.length + 1 - depth
     elsif rules.player_won_game?(board, opponent)
-      return -1 * (board.data.length + 1 + depth) # Figure out if I'm thinking about depth correctly...that it's a penalty
+      return -1 * (board.data.length + 1 + depth)
     elsif rules.game_tied?(board)
       return 0
     end
 
     if current_player == deciding_player
-      best_scoore = -Float::INFINITY
+      best_score = -Float::INFINITY
       (1..board.data.length).each do | box_number |
         if rules.box_is_empty?(board, box_number)
           test_board = board.dup
           test_board.place_marker_on_board_box(current_player.marker, box_number)
           test_score = get_score_for_this_move(board: test_board, depth: depth + 1, current_player: opponent)
           best_score = [best_score, test_score].max
+          test_board.place_marker_on_board_box(" ", box_number)
+          return best_score
         end
       end
     end
  
     if current_player == opponent
-      best_scoore = Float::INFINITY
+      best_score = Float::INFINITY
       (1..board.data.length).each do | box_number |
         if rules.box_is_empty?(board, box_number)
           test_board = board.dup
           test_board.place_marker_on_board_box(current_player.marker, box_number)
           test_score = get_score_for_this_move(board: test_board, depth: depth + 1, current_player: deciding_player)
           best_score = [best_score, test_score].min
+          test_board.place_marker_on_board_box(" ", box_number)
+          return best_score
         end
       end
     end
-    # add the rest of the stuff to get score - make sure you take min/max when appropriate
-    best_score
   end
   
-  def run_through_empties
-    best_score = -Float::INFINITY
-    (1..board.data.length).each do | box_number |
-      if rules.box_is_empty?(board, box_number)
-        test_board = board.dup
-        test_board.place_marker_on_board_box(player.marker, box_number)
-        test_score = get_score_for_this_move(board: test_board, depth: starting_depth, deciding_players_turn: true )
-        if test_score > best_score
-          best_move = box_number
-          best_score = test_score
-        end
-      end
-    end
-  end
+#  def run_through_empties
+#    best_score = -Float::INFINITY
+#    (1..board.data.length).each do | box_number |
+#      if rules.box_is_empty?(board, box_number)
+#        test_board = board.dup
+#        test_board.place_marker_on_board_box(player.marker, box_number)
+#        test_score = get_score_for_this_move(board: test_board, depth: starting_depth, deciding_players_turn: true )
+#        if test_score > best_score
+#          best_move = box_number
+#          best_score = test_score
+#        end
+#      end
+#    end
+#  end
     
 
 end

@@ -25,7 +25,7 @@ describe Minimax do
           expect(minimax.find_best_move(board)).to eq("9")
        end
 
-       it "returns the first box number as a string to win when all other boxes have been taken" do 
+        it "returns the first box number as a string to win when all other boxes have been taken" do 
           board = ThreeByThreeTTTBoard.new([" ", "X", "O", 
                                             "X", "O", "X", 
                                             "X", "O", "O"])
@@ -33,7 +33,7 @@ describe Minimax do
           expect(minimax.find_best_move(board)).to eq("1")
        end
 
-       it "returns a box number of the board that is not the first or last (as a string) to win when all other boxes have been taken" do 
+        it "returns a box number of the board that is not the first or last (as a string) to win when all other boxes have been taken" do 
           board = ThreeByThreeTTTBoard.new(["O", "X", "O", 
                                             " ", "X", "X", 
                                             "O", "O", "X"])
@@ -41,7 +41,7 @@ describe Minimax do
           expect(minimax.find_best_move(board)).to eq("4")
        end
 
-       it "returns a box number of the board that is not the first or last (as a string) to win when six boxes have been taken" do 
+        it "returns a box number of the board that is not the first or last (as a string) to win when six boxes have been taken" do 
           board = ThreeByThreeTTTBoard.new(["O", "X", "O", 
                                             "X", "O", "X", 
                                             " ", " ", " "])
@@ -50,10 +50,14 @@ describe Minimax do
        end
        
        it "returns a box number of the board that is not the first or last (as a string) to win when four boxes have been taken" do 
+          #board = ThreeByThreeTTTBoard.new(["X", "O", "X", 
+          #                                  " ", "O", "X", 
+          #                                  " ", " ", " "])
+
           board = ThreeByThreeTTTBoard.new(["X", "O", "X", 
                                             " ", "O", "X", 
                                             " ", " ", " "])
-
+          
           expect(minimax.find_best_move(board)).to eq("8")
        end
 
