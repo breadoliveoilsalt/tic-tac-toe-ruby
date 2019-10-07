@@ -8,7 +8,7 @@ class Minimax
     @opponent = opponent
   end
 
-  def find_best_move(board, depth = 0) # don't forget to remove default depth if not deeded
+  def find_best_move(board)
     best_move = nil
     best_score = -Float::INFINITY
     starting_depth = 0
