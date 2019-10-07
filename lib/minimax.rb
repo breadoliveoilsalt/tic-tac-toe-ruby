@@ -1,41 +1,83 @@
 class Minimax 
 
-  attr_reader :rules
+  attr_reader :rules, :deciding_player, :opponent
 
-  def initialize(rules:)
+  def initialize(rules:, deciding_player: , opponent:)
     @rules = rules
+    @deciding_player = deciding_player
+    @opponent = opponent
   end
 
-  def find_best_move(player, board)
+  def find_best_move(board, depth = 0) # don't forget to remove default depth if not deeded
     best_move = nil
     best_score = -Float::INFINITY
     starting_depth = 0
 
-    ("1".."9").each do | box_number |
+    (1..board.data.length).each do | box_number |
       if rules.box_is_empty?(board, box_number)
         test_board = board.dup
-        test_board.place_marker_on_board_box(player.marker, box_number)
-        test_score = get_score_for_this_move(board: test_board, depth: starting_depth, current_player: player) 
+        test_board.place_marker_on_board_box(deciding_player.marker, box_number)
+        test_score = get_score_for_this_move(board: test_board, depth: starting_depth, current_player: opponent)
         if test_score > best_score
           best_move = box_number
           best_score = test_score
         end
       end
     end
-    best_move
+    best_move.to_s
   end
 
   def get_score_for_this_move(board: , depth: , current_player: )
-    if rules.game_won_by?(board, current_player)
-      return board.length + 1 - depth
-    elsif rules.game_won?(board)
-      return -1 * (board.length + 1 + depth) # Figure out if I'm thinking about depth correctly...that it's a penalty
+    if rules.player_won_game?(board, deciding_player)
+      return board.data.length + 1 - depth
+    elsif rules.player_won_game?(board, opponent)
+      return -1 * (board.data.length + 1 + depth) # Figure out if I'm thinking about depth correctly...that it's a penalty
     elsif rules.game_tied?(board)
       return 0
     end
 
+    if current_player == deciding_player
+      best_scoore = -Float::INFINITY
+      (1..board.data.length).each do | box_number |
+        if rules.box_is_empty?(board, box_number)
+          test_board = board.dup
+          test_board.place_marker_on_board_box(current_player.marker, box_number)
+          test_score = get_score_for_this_move(board: test_board, depth: depth + 1, current_player: opponent)
+          best_score = [best_score, test_score].max
+        end
+      end
+    end
+ 
+    if current_player == opponent
+      best_scoore = Float::INFINITY
+      (1..board.data.length).each do | box_number |
+        if rules.box_is_empty?(board, box_number)
+          test_board = board.dup
+          test_board.place_marker_on_board_box(current_player.marker, box_number)
+          test_score = get_score_for_this_move(board: test_board, depth: depth + 1, current_player: deciding_player)
+          best_score = [best_score, test_score].min
+        end
+      end
+    end
     # add the rest of the stuff to get score - make sure you take min/max when appropriate
+    best_score
   end
+  
+  def run_through_empties
+    best_score = -Float::INFINITY
+    (1..board.data.length).each do | box_number |
+      if rules.box_is_empty?(board, box_number)
+        test_board = board.dup
+        test_board.place_marker_on_board_box(player.marker, box_number)
+        test_score = get_score_for_this_move(board: test_board, depth: starting_depth, deciding_players_turn: true )
+        if test_score > best_score
+          best_move = box_number
+          best_score = test_score
+        end
+      end
+    end
+  end
+    
 
 end
 
