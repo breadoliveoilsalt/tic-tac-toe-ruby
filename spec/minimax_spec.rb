@@ -50,10 +50,6 @@ describe Minimax do
        end
        
        it "returns a box number of the board that is not the first or last (as a string) to win when four boxes have been taken" do 
-          #board = ThreeByThreeTTTBoard.new(["X", "O", "X", 
-          #                                  " ", "O", "X", 
-          #                                  " ", " ", " "])
-
           board = ThreeByThreeTTTBoard.new(["X", "O", "X", 
                                             " ", "O", "X", 
                                             " ", " ", " "])

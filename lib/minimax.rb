@@ -45,11 +45,13 @@ class Minimax
       best_score = -Float::INFINITY
       (1..board.data.length).each do | box_number |
         if rules.box_is_empty?(board, box_number)
+          #binding.pry
           test_board = board.dup
           test_board.place_marker_on_board_box(current_player.marker, box_number)
           test_score = get_score_for_this_move(board: test_board, depth: depth + 1, current_player: opponent)
           best_score = [best_score, test_score].max
           test_board.place_marker_on_board_box(" ", box_number)
+          #binding.pry
           return best_score
         end
       end
@@ -59,11 +61,13 @@ class Minimax
       best_score = Float::INFINITY
       (1..board.data.length).each do | box_number |
         if rules.box_is_empty?(board, box_number)
+          #binding.pry
           test_board = board.dup
           test_board.place_marker_on_board_box(current_player.marker, box_number)
           test_score = get_score_for_this_move(board: test_board, depth: depth + 1, current_player: deciding_player)
           best_score = [best_score, test_score].min
           test_board.place_marker_on_board_box(" ", box_number)
+          #binding.pry
           return best_score
         end
       end
