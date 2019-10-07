@@ -95,7 +95,7 @@ class TicTacToeGame
 
   def reset_game
     board.clear_board
-    reset_current_player_pointer
+    advance_to_next_player
     render(user_view.board_with_numbers)
     play_game
   end
