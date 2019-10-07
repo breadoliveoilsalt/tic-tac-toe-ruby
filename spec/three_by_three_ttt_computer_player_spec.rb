@@ -14,8 +14,8 @@ describe ThreeByThreeTTTComputerPlayer do
 
   describe "#make_selection" do 
     it "calls ai.find_best_move and passes it the board" do
+      expect(:ai_double).to receive(:find_best_move)
       computer_player.make_selection(board)
-      expect(:ai_doulbe).to receive(:find_best_move).with(board)
     end
   end
 
