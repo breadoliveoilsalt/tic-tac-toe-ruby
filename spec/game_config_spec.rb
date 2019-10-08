@@ -27,6 +27,10 @@ describe GameConfig do
         expect(game_config.set_up[:output_stream]).to be_a(ConsoleOutputStream)
       end
 
+      it "has a :user_view value equal to a new instance of the ThreeByThreeTTTUserView" do 
+        expect(game_config.set_up[:user_view]).to be_a(ThreeByThreeTTTUserView)
+      end
+
       xit "calls #set_up on an instance of ThreeByThreePlayerConfig to populate the value of the :players key" do 
         player_config = instance_double("ThreeByThreeTTTPlayerConfig") 
         expect(player_config).to receive(:set_up)
