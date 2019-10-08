@@ -3,37 +3,20 @@ require_all 'lib'
 
 class TicTacToeGame
 
-  attr_accessor :board, :rules, :output_stream, :user_view, :player_factory, :number_of_players, :number_of_human_players, :players, :current_player_pointer
+  attr_accessor :board, :rules, :output_stream, :user_view, :player_factory, :players 
 
-  def initialize(
-    board: ThreeByThreeTTTBoard.new,
-    rules: ThreeByThreeTTTRules.new,
-    output_stream: ConsoleOutputStream.new,
-    user_view: ThreeByThreeTTTUserView.new,
-    player_factory: ThreeByThreeTTTPlayerFactory.new,
-    number_of_players: 2,
-    number_of_human_players: 1
-    )
-    @board = board
-    @rules = rules
-    @output_stream = output_stream
-    @user_view = user_view
-    @player_factory = player_factory
-    @number_of_players = number_of_players
-    @number_of_human_players = number_of_human_players
-    @players = []
-    @current_player_pointer = 0
+  def initialize(configuration)
+    @board = configuration[:board]
+    @rules = configuration[:rules]
+    @output_stream = configuration[:output_stream]
+    @user_view = configuration[:user_view]
+    @players = configuration[:players]
   end
 
   def start_game
     render(user_view.welcome)
     render(user_view.instructions)
-    configure_players
     play_game
-  end
-  
-  def configure_players
-    @players = player_factory.configure_players
   end
 
   def play_game
