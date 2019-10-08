@@ -1,0 +1,3 @@
+class ThreeByThreePlayerConfig
+
+end
