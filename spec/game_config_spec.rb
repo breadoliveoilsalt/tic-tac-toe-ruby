@@ -31,10 +31,10 @@ describe GameConfig do
         expect(game_config.set_up[:user_view]).to be_a(ThreeByThreeTTTUserView)
       end
 
-      xit "calls #set_up on an instance of ThreeByThreePlayerConfig to populate the value of the :players key" do 
-        player_config = instance_double("ThreeByThreeTTTPlayerConfig") 
-        expect(player_config).to receive(:set_up)
-        game_config.set_up
+      it "has a :players value equal to an array with two players" do 
+        expect(game_config.set_up[:players]).to be_a(Array)
+        expect(game_config.set_up[:players][0]).to be_a(Player)
+        expect(game_config.set_up[:players][1]).to be_a(Player)
       end
     end
   end

@@ -9,7 +9,7 @@ class GameConfig
       rules: ThreeByThreeTTTRules.new,
       output_stream: ConsoleOutputStream.new,
       user_view: ThreeByThreeTTTUserView.new,
-      players: ThreeByThreeTTTPlayerConfig.new.set_up
+      players: ThreeByThreeTTTPlayerFactory.new.configure_players
     }  
   end
 end
