@@ -26,5 +26,29 @@ describe ThreeByThreeTTTPlayerConfig do
       ThreeByThreeTTTPlayerConfig.new(
         input_stream: input_stream_double)
        }.to raise_error(ArgumentError)
+
   end
+
+  describe "#set_up" do 
+
+    it "passes a render message to output_stream with a message welcoming the user to Tic Tac Toe" do 
+      message = <<~MESSAGE
+
+        ~~~~~~~~~~~~~~~~~~~~~~
+        ~~~~~~~~~~~~~~~~~~~~~~
+
+        Welcome to Tic Tac Toe!
+
+              ----------
+
+        Tic Tac Toe is a 2 Player Game.
+
+      MESSAGE
+
+      expect(player_config.output_stream).to receive(:render).with(message)
+      player_config.set_up
+    end
+
+  end
+
 end
