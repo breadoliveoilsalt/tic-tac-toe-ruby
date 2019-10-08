@@ -9,4 +9,22 @@ describe ThreeByThreeTTTPlayerConfig do
      output_stream: output_stream_double,
      input_stream: input_stream_double)
     }
+
+  it "requires initialization with an argument for input_stream and output_stream" do 
+    expect{ 
+      ThreeByThreeTTTPlayerConfig.new(
+        output_stream: output_stream_double,
+        input_stream: input_stream_double)
+       }.to_not raise_error
+
+    expect{ 
+      ThreeByThreeTTTPlayerConfig.new(
+        output_stream: output_stream_double)
+       }.to raise_error(ArgumentError)
+
+    expect{ 
+      ThreeByThreeTTTPlayerConfig.new(
+        input_stream: input_stream_double)
+       }.to raise_error(ArgumentError)
+  end
 end
