@@ -9,7 +9,7 @@ describe ThreeByThreeTTTPlayerConfig do
      output_stream: output_stream_double,
      input_stream: input_stream_double)
     }
-
+  
   it "requires initialization with an argument for input_stream and output_stream" do 
     expect{ 
       ThreeByThreeTTTPlayerConfig.new(
@@ -28,7 +28,7 @@ describe ThreeByThreeTTTPlayerConfig do
        }.to raise_error(ArgumentError)
 
   end
-
+  
   describe "#set_up" do 
 
     it "passes a render message to output_stream with a message welcoming the user to Tic Tac Toe" do 
@@ -46,9 +46,22 @@ describe ThreeByThreeTTTPlayerConfig do
       MESSAGE
 
       expect(player_config.output_stream).to receive(:render).with(message)
+
       player_config.set_up
     end
+    
+    it "asks the user if Player 1 is a human or computer player" do
+      message = <<~MESSAGE
 
+        Is Player 1 a human or computer player? 
+
+        Enter '1' for human or '2' for computer.
+
+      MESSAGE
+
+      expect(player_config.output_stream).to receive(:render).with(message)
+      
+      player_config.set_up
+    end
   end
-
 end
