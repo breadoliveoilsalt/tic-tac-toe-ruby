@@ -23,6 +23,10 @@ describe GameConfig do
         expect(game_config.set_up[:rules]).to be_a(ThreeByThreeTTTRules)
       end
 
+      it "has a :output_stream value equal to a new instance of ConsoleOutputStreatm" do 
+        expect(game_config.set_up[:output_stream]).to be_a(ConsoleOutputStream)
+      end
+
       xit "calls #set_up on an instance of ThreeByThreePlayerConfig to populate the value of the :players key" do 
         player_config = instance_double("ThreeByThreeTTTPlayerConfig") 
         expect(player_config).to receive(:set_up)
