@@ -8,6 +8,10 @@ class ThreeByThreeTTTPlayerConfig
   end
 
   def set_up
+    render_welcome_message_to_user
+  end
+
+  def render_welcome_message_to_user 
     output_stream.render(welcome_message)
   end
 

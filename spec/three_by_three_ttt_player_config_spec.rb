@@ -29,7 +29,16 @@ describe ThreeByThreeTTTPlayerConfig do
 
   end
   
-  describe "#set_up" do 
+  describe "#set_up" do
+
+    it "calls #render_welcome_message_to_user" do
+      expect(player_config).to receive(:render_welcome_message_to_user)
+      player_config.set_up
+    end
+
+  end
+
+  describe "#render_welcome_message_to_user" do 
 
     it "passes a render message to output_stream with a message welcoming the user to Tic Tac Toe" do 
       message = <<~MESSAGE
@@ -47,7 +56,7 @@ describe ThreeByThreeTTTPlayerConfig do
 
       expect(player_config.output_stream).to receive(:render).with(message)
 
-      player_config.set_up
+      player_config.render_welcome_message_to_user
     end
     
     it "asks the user if Player 1 is a human or computer player" do
