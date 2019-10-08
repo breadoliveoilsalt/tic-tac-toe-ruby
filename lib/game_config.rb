@@ -1,0 +1,3 @@
+class GameConfig
+
+end
