@@ -9,13 +9,14 @@ class ThreeByThreeTTTPlayerConfig
 
   def set_up
     render_welcome_message_to_user
+    cycle_through_players
   end
 
   def render_welcome_message_to_user 
     output_stream.render(welcome_message)
   end
 
-  def get_player_info
+  def cycle_through_players
     output_stream.render(is_player_human_message?("1"))
   end
    

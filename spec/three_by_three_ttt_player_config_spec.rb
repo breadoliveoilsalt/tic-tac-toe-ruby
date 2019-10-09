@@ -29,12 +29,27 @@ describe ThreeByThreeTTTPlayerConfig do
 
   end
   
+# How to test that this does what I want it to do?
+
+# If I break things down into different methods, how to indicate they are 
+# not public methods while still being able to test?
+
+
+
+
+
+
   describe "#set_up" do
 
-    it "calls #render_welcome_message_to_user" do
+    xit "calls #render_welcome_message_to_user" do
       expect(player_config).to receive(:render_welcome_message_to_user)
       player_config.set_up
     end
+
+    xit "calls #cycle_through_players" do
+      expect(player_config).to receive(:cycle_through_players)  
+      player_config.set_up
+    end  
 
   end
 
@@ -58,7 +73,9 @@ describe ThreeByThreeTTTPlayerConfig do
 
       player_config.render_welcome_message_to_user
     end
-    
+  end
+
+  describe "#cycle_through_players" do
     it "asks the user if Player 1 is a human or computer player" do
       message = <<~MESSAGE
 
@@ -70,7 +87,7 @@ describe ThreeByThreeTTTPlayerConfig do
 
       expect(player_config.output_stream).to receive(:render).with(message)
       
-      player_config.set_up
+      player_config.cycle_through_players
     end
   end
 end
