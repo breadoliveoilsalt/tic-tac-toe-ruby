@@ -7,22 +7,6 @@ describe TicTacToeGame do
 
   attr_accessor :board, :rules, :user_interface, :player_factory, :game
 
-  xdescribe "default attributess" do
-    
-    let(:game) { TicTacToeGame.new }
-
-    it "has defaults attributes for board, rules, user_interface, player_factory, number_of_players, and number_of_human_players" do
-
-      expect(game.board).to be_a ThreeByThreeTTTBoard
-      expect(game.rules).to be_a ThreeByThreeTTTRules
-      expect(game.user_interface).to be_a ThreeByThreeTTTUserInterface
-      expect(game.player_factory).to be_a ThreeByThreeTTTPlayerFactory 
-      expect(game.number_of_players).to eq(2)
-      expect(game.number_of_human_players).to eq(1)
-    end
-  
-  end
-
   describe "TicTacToeGame method calls" do 
 
     before(:each) do
@@ -37,16 +21,6 @@ describe TicTacToeGame do
         #user_interface: @user_interface,
         player_factory: @player_factory
         )
-    end
-
-    xdescribe "#render_introduction" do
-      
-      it "calls #user_interface.render_user _welcome and #user_interface.render_instructions" do
-        expect(user_interface).to receive(:render_user_welcome)
-        expect(user_interface).to receive(:render_instructions)
-        game.render_introduction
-      end
-
     end
 
     describe "#configure_players" do 
