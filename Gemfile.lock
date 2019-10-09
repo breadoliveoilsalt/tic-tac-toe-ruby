@@ -59,7 +59,7 @@ DEPENDENCIES
   guard (= 2.15.1)
   guard-rspec
   pry (= 0.12.2)
-  rake
+  rake (= 13.0.0)
   require_all (= 2.0.0)
 
 BUNDLED WITH
