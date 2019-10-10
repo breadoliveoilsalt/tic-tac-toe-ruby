@@ -22,12 +22,25 @@ class ThreeByThreeTTTRules
     false
   end
 
-  def game_tied?(board)
+  def player_won_game?(board, player)
+    potentially_winning_paths = get_potentially_winning_paths(board)
+    potentially_winning_paths.each do |path|
+      return true if has_win?(path) && path[0] == player.marker
+    end
+    false
+  end
+ 
+ def game_tied?(board)
     !(there_are_empty_boxes(board) || game_won?(board))
   end
 
   def game_over?(board)
     game_won?(board) || game_tied?(board)
+  end
+
+  def box_is_empty?(board, box_number)
+    data_location = get_data_location_corresponding_to(box_number)
+    board.data[data_location] == " "
   end
 
   private 
@@ -51,11 +64,6 @@ class ThreeByThreeTTTRules
   def within_range?(str)
     int = str.to_i
     int >= 1 && int <= 9
-  end
-
-  def box_is_empty?(board, box_number)
-    data_location = get_data_location_corresponding_to(box_number)
-    board.data[data_location] == " "
   end
 
   def get_potentially_winning_paths(board)

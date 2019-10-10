@@ -1,6 +1,5 @@
-require_relative '../lib/human_player.rb'
-require_relative '../lib/three_by_three_ttt_computer_player.rb'
-require_relative '../lib/console_input_stream.rb'
+require 'require_all'
+require_all 'lib'
 
 class ThreeByThreeTTTPlayerFactory
 
@@ -39,6 +38,8 @@ class ThreeByThreeTTTPlayerFactory
     computer_player = computer_player_model.new
     computer_player.marker = "O"
     computer_player.name = "Computer Player"
+    ai = Minimax.new(deciding_player: computer_player, opponent: players[0], rules: ThreeByThreeTTTRules.new)
+    computer_player.set_ai(ai)
     players.push(computer_player)
   end
 
