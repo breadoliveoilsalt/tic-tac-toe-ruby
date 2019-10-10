@@ -1,11 +1,11 @@
-require_relative '../lib/three_by_three_ttt_user_view.rb'
+require_relative '../lib/three_by_three_ttt_console_messages.rb'
 require_relative '../lib/three_by_three_ttt_board.rb'
 
-describe "ThreeByThreeTTTUserView" do 
+describe ThreeByThreeTTTConsoleMessages do 
 
-  let(:user_view) { ThreeByThreeTTTUserView.new }
+  let(:user_view) { ThreeByThreeTTTConsoleMessages.new }
 
-  describe "#welcome" do
+  describe "#welcome_simple" do
     it "is a string with a welcome message" do
       expected_message = <<~MESSAGE
         
@@ -13,7 +13,7 @@ describe "ThreeByThreeTTTUserView" do
 
         MESSAGE
       
-      expect(user_view.welcome).to eq(expected_message)
+      expect(user_view.welcome_simple).to eq(expected_message)
     end
   end
 
@@ -67,11 +67,11 @@ describe "ThreeByThreeTTTUserView" do
       board = ThreeByThreeTTTBoard.new(["X", " ", " ", " ", "X", " ", " ", " ", " "])
       expected_message = <<~MESSAGE
 
-        X |   |  
-       -----------
-          | X |  
-       -----------
-          |   |  
+        X |   |              1 | 2 | 3
+       -----------          -----------
+          | X |              4 | 5 | 6
+       -----------          -----------
+          |   |              7 | 8 | 9
     
       MESSAGE
 

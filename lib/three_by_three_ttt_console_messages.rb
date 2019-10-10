@@ -76,7 +76,7 @@ class ThreeByThreeTTTConsoleMessages
        #{board.contents_at_box("1")} | #{board.contents_at_box("2")} | #{board.contents_at_box("3")}            1 | 2 | 3
       -----------          -----------
        #{board.contents_at_box("4")} | #{board.contents_at_box("5")} | #{board.contents_at_box("6")}            4 | 5 | 6
-      -----------          ----------- 
+      -----------          -----------
        #{board.contents_at_box("7")} | #{board.contents_at_box("8")} | #{board.contents_at_box("9")}            7 | 8 | 9
 
     MESSAGE
