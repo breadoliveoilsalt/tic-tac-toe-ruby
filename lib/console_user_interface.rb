@@ -17,4 +17,10 @@ class ConsoleUserInterface
     output_stream.render(message)
     input_stream.read_line
   end
+
+  def get_marker
+    output_stream.render(messages.marker?)
+    input_stream.read_line
+  end
+
 end
