@@ -8,23 +8,26 @@ class GameConfig
       board: board_config,
       rules: rules_config,
       user_interface: user_interface_config, 
-#      players: player_config.set_up
+#     players: player_config.set_up
       players: [] 
     }  
+  end
+
+  private
+
+  def board_config
+    ThreeByThreeTTTBoard.new
   end
 
   def rules_config
     ThreeByThreeTTTRules.new
   end
 
-  def board_config
-    ThreeByThreeTTTBoard.new
-  end
-
-  def player_config
-    PlayerConfig.new(
-      user_interface: user_interface_config,
-      player_factory: player_factory_config
+  def user_interface_config
+    ConsoleUserInterface.new(
+      output_stream: output_stream_config,
+      input_stream: input_stream_config,
+      messages: messages_config
       )
   end
 
@@ -40,18 +43,17 @@ class GameConfig
     ThreeByThreeTTTConsoleMessages.new 
   end
 
-  def user_interface_config
-    ConsoleUserInterface.new(
-      output_stream: output_stream_config,
-      input_stream: input_stream_config,
-      messages: messages_config
+  def player_config
+    PlayerConfig.new(
+      user_interface: user_interface_config,
+      player_factory: player_factory_config
       )
   end
 
   def player_factory_config
     PlayerFactory.new(
-      human_model: HumanPlayer
-      computer_model: ComputerPlayer
+      human_model: HumanPlayer,
+      computer_model: ComputerPlayer,
       ai: ai_config 
       )
   end
@@ -62,5 +64,4 @@ class GameConfig
       )
   end
   
-
 end
