@@ -46,4 +46,27 @@ describe ConsoleUserInterface do
       user_interface.show_welcome
     end
   end
+
+  describe "#get_player_type(player_number)" do
+    it "sends output_stream a render message with messages.player_type?(player_number)" do 
+      player_number = "1"
+      allow(messages_double).to receive(:player_type?).with(player_number).and_return("Expected Argument")
+      allow(input_stream_double).to receive(:read_line)
+
+      expect(output_stream_double).to receive(:render).with("Expected Argument")
+
+      user_interface.get_player_type("1")
+      
+    end
+  
+    it "sends input_stream a read_line message and returns the value" do
+      allow(messages_double).to receive(:player_type?)
+      allow(output_stream_double).to receive(:render)
+      allow(input_stream_double).to receive(:read_line).and_return("2")
+
+      expect(user_interface.get_player_type("1")).to eq("2")
+    end
+
+  end
+  
 end

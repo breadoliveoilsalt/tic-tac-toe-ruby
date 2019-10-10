@@ -11,4 +11,10 @@ class ConsoleUserInterface
   def show_welcome
     output_stream.render(messages.welcome)
   end
+
+  def get_player_type(player_number)
+    message = messages.player_type?(player_number)
+    output_stream.render(message)
+    input_stream.read_line
+  end
 end

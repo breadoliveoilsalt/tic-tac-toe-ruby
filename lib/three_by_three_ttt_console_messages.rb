@@ -23,7 +23,7 @@ class ThreeByThreeTTTConsoleMessages
     MESSAGE
   end
 
-  def is_player_human_message?(player_number)
+  def player_type?(player_number)
     <<~MESSAGE
 
       Is Player #{player_number} a human or computer player? 
