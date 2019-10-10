@@ -1,4 +1,4 @@
-require_relative './lib/console_user_interface.rb'
+require_relative '../lib/console_user_interface.rb'
 
 describe ConsoleUserInterface do
 
