@@ -53,6 +53,7 @@ class GameConfig
   def player_factory_config
     PlayerFactory.new(
       human_model: HumanPlayer,
+      user_interface: user_interface_config,
       computer_model: ComputerPlayer,
       ai: ai_config 
       )
