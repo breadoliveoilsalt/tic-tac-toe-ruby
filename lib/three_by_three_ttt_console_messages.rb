@@ -1,9 +1,41 @@
-class ThreeByThreeTTTUserView
+class ThreeByThreeTTTConsoleMessages
 
-  def welcome
+  def welcome_simple
     <<~MESSAGE
         
       Welcome to Tic Tac Toe!
+
+    MESSAGE
+  end
+
+  def welcome
+    <<~MESSAGE
+
+      ~~~~~~~~~~~~~~~~~~~~~~
+      ~~~~~~~~~~~~~~~~~~~~~~
+
+      Welcome to Tic Tac Toe!
+
+            ----------
+
+      Tic Tac Toe is a 2 Player Game.
+
+    MESSAGE
+  end
+
+  def player_type?(player_number)
+    <<~MESSAGE
+
+      Is Player #{player_number} a human or computer player? 
+
+      Enter '1' for human or '2' for computer.
+    MESSAGE
+  end
+
+  def marker?
+    <<~MESSAGE
+
+      Please enter a marker for this player. For example, "X" or "O".
 
     MESSAGE
   end
@@ -51,7 +83,7 @@ class ThreeByThreeTTTUserView
        #{board.contents_at_box("1")} | #{board.contents_at_box("2")} | #{board.contents_at_box("3")}            1 | 2 | 3
       -----------          -----------
        #{board.contents_at_box("4")} | #{board.contents_at_box("5")} | #{board.contents_at_box("6")}            4 | 5 | 6
-      -----------          ----------- 
+      -----------          -----------
        #{board.contents_at_box("7")} | #{board.contents_at_box("8")} | #{board.contents_at_box("9")}            7 | 8 | 9
 
     MESSAGE

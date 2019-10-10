@@ -1,6 +1,7 @@
 require_relative '../lib/three_by_three_ttt_computer_player.rb'
 require_relative '../lib/player.rb'
 require_relative '../lib/three_by_three_ttt_board.rb'
+require_relative '../lib/minimax.rb'
 
 describe ThreeByThreeTTTComputerPlayer do
 
@@ -8,6 +9,10 @@ describe ThreeByThreeTTTComputerPlayer do
 
   it "is a subclass of the Player class" do
     expect(ThreeByThreeTTTComputerPlayer.superclass).to eq(Player)
+  end
+
+  xit "instantiates an instance with minimax as its default ai" do
+    expect(computer_player.ai).to be_a(Minimax)
   end
 
   describe "#set_ai" do
