@@ -37,4 +37,13 @@ describe ConsoleUserInterface do
        }.to raise_error(ArgumentError)
 
   end
+
+  describe "#show_welcome" do 
+    it "sends output_stream a render message with an argumenat messages.welcome" do
+      allow(messages_double).to receive_messages(:welcome => "Expected Argument")
+      expect(output_stream_double).to receive(:render).with("Expected Argument")
+
+      user_interface.show_welcome
+    end
+  end
 end

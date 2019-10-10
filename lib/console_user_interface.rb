@@ -8,4 +8,7 @@ class ConsoleUserInterface
     @messages = messages
   end
 
+  def show_welcome
+    output_stream.render(messages.welcome)
+  end
 end

@@ -29,10 +29,9 @@ class ThreeByThreeTTTConsoleMessages
       Is Player #{player_number} a human or computer player? 
 
       Enter '1' for human or '2' for computer.
-
     MESSAGE
-
   end
+
   def instructions
     <<~MESSAGE
         
