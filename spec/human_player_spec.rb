@@ -29,8 +29,8 @@ describe HumanPlayer do
 
   describe "#make_selection" do 
 
-    it "sends a #read_line message to the object injected as @user_interface" do 
-      expect(user_interface_double).to receive(:read_line)
+    it "sends a #get_user_selection message to the object injected as @user_interface, passing itself as an argument" do 
+      expect(user_interface_double).to receive(:get_user_selection).with(human_player)
       human_player.make_selection
     end
 
