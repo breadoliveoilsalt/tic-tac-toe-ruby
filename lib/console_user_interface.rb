@@ -18,6 +18,11 @@ class ConsoleUserInterface
     input_stream.read_line
   end
 
+  def get_name
+    output_stream.render(messages.name?)
+    input_stream.read_line
+  end
+  
   def get_marker
     output_stream.render(messages.marker?)
     input_stream.read_line

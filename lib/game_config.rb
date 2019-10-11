@@ -40,7 +40,7 @@ class GameConfig
   end
 
   def messages_config
-    ThreeByThreeTTTConsoleMessages.new 
+    ConsoleMessages.new 
   end
 
   def player_config

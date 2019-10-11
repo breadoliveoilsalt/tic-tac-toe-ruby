@@ -71,6 +71,27 @@ describe ConsoleUserInterface do
 
   end
   
+  describe "#get_name" do
+
+    it "sends output_stream a render message with messages.name?" do 
+      allow(messages_double).to receive(:name?).and_return("Expected Argument")
+      allow(input_stream_double).to receive(:read_line)
+
+      expect(output_stream_double).to receive(:render).with("Expected Argument")
+
+      user_interface.get_name
+    end
+  
+    it "sends input_stream a read_line message and returns the value" do
+      allow(messages_double).to receive(:name?)
+      allow(output_stream_double).to receive(:render)
+      allow(input_stream_double).to receive(:read_line).and_return("Benny")
+
+      expect(user_interface.get_name).to eq("Benny")
+    end
+
+  end
+
   describe "#get_marker" do
 
     it "sends output_stream a render message with messages.marker?" do 
