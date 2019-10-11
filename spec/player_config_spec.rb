@@ -60,7 +60,7 @@ describe PlayerConfig do
 
     it "it calls user_interface.get_name and sets the return value to the players' names" do
       allow(user_interface_double).to receive(:show_welcome)
-      allow(user_interface_double).to receive(:get_player_type).and_return("1", "1")
+      allow(user_interface_double).to receive(:get_player_type).and_return("1", "2")
       allow(user_interface_double).to receive(:get_name).and_return("Billy", "Hank")
       expect(player_config.set_up[0].name).to eq("Billy")
       expect(player_config.set_up[1].name).to eq("Hank")

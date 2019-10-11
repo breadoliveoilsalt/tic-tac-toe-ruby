@@ -43,7 +43,10 @@ class PlayerConfig
   end
 
   def create_and_add_computer_player
+    name = user_interface.get_name
+
     player = computer_player_model.new({
+      name: name,
       ai: ai
       })
     players.push(player)
