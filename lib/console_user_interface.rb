@@ -43,6 +43,7 @@ class ConsoleUserInterface
 
   def get_user_selection(player)
     output_stream.render(messages.request_user_select_box(player))
+    input_stream.read_line
   end
   
   def read_line

@@ -166,8 +166,18 @@ describe ConsoleUserInterface do
       expect(messages_double).to receive(:request_user_select_box).with(player)
 
       allow(messages_double).to receive(:request_user_select_box).with(player).and_return(expected_messages_return_value)
+      allow(input_stream_double).to receive(:read_line)
 
       expect(output_stream_double).to receive(:render).with(expected_messages_return_value)
+
+      user_interface.get_user_selection(player)
+    end
+
+    it "sends input_stream a read_line message" do
+      player = double("player")
+      allow(messages_double).to receive(:request_user_select_box)
+      allow(output_stream_double).to receive(:render)
+      expect(input_stream_double).to receive(:read_line)
 
       user_interface.get_user_selection(player)
     end
