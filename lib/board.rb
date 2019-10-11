@@ -1,4 +1,4 @@
-class ThreeByThreeTTTBoard
+class Board
 
   def initialize(initial_data=[" ", " ", " ", " ", " ", " ", " ", " ", " "])
     @data = initial_data

@@ -1,4 +1,4 @@
-class ThreeByThreeTTTConsoleMessages
+class ConsoleMessages
 
   def welcome_simple
     <<~MESSAGE
@@ -32,11 +32,17 @@ class ThreeByThreeTTTConsoleMessages
     MESSAGE
   end
 
+  def name?
+    <<~MESSAGE
+
+      Please enter a name for this player.
+    MESSAGE
+  end
+
   def marker?
     <<~MESSAGE
 
       Please enter a marker for this player. For example, "X" or "O".
-
     MESSAGE
   end
 
@@ -89,7 +95,7 @@ class ThreeByThreeTTTConsoleMessages
     MESSAGE
   end
 
-  def user_selection_error
+  def selection_error
     <<~MESSAGE 
 
       Sorry, invalid selection.
@@ -136,7 +142,9 @@ class ThreeByThreeTTTConsoleMessages
   def request_user_play_again 
     <<~MESSAGE
 
-      Would you like to play again? Type 'y' or 'Y' and hit return if so.
+      Would you like to play again? The next player will go first.
+
+      Enter 'y' or 'Y' to play again.
 
    MESSAGE
   end

@@ -1,5 +1,5 @@
-require 'require_all'
-require_all 'lib'
+require 'require_all' 
+require_all 'lib' 
 
 class GameConfig
 
@@ -8,19 +8,18 @@ class GameConfig
       board: board_config,
       rules: rules_config,
       user_interface: user_interface_config, 
-#     players: player_config.set_up
-      players: [] 
+      players: player_config
     }  
   end
 
   private
 
   def board_config
-    ThreeByThreeTTTBoard.new
+    Board.new
   end
 
   def rules_config
-    ThreeByThreeTTTRules.new
+    Rules.new
   end
 
   def user_interface_config
@@ -40,28 +39,19 @@ class GameConfig
   end
 
   def messages_config
-    ThreeByThreeTTTConsoleMessages.new 
+    ConsoleMessages.new 
   end
 
   def player_config
     PlayerConfig.new(
       user_interface: user_interface_config,
       player_factory: PlayerFactory.new,
-      human_model: HumanPlayer,
-      computer_model: ComputerPlayer,
+      human_player_model: HumanPlayer,
+      computer_player_model: ComputerPlayer,
       ai: ai_config
-      ) # add .set_up?
+      ).set_up
   end
-
-#  def player_factory_config
-#    PlayerFactory.new(
-#      human_model: HumanPlayer,
-#      user_interface: user_interface_config,
-#      computer_model: ComputerPlayer,
-#      ai: ai_config 
-#      )
-#  end
-
+  
   def ai_config
     Minimax.new(
       rules: rules_config
