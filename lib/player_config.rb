@@ -32,27 +32,20 @@ class PlayerConfig
   end
 
   def create_and_add_human_player
-    name = user_interface.get_name
-    marker = user_interface.get_marker
-
-    player = human_player_model.new({
-      name: name,
-      marker: marker,
-      user_interface: user_interface
-       })
+    attributes = get_name_and_marker_attributes.merge({user_interface: user_interface})
+    player = human_player_model.new(attributes)
     players.push(player)
-  
   end
 
   def create_and_add_computer_player
+    attributes = get_name_and_marker_attributes.merge({ai: ai})
+    player = computer_player_model.new(attributes)
+    players.push(player)
+  end
+
+  def get_name_and_marker_attributes
     name = user_interface.get_name
     marker = user_interface.get_marker
-
-    player = computer_player_model.new({
-      name: name,
-      marker: marker,
-      ai: ai
-      })
-    players.push(player)
+    {name: name, marker: marker}
   end
 end
