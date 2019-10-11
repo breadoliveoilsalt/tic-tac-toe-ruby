@@ -26,6 +26,7 @@ describe PlayerFactory do
 
       expect{ player_factory.build } .to raise_error(ArgumentError)
 
+      allow(human_player_model_double).to receive(:new)
       expect { player_factory.build(human_player_model_double) }.to_not raise_error
 
       attributes = {name: "Tommy"}
