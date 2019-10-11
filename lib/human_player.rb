@@ -4,9 +4,12 @@ class HumanPlayer < Player
 
   attr_accessor :name, :marker, :input_stream
 
-  def initialize(input_stream:)
+  def initialize(input_stream:, name:, marker:)
     super
     @input_stream = input_stream
+    @name = name
+    @marker = marker
+      # TO TEST ABOVE
   end
   
   def provide_name
