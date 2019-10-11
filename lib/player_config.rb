@@ -15,25 +15,33 @@ class PlayerConfig
   def set_up
     user_interface.show_welcome
 
-    players = [ ]
     ["1", "2"].each do | player_number |
-      player_type = user_interface.get_player_type(player_number)
-      if player_type == "1"
-        player = human_player_model.new({
-           user_interface: user_interface
-           })
-        players.push(player)
-      elsif player_type = "2"
-        player = computer_player_model.new({
-          ai: ai
-          })
-        players.push(player)
-      end
+      get_player_info_and_create(player_number)
     end
+
     players
   end
 
-  def cycle_through_players
+  def get_player_info_and_create(player_number)
+    player_type = user_interface.get_player_type(player_number)
+    if player_type == "1"
+      create_and_add_human_player
+    elsif player_type = "2"
+      create_and_add_computer_player
+    end
   end
-   
+
+  def create_and_add_human_player
+    player = human_player_model.new({
+       user_interface: user_interface
+       })
+    players.push(player)
+  end
+
+  def create_and_add_computer_player
+    player = computer_player_model.new({
+      ai: ai
+      })
+    players.push(player)
+  end
 end
