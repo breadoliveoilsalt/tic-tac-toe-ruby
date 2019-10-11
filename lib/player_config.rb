@@ -32,10 +32,14 @@ class PlayerConfig
   end
 
   def create_and_add_human_player
+    name = user_interface.get_name
+    
     player = human_player_model.new({
-       user_interface: user_interface
+      name: name,
+      user_interface: user_interface
        })
     players.push(player)
+  
   end
 
   def create_and_add_computer_player

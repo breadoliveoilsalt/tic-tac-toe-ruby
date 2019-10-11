@@ -45,6 +45,7 @@ describe PlayerConfig do
     it "returns an array of two human players when user_interface.get_player_type returns 1 twice" do
       allow(user_interface_double).to receive(:show_welcome)
       allow(user_interface_double).to receive(:get_player_type).and_return("1", "1")
+      allow(user_interface_double).to receive(:get_name).and_return("Billy", "Hank")
       expect(player_config.set_up[0]).to be_a(HumanPlayer)
       expect(player_config.set_up[1]).to be_a(HumanPlayer)
     end
@@ -52,9 +53,19 @@ describe PlayerConfig do
     it "returns an array of two computer players when user_interface.get_player_type returns 2 twice" do
       allow(user_interface_double).to receive(:show_welcome)
       allow(user_interface_double).to receive(:get_player_type).and_return("2", "2")
+      allow(user_interface_double).to receive(:get_name).and_return("Billy", "Hank")
       expect(player_config.set_up[0]).to be_a(ComputerPlayer)
       expect(player_config.set_up[1]).to be_a(ComputerPlayer)
     end
+
+    it "it calls user_interface.get_name and sets the return value to the players' names" do
+      allow(user_interface_double).to receive(:show_welcome)
+      allow(user_interface_double).to receive(:get_player_type).and_return("1", "1")
+      allow(user_interface_double).to receive(:get_name).and_return("Billy", "Hank")
+      expect(player_config.set_up[0].name).to eq("Billy")
+      expect(player_config.set_up[1].name).to eq("Hank")
+    end
+      
   end
 
 end 
