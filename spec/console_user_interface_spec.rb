@@ -112,4 +112,15 @@ describe ConsoleUserInterface do
     end
 
   end
+
+  describe "#read_line" do
+
+    it "sends a read_line message to input_stream" do
+      expect(input_stream_double).to receive(:read_line)
+
+      user_interface.read_line
+    end
+
+  end
+
 end
