@@ -1,6 +1,5 @@
 require_relative '../lib/computer_player.rb'
 require_relative '../lib/player.rb'
-require_relative '../lib/three_by_three_ttt_board.rb'
 
 describe ComputerPlayer do
 
