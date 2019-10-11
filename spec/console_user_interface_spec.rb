@@ -129,6 +129,21 @@ describe ConsoleUserInterface do
     end
   end
 
+  describe "#show_current_board" do
+
+    it "sends messages current_board message with the board argument and sends output_stream a render message with the return value" do 
+      board = double("board")
+
+      expect(messages_double).to receive(:current_board).with(board)
+      
+      allow(messages_double).to receive(:current_board).with(board).and_return("Expected Argument")
+
+      expect(output_stream_double).to receive(:render).with("Expected Argument")
+
+      user_interface.show_current_board(board)
+    end
+  end
+
   describe "#read_line" do
 
     it "sends a read_line message to input_stream" do

@@ -32,8 +32,10 @@ class ConsoleUserInterface
     output_stream.render(messages.move_confirmation(player, player_selection))
   end  
 
-      #user_interface.show_move_confirmation(current_player, player_selection)
-      #user_interface.show_current_board(board)
+  def show_current_board(board)
+    output_stream.render(messages.current_board(board))
+  end
+
   def read_line
     input_stream.read_line
   end
