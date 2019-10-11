@@ -33,9 +33,11 @@ class PlayerConfig
 
   def create_and_add_human_player
     name = user_interface.get_name
-    
+    marker = user_interface.get_marker
+
     player = human_player_model.new({
       name: name,
+      marker: marker,
       user_interface: user_interface
        })
     players.push(player)
@@ -44,9 +46,11 @@ class PlayerConfig
 
   def create_and_add_computer_player
     name = user_interface.get_name
+    marker = user_interface.get_marker
 
     player = computer_player_model.new({
       name: name,
+      marker: marker,
       ai: ai
       })
     players.push(player)
