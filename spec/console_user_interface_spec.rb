@@ -156,6 +156,23 @@ describe ConsoleUserInterface do
       user_interface.show_selection_error
     end
   end
+
+  describe "#get_user_selection" do
+
+    it "sends messages a request_user_select_box message with the player as an argument and sends output_stream a render message with the return value" do 
+      player = double("player")
+      expected_messages_return_value = "Expected Argument"
+
+      expect(messages_double).to receive(:request_user_select_box).with(player)
+
+      allow(messages_double).to receive(:request_user_select_box).with(player).and_return(expected_messages_return_value)
+
+      expect(output_stream_double).to receive(:render).with(expected_messages_return_value)
+
+      user_interface.get_user_selection(player)
+    end
+  end
+
   describe "#read_line" do
 
     it "sends a read_line message to input_stream" do

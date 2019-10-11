@@ -11,7 +11,7 @@ class HumanPlayer < Player
   end
   
   def make_selection(*)
-    user_interface.read_line
+    user_interface.get_user_selection(self)
   end
   
 end
