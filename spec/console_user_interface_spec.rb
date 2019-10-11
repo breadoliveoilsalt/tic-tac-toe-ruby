@@ -113,6 +113,22 @@ describe ConsoleUserInterface do
 
   end
 
+  describe "#show_move_confirmation" do
+
+    it "sends messages a move_confirmation message and sends output_stream a render message with the return value" do 
+      player = "player"
+      move = "move"
+
+      expect(messages_double).to receive(:move_confirmation).with(player, move)
+      
+      allow(messages_double).to receive(:move_confirmation).with(player, move).and_return("Expected Argument")
+
+      expect(output_stream_double).to receive(:render).with("Expected Argument")
+
+      user_interface.show_move_confirmation(player, move)
+    end
+  end
+
   describe "#read_line" do
 
     it "sends a read_line message to input_stream" do
