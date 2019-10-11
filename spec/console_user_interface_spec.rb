@@ -131,7 +131,7 @@ describe ConsoleUserInterface do
 
   describe "#show_current_board" do
 
-    it "sends messages current_board message with the board argument and sends output_stream a render message with the return value" do 
+    it "sends messages a current_board message with the board argument and sends output_stream a render message with the return value" do 
       board = double("board")
 
       expect(messages_double).to receive(:current_board).with(board)
@@ -144,6 +144,18 @@ describe ConsoleUserInterface do
     end
   end
 
+  describe "#show_selection_error" do
+
+    it "sends messages a selection_error message and sends output_stream a render message with the return value" do 
+      expect(messages_double).to receive(:selection_error)
+      
+      allow(messages_double).to receive(:selection_error).and_return("Expected Argument")
+
+      expect(output_stream_double).to receive(:render).with("Expected Argument")
+
+      user_interface.show_selection_error
+    end
+  end
   describe "#read_line" do
 
     it "sends a read_line message to input_stream" do

@@ -97,7 +97,7 @@ class ConsoleMessages
     MESSAGE
   end
 
-  def user_selection_error
+  def selection_error
     <<~MESSAGE 
 
       Sorry, invalid selection.

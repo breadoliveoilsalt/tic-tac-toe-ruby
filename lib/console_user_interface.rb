@@ -36,6 +36,11 @@ class ConsoleUserInterface
     output_stream.render(messages.current_board(board))
   end
 
+  
+  def show_selection_error
+    output_stream.render(messages.selection_error)
+  end
+
   def read_line
     input_stream.read_line
   end
