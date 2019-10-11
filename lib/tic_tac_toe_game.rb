@@ -26,11 +26,11 @@ class TicTacToeGame
   end
 
   def current_player_selects_box
+    user_interface.show_current_board(board)
     player_selection = current_player.make_selection(board, current_player, opponent)
     if rules.valid_move?(board, player_selection)
       board.place_marker_on_board_box(current_player.marker, player_selection)
       user_interface.show_move_confirmation(current_player, player_selection)
-      user_interface.show_current_board(board)
     else
       handle_invalid_box_selection
     end
