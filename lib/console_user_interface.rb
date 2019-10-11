@@ -23,4 +23,9 @@ class ConsoleUserInterface
     input_stream.read_line
   end
 
+  # To test
+  # consider beefing this up
+  def read_line
+    input_stream.read_line
+  end
 end

@@ -2,22 +2,23 @@ require_relative './player.rb'
 
 class HumanPlayer < Player
 
-  attr_accessor :name, :marker, :input_stream
+  attr_reader :name, :marker, :user_interface
 
-  def initialize(input_stream:, name:, marker:)
-    super
-    @input_stream = input_stream
-    @name = name
-    @marker = marker
-      # TO TEST ABOVE
+  def initialize(attributes)
+    @name = attributes[:name]
+    @marker = attributes[:marker]
+    @user_interface = attributes[:user_interface]
   end
   
-  def provide_name
-    @name = input_stream.read_line
-  end
- 
   def make_selection(*)
-    input_stream.read_line
+    user_interface.read_line
   end
+#  def provide_name
+#    @name = input_stream.read_line
+#  end
+# 
+#  def make_selection(*)
+#    input_stream.read_line
+#  end
   
 end
