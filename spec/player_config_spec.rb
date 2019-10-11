@@ -1,13 +1,13 @@
 require_relative '../lib/player_config.rb'
 require_relative '../lib/human_player.rb'
-require_relative '../lib/three_by_three_ttt_computer_player.rb'
+require_relative '../lib/computer_player.rb'
 
 describe PlayerConfig do
 
   let(:user_interface_double) { double("user interface") }
   let(:player_factory_double) { double("player factory") }
   let(:human_player_model) { HumanPlayer }
-  let(:computer_player_model) { ThreeByThreeTTTComputerPlayer }
+  let(:computer_player_model) { ComputerPlayer }
   let(:ai_double) { double("ai") }
 
   let(:player_config) { 

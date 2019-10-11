@@ -91,4 +91,7 @@ class TicTacToeGame
     players.first
   end
   
+  def other_player
+    players.last
+  end
 end
