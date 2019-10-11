@@ -144,7 +144,9 @@ class ConsoleMessages
   def request_user_play_again 
     <<~MESSAGE
 
-      Would you like to play again? Type 'y' or 'Y' and hit return if so.
+      Would you like to play again? Losing player goes first.
+
+      Enter 'y' or 'Y' to play again.
 
    MESSAGE
   end

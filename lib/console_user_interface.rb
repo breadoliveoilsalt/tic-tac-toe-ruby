@@ -45,8 +45,25 @@ class ConsoleUserInterface
     output_stream.render(messages.request_user_select_box(player))
     input_stream.read_line
   end
-  
-  def read_line
+ 
+    # need test for
+  def show_game_won_by(player)
+    output_stream.render(messages.game_won_by(player))
+  end
+
+    # need test for
+  def show_game_tied
+    output_stream.render(messages.game_tied)
+  end
+
+    # need test for
+  def get_user_play_again
+    output_stream.render(messages.request_user_play_again)
     input_stream.read_line
+  end
+
+    # need test for
+  def show_goodbye
+    output_stream.render(messages.good_bye)
   end
 end

@@ -42,40 +42,38 @@ class TicTacToeGame
   end
   
   def advance_to_next_player
-    current_player, *other_players = players
-    @players = other_players.push(current_player)
+    done_player, next_player = players
+    @players = [next_player, done_player]
   end
 
   def handle_game_over
-     puts "Game Over!"
-#    display_game_over_message
-#    ask_user_to_play_again
+    user_interface.show_current_board(board)
+    display_game_over_message
+    ask_user_to_play_again
   end
 
-#  def display_game_over_message
-#    if rules.game_won?(board)
-#      render(user_view.game_won_by(current_player))
-#    elsif rules.game_tied?(board)
-#      render(user_view.game_tied)
-#    end
-#  end
-#
-#  def ask_user_to_play_again
-#    render(user_view.request_user_play_again)
-#    player_selection = gets.chomp
-#    if player_selection == "y" || player_selection == "Y"
-#      reset_game
-#    else
-#      render(user_view.good_bye)
-#    end
-#  end
-#
-#  def reset_game
-#    board.clear_board
-#    advance_to_next_player
-#    render(user_view.board_with_numbers)
-#    play_game
-#  end
+  def display_game_over_message
+    if rules.game_won?(board)
+      user_interface.show_game_won_by(current_player)
+    elsif rules.game_tied?(board)
+      user_interface.show_game_tied
+    end
+  end
+
+  def ask_user_to_play_again
+    user_decision = user_interface.get_user_play_again
+    if user_decision == "y" || user_decision == "Y"
+      reset_game
+    else
+      user_interface.show_good_bye
+    end
+  end
+
+  def reset_game
+    board.clear_board
+    advance_to_next_player
+    play_game
+  end
 
   def current_player
     players.first
