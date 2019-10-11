@@ -27,30 +27,13 @@ describe HumanPlayer do
 
   end
 
-end
-#  describe "#make_selection" do 
-#
-#    it "sends a #read_line message to the object injected as @input_stream" do 
-#      expect(input_stream).to receive(:read_line)
-#      human_player.make_selection
-#    end
-#
-#  end
-#end
+  describe "#make_selection" do 
 
-#  describe "#provide_name" do
-#      
-#    it "sends a #read_line message to the object injected as @input_stream" do 
-#      expect(input_stream).to receive(:read_line)
-#      human_player.provide_name
-#    end
-#
-#    it "sets the name attribute for the Human Player instance" do
-#      allow(input_stream).to receive(:read_line).and_return("Bob")
-#      human_player.provide_name
-#      expect(human_player.name).to eq("Bob")
-#    end
-#
-#  end
-#
-#end
+    it "sends a #read_line message to the object injected as @user_interface" do 
+      expect(user_interface_double).to receive(:read_line)
+      human_player.make_selection
+    end
+
+  end
+
+end

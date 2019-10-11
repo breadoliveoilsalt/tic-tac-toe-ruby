@@ -13,12 +13,5 @@ class HumanPlayer < Player
   def make_selection(*)
     user_interface.read_line
   end
-#  def provide_name
-#    @name = input_stream.read_line
-#  end
-# 
-#  def make_selection(*)
-#    input_stream.read_line
-#  end
   
 end
