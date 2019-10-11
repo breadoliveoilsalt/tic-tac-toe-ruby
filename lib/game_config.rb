@@ -46,18 +46,21 @@ class GameConfig
   def player_config
     PlayerConfig.new(
       user_interface: user_interface_config,
-      player_factory: player_factory_config
+      player_factory: PlayerFactory.new,
+      human_model: HumanPlayer,
+      computer_model: ComputerPlayer,
+      ai: ai_config
       ) # add .set_up?
   end
 
-  def player_factory_config
-    PlayerFactory.new(
-      human_model: HumanPlayer,
-      user_interface: user_interface_config,
-      computer_model: ComputerPlayer,
-      ai: ai_config 
-      )
-  end
+#  def player_factory_config
+#    PlayerFactory.new(
+#      human_model: HumanPlayer,
+#      user_interface: user_interface_config,
+#      computer_model: ComputerPlayer,
+#      ai: ai_config 
+#      )
+#  end
 
   def ai_config
     Minimax.new(
