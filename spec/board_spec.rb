@@ -1,8 +1,8 @@
-require_relative '../lib/three_by_three_ttt_board.rb'
+require_relative '../lib/board.rb'
 
-describe ThreeByThreeTTTBoard do
+describe Board do
 
-  let(:board) { ThreeByThreeTTTBoard.new }
+  let(:board) { Board.new }
 
   describe "#new" do
     it "initializes a Board instance with an instance variable @data equal to an array of 9 empty strings" do 
@@ -11,7 +11,7 @@ describe ThreeByThreeTTTBoard do
     end
 
     it "initializes a Board instance with provided state" do
-      prefilled_board = ThreeByThreeTTTBoard.new(["X", "O", "X", " ", " ", " ", " ", " ", " "]) 
+      prefilled_board = Board.new(["X", "O", "X", " ", " ", " ", " ", " ", " "]) 
       expected_data = ["X", "O", "X", " ", " ", " ", " ", " ", " "]
       expect(prefilled_board.data).to eq(expected_data)
     end
@@ -32,14 +32,14 @@ describe ThreeByThreeTTTBoard do
     end
 
     it "returns the contents of the box passed in as an argument after the board has been filled with a few markers" do
-      board = ThreeByThreeTTTBoard.new(["X", "O", "X", " ", " ", " ", " ", " ", " "])
+      board = Board.new(["X", "O", "X", " ", " ", " ", " ", " ", " "])
       expect(board.contents_at_box(3)).to eq("X")
     end
   end
 
   describe "#clear_board" do
     it "resets the board's data to its default state of 9 strings with empty spaces" do 
-      board = ThreeByThreeTTTBoard.new(["X", "O", "X", " ", " ", " ", " ", " ", " "])
+      board = Board.new(["X", "O", "X", " ", " ", " ", " ", " ", " "])
       board.clear_board
       expect(board.data).to eq([" "," ", " ", " ", " ", " ", " ", " ", " "])
     end

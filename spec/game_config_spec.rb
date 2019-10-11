@@ -7,7 +7,7 @@ describe GameConfig do
   
   describe "#set_up" do
 
-    it "returns a hash with a key-value pair for board:, rules:, output_stream:, user_view:, and players:" do 
+    it "returns a hash with a key-value pair for board:, rules:, user_interface:, and players:" do 
       expected_keys = [:board, :rules, :user_interface, :players]
       keys = game_config.set_up.keys
       expect(keys).to eq(expected_keys)
@@ -15,26 +15,24 @@ describe GameConfig do
 
     describe "the hash returned by #set_up" do
 
-      it "has a :board value equal to a new instance of the ThreeByThreeTTTBoard" do 
-        expect(game_config.set_up[:board]).to be_a(ThreeByThreeTTTBoard)
+      it "has a :board value equal to a new instance of the Board" do 
+        expect(game_config.set_up[:board]).to be_a(Board)
       end
 
-      it "has a :rules value equal to a new instance of the ThreeByThreeTTTRules" do 
-        expect(game_config.set_up[:rules]).to be_a(ThreeByThreeTTTRules)
-      end
-
-      xit "has a :output_stream value equal to a new instance of ConsoleOutputStreatm" do 
-        expect(game_config.set_up[:output_stream]).to be_a(ConsoleOutputStream)
+      it "has a :rules value equal to a new instance of the Rules" do 
+        expect(game_config.set_up[:rules]).to be_a(Rules)
       end
 
       it "has a :user_interface value equal to a new instance of ConsoleUserInterface" do 
         expect(game_config.set_up[:user_interface]).to be_a(ConsoleUserInterface)
       end
 
-      xit "has a :players value equal to an array with two players" do 
-        expect(game_config.set_up[:players]).to be_a(Array)
-        expect(game_config.set_up[:players][0]).to be_a(Player)
-        expect(game_config.set_up[:players][1]).to be_a(Player)
+      it "has a :players value equal to the value returned sending a #set_up message to an instance of PlayerCofig" do 
+        player_config_double = instance_double("PlayerConfig")
+        expected_return_value = "An array of two player objects"
+        allow(player_config_double).to receive(:set_up).and_return(expected_return_value) 
+
+        expect(game_config.set_up[:players]).to eq(expected_return_value)
       end
     end
   end

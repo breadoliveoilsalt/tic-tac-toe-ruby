@@ -1,10 +1,10 @@
-require_relative '../lib/three_by_three_ttt_rules.rb'
-require_relative '../lib/three_by_three_ttt_board.rb'
+require_relative '../lib/rules.rb'
+require_relative '../lib/board.rb'
 
-describe "ThreeByThreeTTTRules" do
+describe "Rules" do
 
-  let(:rules) { ThreeByThreeTTTRules.new }
-  let(:board) { ThreeByThreeTTTBoard.new }
+  let(:rules) { Rules.new }
+  let(:board) { Board.new }
 
   describe "#valid_marker?" do
     it "returns true if passed a capital X" do
@@ -36,7 +36,7 @@ describe "ThreeByThreeTTTRules" do
     end
     
     it "returns false when it is passed the box number for a taken box" do
-      board = ThreeByThreeTTTBoard.new(
+      board = Board.new(
         ["X", " ", " ", 
          " ", " ", " ", 
          " ", " ", " "]
@@ -57,7 +57,7 @@ describe "ThreeByThreeTTTRules" do
     end
 
     it "returns true when the first row consists of the same markers and not blank spaces" do 
-      board = ThreeByThreeTTTBoard.new(
+      board = Board.new(
         ["X", "X", "X", 
          " ", " ", " ", 
          " ", " ", " "]
@@ -66,7 +66,7 @@ describe "ThreeByThreeTTTRules" do
     end
 
     it "returns true when the same markers are on left-to-right diagonal" do 
-      board = ThreeByThreeTTTBoard.new(
+      board = Board.new(
         ["O", " ", " ", 
          " ", "O", " ", 
          " ", " ", "O"]
@@ -78,7 +78,7 @@ describe "ThreeByThreeTTTRules" do
   describe "#player_won_game?(board, player)" do 
     
     it "returns true when the player has won the game" do 
-      board = ThreeByThreeTTTBoard.new(
+      board = Board.new(
         ["X", " ", " ", 
          " ", "X", " ", 
          " ", " ", "X"]
@@ -89,7 +89,7 @@ describe "ThreeByThreeTTTRules" do
     end
 
     it "returns false when the player has not won the game" do 
-      board = ThreeByThreeTTTBoard.new(
+      board = Board.new(
         ["X", " ", " ", 
          " ", "X", " ", 
          " ", " ", "X"]
@@ -107,7 +107,7 @@ describe "ThreeByThreeTTTRules" do
     end
 
     it "returns false when the game is won" do 
-      board = ThreeByThreeTTTBoard.new(
+      board = Board.new(
         ["X", "X", "X", 
          " ", " ", " ", 
          " ", " ", " "]
@@ -116,7 +116,7 @@ describe "ThreeByThreeTTTRules" do
     end
 
     it "returns false when the game is not won but there are empty boxes" do
-      board = ThreeByThreeTTTBoard.new(
+      board = Board.new(
         ["X", " ", "X", 
          " ", " ", " ", 
          " ", " ", " "]
@@ -131,7 +131,7 @@ describe "ThreeByThreeTTTRules" do
     end
 
     it "returns true when the game is won" do
-      board = ThreeByThreeTTTBoard.new(
+      board = Board.new(
         ["X", "X", "X", 
          " ", " ", " ", 
          " ", " ", " "]
@@ -140,7 +140,7 @@ describe "ThreeByThreeTTTRules" do
     end
     
     it "returns true when the game is tied" do
-      board = ThreeByThreeTTTBoard.new(
+      board = Board.new(
         ["X", "X", "O", 
          "O", "O", "X", 
          "X", "X", "O"]

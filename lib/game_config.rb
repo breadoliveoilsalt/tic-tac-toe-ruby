@@ -8,19 +8,18 @@ class GameConfig
       board: board_config,
       rules: rules_config,
       user_interface: user_interface_config, 
-#     players: player_config.set_up
-      players: [] 
+      players: player_config.set_up
     }  
   end
 
   private
 
   def board_config
-    ThreeByThreeTTTBoard.new
+    Board.new
   end
 
   def rules_config
-    ThreeByThreeTTTRules.new
+    Rules.new
   end
 
   def user_interface_config
@@ -50,18 +49,9 @@ class GameConfig
       human_model: HumanPlayer,
       computer_model: ComputerPlayer,
       ai: ai_config
-      ) # add .set_up?
+      )
   end
-
-#  def player_factory_config
-#    PlayerFactory.new(
-#      human_model: HumanPlayer,
-#      user_interface: user_interface_config,
-#      computer_model: ComputerPlayer,
-#      ai: ai_config 
-#      )
-#  end
-
+  
   def ai_config
     Minimax.new(
       rules: rules_config

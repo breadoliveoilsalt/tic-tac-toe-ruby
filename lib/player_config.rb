@@ -5,7 +5,6 @@ class PlayerConfig
 
   def initialize(user_interface:, player_factory:, human_player_model:, computer_player_model:, ai:)
     @user_interface = user_interface
-    @player_factory = player_factory
     @human_player_model = human_player_model
     @computer_player_model = computer_player_model
     @ai = ai
@@ -26,7 +25,7 @@ class PlayerConfig
     player_type = user_interface.get_player_type(player_number)
     if player_type == "1"
       create_and_add_human_player
-    elsif player_type = "2"
+    elsif player_type == "2"
       create_and_add_computer_player
     end
   end

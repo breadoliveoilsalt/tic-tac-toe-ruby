@@ -38,10 +38,6 @@ describe PlayerConfig do
 
   describe "#set_up" do
 
-#    it "calls user_interface.show_welcome" do
-#      expect(user_interface_double).to receive(:show_welcome)
-#    end
-#
     it "returns an array of two human players when user_interface.get_player_type returns 1 twice" do
       allow(user_interface_double).to receive(:show_welcome)
       allow(user_interface_double).to receive(:get_player_type).and_return("1", "1")

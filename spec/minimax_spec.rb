@@ -1,6 +1,6 @@
 require_relative '../lib/minimax.rb'
-require_relative '../lib/three_by_three_ttt_board.rb'  
-require_relative '../lib/three_by_three_ttt_rules.rb'
+require_relative '../lib/board.rb'  
+require_relative '../lib/rules.rb'
 
 describe Minimax do 
 
@@ -9,7 +9,7 @@ describe Minimax do
   let(:human_player) { double("Human Player", :marker => "X") }
 
   let(:minimax) { Minimax.new(
-    rules: ThreeByThreeTTTRules.new,
+    rules: Rules.new,
     deciding_player: computer_player,
     opponent: human_player) }
 
@@ -18,7 +18,7 @@ describe Minimax do
      describe "when computer player goes first with O marker" do 
 
        it "returns the last box number as a string to win when all other boxes have been taken" do 
-          board = ThreeByThreeTTTBoard.new(["O", "X", "O", 
+          board = Board.new(["O", "X", "O", 
                                             "X", "O", "X", 
                                             "X", "O", " "])
 
@@ -26,7 +26,7 @@ describe Minimax do
        end
 
         it "returns the first box number as a string to win when all other boxes have been taken" do 
-          board = ThreeByThreeTTTBoard.new([" ", "X", "O", 
+          board = Board.new([" ", "X", "O", 
                                             "X", "O", "X", 
                                             "X", "O", "O"])
 
@@ -34,7 +34,7 @@ describe Minimax do
        end
 
         it "returns a box number of the board that is not the first or last (as a string) to win when all other boxes have been taken" do 
-          board = ThreeByThreeTTTBoard.new(["O", "X", "O", 
+          board = Board.new(["O", "X", "O", 
                                             " ", "X", "X", 
                                             "O", "O", "X"])
 
@@ -42,7 +42,7 @@ describe Minimax do
        end
 
         it "returns a box number of the board that is not the first or last (as a string) to win when six boxes have been taken" do 
-          board = ThreeByThreeTTTBoard.new(["O", "X", "O", 
+          board = Board.new(["O", "X", "O", 
                                             "X", "O", "X", 
                                             " ", " ", " "])
 
@@ -50,7 +50,7 @@ describe Minimax do
        end
        
        it "returns a box number of the board that is not the first or last (as a string) to win when four boxes have been taken" do 
-          board = ThreeByThreeTTTBoard.new(["X", "O", "X", 
+          board = Board.new(["X", "O", "X", 
                                             " ", "O", "X", 
                                             " ", " ", " "])
           
@@ -58,7 +58,7 @@ describe Minimax do
        end
 
        it "returns a box number of the board (as a string) to block when O marker cannot win and four boxes have been taken" do 
-          board = ThreeByThreeTTTBoard.new(["X", "O", "O", 
+          board = Board.new(["X", "O", "O", 
                                             " ", " ", " ", 
                                             "X", " ", " "])
 
@@ -66,7 +66,7 @@ describe Minimax do
        end
 
        it "returns a box number of the board (as a string) to block when O marker cannot win and six boxes have been taken" do 
-          board = ThreeByThreeTTTBoard.new(["O", "O", "X", 
+          board = Board.new(["O", "O", "X", 
                                             " ", " ", "O", 
                                             " ", "X", "X"])
 
@@ -74,7 +74,7 @@ describe Minimax do
        end
 
        it "returns a box number of the board that is (as a string) to win when the O marker can either block or win" do
-          board = ThreeByThreeTTTBoard.new(["X", "O", "X", 
+          board = Board.new(["X", "O", "X", 
                                             " ", "O", "X", 
                                             " ", " ", " "])
 

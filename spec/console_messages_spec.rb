@@ -1,9 +1,9 @@
-require_relative '../lib/three_by_three_ttt_console_messages.rb'
-require_relative '../lib/three_by_three_ttt_board.rb'
+require_relative '../lib/console_messages.rb'
+require_relative '../lib/board.rb'
 
-describe ThreeByThreeTTTConsoleMessages do 
+describe ConsoleMessages do 
 
-  let(:user_view) { ThreeByThreeTTTConsoleMessages.new }
+  let(:user_view) { ConsoleMessages.new }
 
   describe "#welcome_simple" do
     it "is a string with a welcome message" do
@@ -64,7 +64,7 @@ describe ThreeByThreeTTTConsoleMessages do
 
   describe "#current_board" do
     it "is a string representing the current state of the board" do
-      board = ThreeByThreeTTTBoard.new(["X", " ", " ", " ", "X", " ", " ", " ", " "])
+      board = Board.new(["X", " ", " ", " ", "X", " ", " ", " ", " "])
       expected_message = <<~MESSAGE
 
         X |   |              1 | 2 | 3
