@@ -47,7 +47,7 @@ class GameConfig
     PlayerConfig.new(
       user_interface: user_interface_config,
       player_factory: player_factory_config
-      )
+      ) # add .set_up?
   end
 
   def player_factory_config
