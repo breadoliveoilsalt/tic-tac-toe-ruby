@@ -1,5 +1,5 @@
-require 'require_all'
-require_all 'lib'
+require 'require_all' 
+require_all 'lib' 
 
 class GameConfig
 
@@ -8,7 +8,7 @@ class GameConfig
       board: board_config,
       rules: rules_config,
       user_interface: user_interface_config, 
-      players: player_config.set_up
+      players: player_config
     }  
   end
 
@@ -46,10 +46,10 @@ class GameConfig
     PlayerConfig.new(
       user_interface: user_interface_config,
       player_factory: PlayerFactory.new,
-      human_model: HumanPlayer,
-      computer_model: ComputerPlayer,
+      human_player_model: HumanPlayer,
+      computer_player_model: ComputerPlayer,
       ai: ai_config
-      )
+      ).set_up
   end
   
   def ai_config
