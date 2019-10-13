@@ -139,8 +139,7 @@ describe ConsoleUserInterface do
       allow(messages_double).to receive(:current_board).with(board).and_return("Expected Argument")
 
       expect(output_stream_double).to receive(:render).with("Expected Argument")
-
-      user_interface.show_current_board(board)
+user_interface.show_current_board(board)
     end
   end
 
@@ -183,14 +182,63 @@ describe ConsoleUserInterface do
     end
   end
 
-  describe "#read_line" do
+  describe "#show_game_won_by" do
 
-    it "sends a read_line message to input_stream" do
-      expect(input_stream_double).to receive(:read_line)
+    it "sends messages a game_won_by message with a player as an argument and sends output_stream a render message with the return value" do 
+      player = double("Player")
+      expect(messages_double).to receive(:game_won_by).with(player)
+      allow(messages_double).to receive(:game_won_by).and_return("Expected Argument")
 
-      user_interface.read_line
+      expect(output_stream_double).to receive(:render).with("Expected Argument")
+
+      user_interface.show_game_won_by(player)
+    end
+  end
+
+  describe "#show_game_tied" do
+
+    it "sends messages a game_tied message and sends output_stream a render message with the return value" do 
+      expect(messages_double).to receive(:game_tied)
+      allow(messages_double).to receive(:game_tied).and_return("Expected Argument")
+
+      expect(output_stream_double).to receive(:render).with("Expected Argument")
+
+      user_interface.show_game_tied
+    end
+  end
+
+  describe "#get_user_play_again" do
+
+    it "sends messages a request_user_play_again message and sends output_stream a render message with the return value" do 
+      expected_messages_return_value = "Expected Argument"
+      expect(messages_double).to receive(:request_user_play_again)
+      allow(messages_double).to receive(:request_user_play_again).and_return(expected_messages_return_value)
+      allow(input_stream_double).to receive(:read_line)
+
+      expect(output_stream_double).to receive(:render).with(expected_messages_return_value)
+
+      user_interface.get_user_play_again
     end
 
+    it "sends input_stream a read_line message" do
+      allow(messages_double).to receive(:request_user_play_again)
+      allow(output_stream_double).to receive(:render)
+      expect(input_stream_double).to receive(:read_line)
+
+      user_interface.get_user_play_again
+    end
+  end
+
+  describe "#show_good_bye" do
+
+    it "sends messages a good_bye message and sends output_stream a render message with the return value" do 
+      expect(messages_double).to receive(:good_bye)
+      allow(messages_double).to receive(:good_bye).and_return("Expected Argument")
+
+      expect(output_stream_double).to receive(:render).with("Expected Argument")
+
+      user_interface.show_good_bye
+    end
   end
 
 end
