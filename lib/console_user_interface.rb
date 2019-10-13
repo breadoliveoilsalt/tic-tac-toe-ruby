@@ -63,7 +63,7 @@ class ConsoleUserInterface
   end
 
     # need test for
-  def show_goodbye
+  def show_good_bye
     output_stream.render(messages.good_bye)
   end
 end
