@@ -36,7 +36,6 @@ class ConsoleMessages
     <<~MESSAGE
 
       Please enter a name for this player.
-
     MESSAGE
   end
 
@@ -44,7 +43,6 @@ class ConsoleMessages
     <<~MESSAGE
 
       Please enter a marker for this player. For example, "X" or "O".
-
     MESSAGE
   end
 
