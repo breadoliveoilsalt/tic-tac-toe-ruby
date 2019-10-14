@@ -15,10 +15,14 @@ class TicTacToeGame
 
   def play_game
     while game_is_not_over
-      current_player_selects_box
-      advance_to_next_player if game_is_not_over
+      implement_turn
     end
     handle_game_over
+  end
+
+  def implement_turn
+    current_player_selects_box
+    advance_to_next_player if game_is_not_over
   end
 
   def game_is_not_over

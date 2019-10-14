@@ -24,8 +24,12 @@ describe TicTacToeGame do
 
     it "calls #implement_turn for so long as rules.game_over?(board) returns false" do
       allow(rules_double).to receive(:game_over?).with(board_double).and_return(false, false, false, true)
+      allow(game).to receive(:implement_turn).and_return(nil, nil, nil)
+      allow(game).to receive(:handle_game_over).and_return(nil)
 
-      expect(game).to receive(:implement_turn).exactly(3).times
+      game.play_game
+
+      expect(game).to have_received(:implement_turn).exactly(3).times
     end
   end
 end
