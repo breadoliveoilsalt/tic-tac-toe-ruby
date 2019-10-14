@@ -75,6 +75,32 @@ describe "ThreeByThreeTTTRules" do
     end
   end
   
+  describe "#player_won_game?(board, player)" do 
+    
+    it "returns true when the player has won the game" do 
+      board = ThreeByThreeTTTBoard.new(
+        ["X", " ", " ", 
+         " ", "X", " ", 
+         " ", " ", "X"]
+      )
+      player = double("PlayerX", :marker => "X")
+
+      expect(rules.player_won_game?(board, player)).to eq(true)
+    end
+
+    it "returns false when the player has not won the game" do 
+      board = ThreeByThreeTTTBoard.new(
+        ["X", " ", " ", 
+         " ", "X", " ", 
+         " ", " ", "X"]
+      )
+      player = double("PlayerX", :marker => "O")
+
+      expect(rules.player_won_game?(board, player)).to eq(false)
+    end
+
+  end
+
   describe "#game_tied?" do
     it "returns false when all boxes are empty" do
       expect(rules.game_tied?(board)). to eq(false)

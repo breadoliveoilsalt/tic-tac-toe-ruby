@@ -10,21 +10,24 @@ describe ThreeByThreeTTTComputerPlayer do
     expect(ThreeByThreeTTTComputerPlayer.superclass).to eq(Player)
   end
 
-  describe "#make_selection(board)" do
+  describe "#set_ai" do
+    it "sets the instance variable @ai" do 
+      ai_double = double("ai double")
+      computer_player.set_ai(ai_double)
 
-    it "should select the middle box if it is open" do 
-      board = ThreeByThreeTTTBoard.new
-      expect(computer_player.make_selection(board)).to eq("5")
-    end
-
-    it "selects the first empty box if the middle box is taken" do       
-      board = ThreeByThreeTTTBoard.new([" ", " ", " ", " ", "X", " ", " ", " ", " "])
-      expect(computer_player.make_selection(board)).to eq("1")
-    end
-
-    it "selects the first empty box if the middle box and other boxes are taken" do
-      board = ThreeByThreeTTTBoard.new(["X", "O", " ", " ", "X", " ", " ", " ", " "])
-      expect(computer_player.make_selection(board)).to eq("3")
+      expect(computer_player.ai).to eq(ai_double)
     end
   end
+
+  describe "#make_selection" do 
+    it "calls ai.find_best_move and passes it the board" do
+      ai = double("ai double")
+      board = double("board")
+      computer_player.set_ai(ai)
+      
+      expect(ai).to receive(:find_best_move).with(board)
+      computer_player.make_selection(board)
+    end
+  end
+
  end
