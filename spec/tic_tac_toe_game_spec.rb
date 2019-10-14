@@ -31,5 +31,15 @@ describe TicTacToeGame do
 
       expect(game).to have_received(:implement_turn).exactly(3).times
     end
+
+    it "calls #handle_game_over once rules.game_over?(board) returns true" do
+      allow(rules_double).to receive(:game_over?).with(board_double).and_return(false, false, false, false, false, true)
+      allow(game).to receive(:implement_turn).and_return(nil, nil, nil, nil, nil)
+      allow(game).to receive(:handle_game_over).and_return(nil)
+
+      game.play_game
+
+      expect(game).to have_received(:handle_game_over).once
+    end
   end
 end
