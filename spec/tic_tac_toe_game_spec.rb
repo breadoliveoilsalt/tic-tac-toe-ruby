@@ -42,4 +42,22 @@ describe TicTacToeGame do
       expect(game).to have_received(:handle_game_over).once
     end
   end
+
+  describe "#implement_turn" do
+
+    it "displays the board by calling #user_interface.show_current_board(board)" do
+      player_selection = "1"
+      allow(human_player_double).to receive(:make_selection).and_return(player_selection)
+      allow(human_player_double).to receive(:marker).and_return("X")
+      allow(rules_double).to receive(:valid_move?).with(board_double, player_selection).and_return(true)
+      allow(board_double).to receive(:place_marker_on_board_box).with("X", "1")
+      allow(user_interface_double).to receive(:show_move_confirmation)
+      allow(rules_double).to receive(:game_over?).with(board_double).and_return(false)
+
+      expect(user_interface_double).to receive(:show_current_board).with(board_double)
+
+      game.implement_turn
+
+    end
+  end
 end
