@@ -31,5 +31,23 @@ describe PlayerFactoryValidations do
     end
   end
 
+  describe "#name_selection_valid?" do
+
+    it "returns true when the argument string has length greater than 0" do
+      player_selection = "T"
+
+      result = validator.name_selection_valid?(player_selection)
+
+      expect(result).to eq(true)
+    end
+
+    it "returns false when the argument string has length of 0" do
+      player_selection = ""
+
+      result = validator.name_selection_valid?(player_selection)
+
+      expect(result).to eq(false)
+    end
+  end
 
 end
