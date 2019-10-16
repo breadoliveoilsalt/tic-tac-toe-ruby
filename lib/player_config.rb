@@ -3,16 +3,15 @@ class PlayerConfig
   attr_reader :user_interface,:human_player_model, :computer_player_model, :ai
   attr_accessor :players
 
-  def initialize(user_interface:, human_player_model:, computer_player_model:, ai:)
+  def set_up(user_interface:, human_player_model:, computer_player_model:, ai:)
     @user_interface = user_interface
     @human_player_model = human_player_model
     @computer_player_model = computer_player_model
     @ai = ai
     @players = [ ]
-  end
 
-  def set_up
     user_interface.show_welcome
+
 
     ["1", "2"].each do | player_number |
       get_player_info_and_create(player_number)

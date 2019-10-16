@@ -3,6 +3,16 @@ require_all 'lib'
 
 class GameConfig
 
+  attr_reader :player_factory
+
+  def self.preconfigured
+    GameConfig.new(PlayerConfig.new)
+  end
+
+  def initialize(player_factory)
+    @player_factory = player_factory
+  end
+
   def set_up
     { 
       board: board_config,
@@ -43,12 +53,12 @@ class GameConfig
   end
 
   def player_config
-    PlayerConfig.new(
+    player_factory.set_up(
       user_interface: user_interface_config,
       human_player_model: HumanPlayer,
       computer_player_model: ComputerPlayer,
       ai: ai_config
-      ).set_up
+      )
   end
   
   def ai_config
