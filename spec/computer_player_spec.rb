@@ -1,9 +1,10 @@
 require_relative '../lib/computer_player.rb'
 require_relative '../lib/player.rb'
+require_relative '../lib/minimax.rb'
 
 describe ComputerPlayer do
 
-  let(:ai_double) { double("ai_double") }
+  let(:ai_double) { instance_double("Minimax") }
   let(:computer_player) { ComputerPlayer.new( {name: "Computer Player", marker: "X", ai: ai_double} ) }
 
   it "is a subclass of the Player class" do
@@ -34,9 +35,10 @@ describe ComputerPlayer do
       deciding_player = computer_player
       other_player = double("human player")
       
-      expect(ai_double).to receive(:find_best_move).with(board, deciding_player, other_player)
-
-      computer_player.make_selection(board, deciding_player, other_player)
+      allow(ai_double).to receive(:find_best_move).with(board, deciding_player, other_player).and_return("7")
+      move = computer_player.make_selection(board, deciding_player, other_player)
+      
+      expect(move).to eq("7")
     end
   end
 
