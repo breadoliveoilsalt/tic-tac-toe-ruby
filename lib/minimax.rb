@@ -2,13 +2,14 @@ class Minimax
 
   attr_reader :rules, :deciding_player, :opponent
 
-  def initialize(rules:, deciding_player: , opponent:)
+  def initialize(rules:)
     @rules = rules
-    @deciding_player = deciding_player
-    @opponent = opponent
   end
 
-  def find_best_move(board)
+  def find_best_move(board, deciding_player, opponent)
+    @deciding_player = deciding_player
+    @opponent = opponent
+
     best_move = nil
     best_score = -Float::INFINITY
     starting_depth = 0

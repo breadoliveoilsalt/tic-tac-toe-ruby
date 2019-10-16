@@ -1,11 +1,11 @@
-require_relative '../lib/three_by_three_ttt_user_view.rb'
-require_relative '../lib/three_by_three_ttt_board.rb'
+require_relative '../lib/console_messages.rb'
+require_relative '../lib/board.rb'
 
-describe "ThreeByThreeTTTUserView" do 
+describe ConsoleMessages do 
 
-  let(:user_view) { ThreeByThreeTTTUserView.new }
+  let(:console_messages) { ConsoleMessages.new }
 
-  describe "#welcome" do
+  describe "#welcome_simple" do
     it "is a string with a welcome message" do
       expected_message = <<~MESSAGE
         
@@ -13,7 +13,7 @@ describe "ThreeByThreeTTTUserView" do
 
         MESSAGE
       
-      expect(user_view.welcome).to eq(expected_message)
+      expect(console_messages.welcome_simple).to eq(expected_message)
     end
   end
 
@@ -42,7 +42,21 @@ describe "ThreeByThreeTTTUserView" do
     
       MESSAGE
       
-      expect(user_view.instructions).to eq(expected_message)
+      expect(console_messages.instructions).to eq(expected_message)
+    end
+  end
+
+  describe "#player_type?" do
+    it "takes a string number as an argument and returns a question interpolating that number to ask if the player is human or a computer player" do
+      player_number = "5"
+      expected_return_value = <<~MESSAGE
+
+        Is Player 5 a human or computer player? 
+
+        Enter '1' for human or '2' for computer.
+      MESSAGE
+
+      expect(console_messages.player_type?("5")).to eq(expected_return_value)
     end
   end
 
@@ -58,28 +72,28 @@ describe "ThreeByThreeTTTUserView" do
     
       MESSAGE
 
-      expect(user_view.board_with_numbers).to eq(expected_message)
+      expect(console_messages.board_with_numbers).to eq(expected_message)
     end
   end
 
   describe "#current_board" do
     it "is a string representing the current state of the board" do
-      board = ThreeByThreeTTTBoard.new(["X", " ", " ", " ", "X", " ", " ", " ", " "])
+      board = Board.new(["X", " ", " ", " ", "X", " ", " ", " ", " "])
       expected_message = <<~MESSAGE
 
-        X |   |  
-       -----------
-          | X |  
-       -----------
-          |   |  
+        X |   |              1 | 2 | 3
+       -----------          -----------
+          | X |              4 | 5 | 6
+       -----------          -----------
+          |   |              7 | 8 | 9
     
       MESSAGE
 
-      expect(user_view.current_board(board)).to eq(expected_message)
+      expect(console_messages.current_board(board)).to eq(expected_message)
     end
   end
 
-  describe "#user_selection_error" do
+  describe "#selection_error" do
     it "is a string with a generic error message" do
       expected_message = <<~MESSAGE 
 
@@ -87,7 +101,7 @@ describe "ThreeByThreeTTTUserView" do
 
       MESSAGE
       
-      expect(user_view.user_selection_error).to eq(expected_message)
+      expect(console_messages.selection_error).to eq(expected_message)
     end
   end
 
@@ -100,7 +114,7 @@ describe "ThreeByThreeTTTUserView" do
         Bob, please select a box and hit return.
 
       MESSAGE
-      expect(user_view.request_user_select_box(player)).to eq(expected_message)
+      expect(console_messages.request_user_select_box(player)).to eq(expected_message)
     end
   end
 
@@ -114,7 +128,7 @@ describe "ThreeByThreeTTTUserView" do
 
       MESSAGE
     
-      expect(user_view.move_confirmation(player, "5")).to eq(expected_message)
+      expect(console_messages.move_confirmation(player, "5")).to eq(expected_message)
     end
   end
 
@@ -130,7 +144,7 @@ describe "ThreeByThreeTTTUserView" do
 
       MESSAGE
     
-      expect(user_view.game_won_by(player)).to eq(expected_message)
+      expect(console_messages.game_won_by(player)).to eq(expected_message)
     end
   end
 
@@ -143,7 +157,7 @@ describe "ThreeByThreeTTTUserView" do
         Thanks for playing!
 
       MESSAGE
-      expect(user_view.game_tied).to eq(expected_message)
+      expect(console_messages.game_tied).to eq(expected_message)
     end
   end
 
@@ -151,10 +165,12 @@ describe "ThreeByThreeTTTUserView" do
     it "is a string asking the user to play again" do
       expected_message = <<~MESSAGE
 
-        Would you like to play again? Type 'y' or 'Y' and hit return if so.
+        Would you like to play again? The next player will go first.
+
+        Enter 'y' or 'Y' to play again.
 
       MESSAGE
-      expect(user_view.request_user_play_again).to eq(expected_message)
+      expect(console_messages.request_user_play_again).to eq(expected_message)
     end
   end
 
@@ -165,7 +181,7 @@ describe "ThreeByThreeTTTUserView" do
         Thanks for playing! Good bye!
 
       MESSAGE
-      expect(user_view.good_bye).to eq(expected_message)
+      expect(console_messages.good_bye).to eq(expected_message)
     end
   end
 end

@@ -1,4 +1,4 @@
-class ThreeByThreeTTTRules
+class Rules 
   
   def valid_marker?(player_marker_selection)
     ["X", "x", "O", "o"].each do |acceptable_marker|
