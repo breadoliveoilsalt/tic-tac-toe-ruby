@@ -45,7 +45,6 @@ class GameConfig
   def player_config
     PlayerConfig.new(
       user_interface: user_interface_config,
-      player_factory: PlayerFactory.new,
       human_player_model: HumanPlayer,
       computer_player_model: ComputerPlayer,
       ai: ai_config

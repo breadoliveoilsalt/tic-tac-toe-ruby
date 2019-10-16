@@ -1,9 +1,9 @@
 class PlayerConfig
 
-  attr_reader :user_interface, :player_factory, :human_player_model, :computer_player_model, :ai
+  attr_reader :user_interface,:human_player_model, :computer_player_model, :ai
   attr_accessor :players
 
-  def initialize(user_interface:, player_factory:, human_player_model:, computer_player_model:, ai:)
+  def initialize(user_interface:, human_player_model:, computer_player_model:, ai:)
     @user_interface = user_interface
     @human_player_model = human_player_model
     @computer_player_model = computer_player_model

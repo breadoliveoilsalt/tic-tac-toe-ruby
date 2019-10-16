@@ -5,7 +5,6 @@ require_relative '../lib/computer_player.rb'
 describe PlayerConfig do
 
   let(:user_interface_double) { double("user interface") }
-  let(:player_factory_double) { double("player factory") }
   let(:human_player_model) { HumanPlayer }
   let(:computer_player_model) { ComputerPlayer }
   let(:ai_double) { double("ai") }
@@ -13,18 +12,16 @@ describe PlayerConfig do
   let(:player_config) { 
     PlayerConfig.new(
       user_interface: user_interface_double,
-      player_factory: player_factory_double,
       human_player_model: human_player_model,
       computer_player_model: computer_player_model,
       ai: ai_double)
      }
   
-  it "requires initialization with keyword arguments for user_interface, player_factory, human_player_model, computer_player_model, and ai" do 
+  it "requires initialization with keyword arguments for user_interface, human_player_model, computer_player_model, and ai" do 
 
     expect{ 
       PlayerConfig.new(
         user_interface: user_interface_double,
-        player_factory: player_factory_double,
         human_player_model: human_player_model,
         computer_player_model: computer_player_model,
         ai: ai_double)
@@ -32,7 +29,7 @@ describe PlayerConfig do
 
     expect{ 
       PlayerConfig.new
-       }.to raise_error.with_message(/missing keywords: user_interface, player_factory, human_player_model, computer_player_model, ai/)
+       }.to raise_error.with_message(/missing keywords: user_interface, human_player_model, computer_player_model, ai/)
   
   end
 
