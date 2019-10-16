@@ -3,6 +3,7 @@ require_relative '../lib/human_player.rb'
 require_relative '../lib/computer_player.rb'
 require_relative '../lib/console_user_interface.rb'
 require_relative '../lib/minimax.rb'
+require_relative '../lib/player_factory_validations.rb'
 
 describe PlayerFactory do
 
@@ -10,13 +11,14 @@ describe PlayerFactory do
   let(:human_player_model) { HumanPlayer }
   let(:computer_player_model) { ComputerPlayer }
   let(:ai_double) { instance_double("Minimax") }
+  let(:validator_double) { instance_double("PlayerFactoryValidations") }
 
   let(:player_factory) { PlayerFactory.new }
   
   describe "#set_up" do 
-    it "requires keyword arguments for user_interface, human_player_model, computer_player_model, and ai" do 
+    it "requires keyword arguments for user_interface, human_player_model, computer_player_model, ai, and validator" do 
 
-    expect{ player_factory.set_up }.to raise_error.with_message(/missing keywords: user_interface, human_player_model, computer_player_model, ai/)
+    expect{ player_factory.set_up }.to raise_error.with_message(/missing keywords: user_interface, human_player_model, computer_player_model, ai, validator/)
     end
  end
 
@@ -26,6 +28,9 @@ describe PlayerFactory do
       allow(user_interface_double).to receive(:show_welcome)
       allow(user_interface_double).to receive(:get_name)
       allow(user_interface_double).to receive(:get_marker)
+      allow(validator_double).to receive(:name_selection_valid?).and_return(true)
+      allow(validator_double).to receive(:marker_selection_valid?).and_return(true)
+      allow(user_interface_double).to receive(:show_selection_error)
     end
 
     def run_set_up
@@ -33,7 +38,8 @@ describe PlayerFactory do
         user_interface: user_interface_double,
         human_player_model: human_player_model,
         computer_player_model: computer_player_model,
-        ai: ai_double)
+        ai: ai_double,
+        validator: validator_double)
     end
 
     it "returns an array of two human players when user_interface.get_player_type returns 1 twice" do
@@ -61,6 +67,16 @@ describe PlayerFactory do
       expect(result[1].name).to eq("Hank")
     end
       
+    it "it calls validator.name_selection_valid? to check if the name is valid" do
+      allow(user_interface_double).to receive(:get_player_type).and_return("1", "2")
+      allow(user_interface_double).to receive(:get_name).and_return("", "Billy", "Hank")
+      allow(validator_double).to receive(:name_selection_valid?).and_return(false, true, true)
+      result = run_set_up
+
+      expect(result[0].name).to eq("Billy")
+      expect(result[1].name).to eq("Hank")
+    end
+      
     it "it calls user_interface.get_marker and sets the return value to the players' markers" do
       allow(user_interface_double).to receive(:get_player_type).and_return("1", "2")
       allow(user_interface_double).to receive(:get_marker).and_return("X", "O")
@@ -69,6 +85,15 @@ describe PlayerFactory do
       expect(result[0].marker).to eq("X")
       expect(result[1].marker).to eq("O")
     end
-  end
+      
+    it "it calls validator.marker_selection_valid? to check if the marker is valid" do
+      allow(user_interface_double).to receive(:get_player_type).and_return("1", "2")
+      allow(user_interface_double).to receive(:get_marker).and_return("", "", "X", "O")
+      allow(validator_double).to receive(:marker_selection_valid?).and_return(false, false, true, true)
+      result = run_set_up
 
+      expect(result[0].marker).to eq("X")
+      expect(result[1].marker).to eq("O")
+    end
+  end
 end 

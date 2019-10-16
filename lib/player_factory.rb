@@ -1,18 +1,18 @@
 class PlayerFactory
 
-  attr_reader :user_interface,:human_player_model, :computer_player_model, :ai
+  attr_reader :user_interface,:human_player_model, :computer_player_model, :ai, :validator
   attr_accessor :players
 
-  def set_up(user_interface:, human_player_model:, computer_player_model:, ai:)
+  def set_up(user_interface:, human_player_model:, computer_player_model:, ai:, validator:)
 
     @user_interface = user_interface
     @human_player_model = human_player_model
     @computer_player_model = computer_player_model
     @ai = ai
+    @validator = validator
     @players = [ ]
 
     user_interface.show_welcome
-
 
     ["1", "2"].each do | player_number |
       get_player_info_and_create(player_number)
@@ -31,20 +31,43 @@ class PlayerFactory
   end
 
   def create_and_add_human_player
-    attributes = get_name_and_marker_attributes.merge({user_interface: user_interface})
+    attributes = {
+      name: get_name,
+      marker: get_marker,
+      user_interface: user_interface
+      }
+
     player = human_player_model.new(attributes)
     players.push(player)
   end
 
   def create_and_add_computer_player
-    attributes = get_name_and_marker_attributes.merge({ai: ai})
+    attributes = {
+      name: get_name,
+      marker: get_marker,
+      ai: ai
+      }
+
     player = computer_player_model.new(attributes)
     players.push(player)
   end
 
-  def get_name_and_marker_attributes
+  def get_name
     name = user_interface.get_name
-    marker = user_interface.get_marker
-    {name: name, marker: marker}
+    while !(validator.name_selection_valid?(name))
+      user_interface.show_selection_error
+      name = user_interface.get_name
+    end
+    name
   end
+
+  def get_marker
+    marker = user_interface.get_marker
+    while !(validator.marker_selection_valid?(marker))
+      user_interface.show_selection_error
+      marker = user_interface.get_marker
+    end
+    marker
+  end
+
 end

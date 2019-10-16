@@ -57,7 +57,8 @@ class GameConfig
       user_interface: user_interface_config,
       human_player_model: HumanPlayer,
       computer_player_model: ComputerPlayer,
-      ai: ai_config
+      ai: ai_config,
+      validator: PlayerFactoryValidations.new
       )
   end
   
