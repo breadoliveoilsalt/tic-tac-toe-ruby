@@ -1,22 +1,22 @@
-require_relative '../lib/player_config.rb'
+require_relative '../lib/player_factory.rb'
 require_relative '../lib/human_player.rb'
 require_relative '../lib/computer_player.rb'
 require_relative '../lib/console_user_interface.rb'
 require_relative '../lib/minimax.rb'
 
-describe PlayerConfig do
+describe PlayerFactory do
 
   let(:user_interface_double) { instance_double("ConsoleUserInterface") }
   let(:human_player_model) { HumanPlayer }
   let(:computer_player_model) { ComputerPlayer }
   let(:ai_double) { instance_double("Minimax") }
 
-  let(:player_config) { PlayerConfig.new }
+  let(:player_factory) { PlayerFactory.new }
   
   describe "#set_up" do 
     it "requires keyword arguments for user_interface, human_player_model, computer_player_model, and ai" do 
 
-    expect{ player_config.set_up }.to raise_error.with_message(/missing keywords: user_interface, human_player_model, computer_player_model, ai/)
+    expect{ player_factory.set_up }.to raise_error.with_message(/missing keywords: user_interface, human_player_model, computer_player_model, ai/)
     end
  end
 
@@ -29,7 +29,7 @@ describe PlayerConfig do
     end
 
     def run_set_up
-      player_config.set_up(
+      player_factory.set_up(
         user_interface: user_interface_double,
         human_player_model: human_player_model,
         computer_player_model: computer_player_model,

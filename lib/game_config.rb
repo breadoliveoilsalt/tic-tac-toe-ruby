@@ -6,7 +6,7 @@ class GameConfig
   attr_reader :player_factory
 
   def self.preconfigured
-    GameConfig.new(PlayerConfig.new)
+    GameConfig.new(PlayerFactory.new)
   end
 
   def initialize(player_factory)
